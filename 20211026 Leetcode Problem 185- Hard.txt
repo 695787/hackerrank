@@ -1,0 +1,55 @@
+select * from employee
+left join department
+on employee.departmentid = department.id
+
+Employee table:
+id | name  | salary | departmentId
+
+Department table:
++----+-------+
+| id | name
+
+Output:
+Department | Employee | Salary
+
+
+select Department.name as Department, Employee.name as Employee, Employee.salary as Salary from employee as e1
+left join department
+on employee.departmentid = department.id
+where
+ 3 > (select count(distinct e2.salary)
+from employee as e2
+where e1.departmentid = e2.departmentid and e2.salary > e1.salary);
+
+
+Success->
+
+select Department.name as Department, e1.name as Employee, e1.salary as Salary from employee as e1
+left join department
+on e1.departmentid = department.id
+where
+ 3 > (select count(distinct e2.salary)
+from employee as e2
+where e1.departmentid = e2.departmentid and e2.salary > e1.salary);
+
+
+
+Try using sort clause-> Only got two values from Sales- no IT. 
+
+select Department.name as Department, e1.name as Employee, e1.salary as Salary from employee as e1
+left join department
+on e1.departmentid = department.id
+where
+ 3 > (select count(distinct e2.salary)
+from employee as e2
+where e1.departmentid = e2.departmentid
+order by e2.salary);
+
+
+
+
+
+
+
+
+

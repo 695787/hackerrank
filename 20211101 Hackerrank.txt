@@ -1,0 +1,482 @@
+select city from station where id % 2 = 0;
+
+
+
+total= (select count(*) from station) minus (select count (distinct city) from station);
+
+select 
+(select count(*) from station) as v1 - (select count (distinct city) from station) as v2
+
+select count(*) from station minus select count (distinct city) from station;
+
+
+select count
+(select * from station 
+minus 
+select distinct city from station);
+
+
+SELECT Customer_Name
+FROM Customer
+WHERE Customer_No 
+  IN
+  (SELECT Customer_No FROM Customer
+   EXCEPT
+   SELECT Customer_No FROM DVD_Purchase
+  ) ;
+
+
+select count(*) 
+from station
+where * in 
+(select * from station 
+except
+select distinct city from station);
+
+
+select 
+(select count(*) from station) as v1 - (select count (distinct city) from station) as v2
+
+
+select count(*) from station as v1 
+select count (distinct city) from station as v2
+print (v1-v2);
+
+
+select city from station as v1
+except 
+select count (distinct city) from station as v2;
+
+
+select count(*) where in
+
+(select city from station as v1
+except 
+select count (distinct city) from station as v2);
+
+
+select count(select city from station as v1 except select count (distinct city) from station as v2));
+
+
+DECLARE	@i	AS	INT	=	10;
+
+declare @v1 as int, @v2 as int
+set @v1 = select city from station as v1
+set @v2 = select count (distinct city) from station as v2
+print (v1-v2);
+
+
+
+declare @v1 as int;
+declare @v2 as int;
+set @v1 = (select city from station)
+set @v2 = (select count (distinct city) from station)
+print (v1-v2);
+
+Answer- 
+
+declare @v1 as int;
+declare @v2 as int;
+set @v1 = (select count(city) from station);
+set @v2 = (select count (distinct city) from station);
+print (@v1 - @v2);
+
+
+select * from station order by (number of characters in the name)
+
+
+Windowing function
+
+select * from station over (partition by  
+
+
+SELECT Col1, Col2, 
+   ROW_NUMBER() OVER(PARTITION BY Col1, Col2 ORDER BY Col1) AS RowNum
+FROM #Duplicates;
+
+
+SELECT * FROM table ORDER BY CHAR_LENGTH(field)
+
+SELECT * FROM station ORDER BY LENGTH(city);
+
+SELECT * FROM station ORDER BY LEN(city);
+
+SELECT * FROM station ORDER BY LEN(city), city;
+
+SELECT city, len(city) FROM station ORDER BY city, len(city);
+
+
+SELECT top 1 city, len(city) FROM station ORDER BY len(city), city;
+
+SELECT top 1 city, len(city) FROM station ORDER BY len(city), city;
+
+SELECT city, len(city) FROM station group by len(city) ORDER BY city;
+
+
+
+select Train, MAX(Time),
+      max(Dest) keep (DENSE_RANK LAST ORDER BY Time) max_keep
+from TrainTable
+GROUP BY Train;
+
+
+SELECT 'Train`, `Dest`, SUBSTRING_INDEX(GROUP_CONCAT(`Time` ORDER BY `Time` DESC), ",", 1) AS `Time` 
+FROM TrainTable
+GROUP BY Train;
+
+
+
+select t.Department, t.Employee, t.Salary --,t.rr
+from 
+(select d.name as Department ,e.name as Employee ,e.salary as Salary , 
+Dense_rank() over(partition by d.id order by e.salary desc) as rr, d.id as dept_id
+from employee e
+left join department d
+on e.departmentId = d.id) t
+where  t.rr < 4
+order by t.dept_id, t.rr
+
+
+WITH added_row_number AS (
+  SELECT
+    *,
+    ROW_NUMBER() OVER(PARTITION BY year ORDER BY result DESC) AS row_number
+  FROM exam_results
+)
+SELECT
+  *
+FROM added_row_number
+WHERE row_number = 1;
+
+
+
+WITH added_row_number AS (
+  SELECT
+    *,
+    ROW_NUMBER() OVER(PARTITION BY year ORDER BY result DESC) AS row_number
+  FROM exam_results
+where 	
+)
+SELECT
+  city, len(city)
+FROM added_row_number
+WHERE row_number = 1;
+
+
+WITH added_row_number AS (
+  SELECT
+    *,
+    ROW_NUMBER() OVER(PARTITION BY len(city) ORDER BY city) AS row_number
+  FROM station
+)
+SELECT
+  city, len(city)
+FROM added_row_number
+WHERE (row_number = 1 and min(len(city))) or row_number = 1 and max(len(city)) ;
+
+
+WITH added_row_number AS (
+  SELECT
+    city, min(len(city)),
+    ROW_NUMBER() OVER(PARTITION BY len(city) ORDER BY city) AS row_number
+  FROM station
+)
+SELECT
+  city, minvalue(len(city))
+FROM added_row_number
+WHERE row_number = 1;
+
+Answer- 
+
+select top 1 City, LEN(City) City_Length from STATION order by City_Length ASC,City ASC
+select top 1 CITY, LEN(city) City_Length from station order by City_Length desc, City ASC
+
+
+select distinct * from station where first letter of city = aeiou  SUBSTRING(city, 1, 1) = "a"
+where city like '[aeiou]%'
+
+
+select distinct city from station
+where city like '[aeiou]%';
+
+Answer- 
+
+select city from station where lower(SUBSTR(city,1,1)) in ('a','e','i','o','u');
+
+select city from station where SUBSTR(city,1,1) in ('a','e','i','o','u', 'A', 'E', 'I', 'O', 'U');
+
+Answer- 
+
+select distinct city from station where right(city,1) in ('a','e','i','o','u', 'A', 'E', 'I', 'O', 'U');
+
+Also possibly-
+
+select distinct city from station where substring(reverse(city),1,1) in ('a','e','i','o','u', 'A', 'E', 'I', 'O', 'U');
+
+Answer- 
+
+select city from station 
+where SUBSTR(city,1,1) in ('a','e','i','o','u', 'A', 'E', 'I', 'O', 'U')
+and right(city,1) in ('a','e','i','o','u', 'A', 'E', 'I', 'O', 'U');
+
+Answer- 
+
+select distinct city from station 
+where not SUBSTR(city,1,1) in ('a','e','i','o','u', 'A', 'E', 'I', 'O', 'U');
+
+Answer- 
+
+select distinct city from station 
+where not right(city,1) in ('a','e','i','o','u', 'A', 'E', 'I', 'O', 'U');
+
+
+select distinct city from station 
+where (not right(city,1) in ('a','e','i','o','u', 'A', 'E', 'I', 'O', 'U')) and (not SUBSTR(city,1,1) in ('a','e','i','o','u', 'A', 'E', 'I', 'O', 'U')); 
+
+
+select distinct city from station 
+where 
+not right(city,1) in ('a','e','i','o','u', 'A', 'E', 'I', 'O', 'U')
+or
+not left(city,1) in ('a','e','i','o','u', 'A', 'E', 'I', 'O', 'U')); 
+
+Answer- 
+
+select distinct city from station 
+where 
+right(city,1) not in ('a','e','i','o','u', 'A', 'E', 'I', 'O', 'U')
+or
+left(city,1) not in ('a','e','i','o','u', 'A', 'E', 'I', 'O', 'U'); 
+
+Higher than 57 Marks. 
+_____________________
+
+
+select name from students where marks > 75;
+
+Answer-
+
+select name from students 
+where marks > 75
+order by right(name, 3), id;
+
+
+Employee Names
+______________
+
+
+select name asc from employee; 
+
+
+Answer-
+select name from employee
+order by name asc
+;
+
+
+select name from employee
+where salary > 2000 and months < 10
+order by id;
+
+select name from employee
+where salary > 2000 and months < 10
+order by employee_id;
+
+
+New Companies
+
+company_code
+founder_name
+total number of lead managers
+total number of senior managers
+total number of managers
+total number of employees
+
+sort by company_code;
+
+select company_code, founder_name, count(lead_managers), count(senior_managers),count(managers),  count(employees)
+from (
+select employees)
+
+select company_code from employee ;
+
+
+Solution 1-
+
+SELECT c.company_code, c.founder, 
+       COUNT(DISTINCT l.lead_manager_code), COUNT(DISTINCT s.senior_manager_code),
+       COUNT(DISTINCT m.manager_code), COUNT(DISTINCT e.employee_code)
+FROM Company c, Lead_Manager l, Senior_Manager s, Manager m, Employee e
+WHERE c.company_code = l.company_code AND 
+      l.lead_manager_code = s.lead_manager_code AND
+      s.senior_manager_code = m.senior_manager_code AND
+      m.manager_code = e.manager_code
+GROUP BY c.company_code, c.founder ORDER BY c.company_code;
+
+
+
+Solution 2-
+
+SELECT c.company_code, c.founder, 
+       COUNT(DISTINCT l.lead_manager_code), COUNT(DISTINCT s.senior_manager_code),
+       COUNT(DISTINCT m.manager_code), COUNT(DISTINCT e.employee_code)
+FROM Company c JOIN Lead_Manager l ON c.company_code = l.company_code JOIN
+     Senior_Manager s ON l.lead_manager_code = s.lead_manager_code JOIN
+     Manager m ON s.senior_manager_code = m.senior_manager_code JOIN
+     Employee e ON m.manager_code = e.manager_code   
+GROUP BY c.company_code, c.founder ORDER BY c.company_code;
+
+
+SELECT c.company_code, c.founder, 
+       COUNT(DISTINCT l.lead_manager_code), COUNT(DISTINCT s.senior_manager_code),
+       COUNT(DISTINCT m.manager_code), COUNT(DISTINCT e.employee_code)
+FROM Company c 
+JOIN Lead_Manager l ON c.company_code = l.company_code 
+JOIN Senior_Manager s ON l.lead_manager_code = s.lead_manager_code 
+JOIN Manager m ON s.senior_manager_code = m.senior_manager_code 
+JOIN Employee e ON m.manager_code = e.manager_code   
+GROUP BY c.company_code, c.founder ORDER BY c.company_code;
+
+
+
+SELECT c.company_code, c.founder, DISTINCT l.lead_manager_code, DISTINCT s.senior_manager_code,
+       DISTINCT m.manager_code, DISTINCT e.employee_code
+FROM Company c 
+JOIN Lead_Manager l ON c.company_code = l.company_code 
+JOIN Senior_Manager s ON l.lead_manager_code = s.lead_manager_code 
+JOIN Manager m ON s.senior_manager_code = m.senior_manager_code 
+JOIN Employee e ON m.manager_code = e.manager_code   
+GROUP BY c.company_code, c.founder ORDER BY c.company_code;
+
+
+SELECT c.company_code, c.founder, DISTINCT l.lead_manager_code, DISTINCT s.senior_manager_code,
+       DISTINCT m.manager_code, DISTINCT e.employee_code
+FROM Company c 
+JOIN Lead_Manager l ON c.company_code = l.company_code 
+JOIN Senior_Manager s ON l.lead_manager_code = s.lead_manager_code 
+JOIN Manager m ON s.senior_manager_code = m.senior_manager_code 
+JOIN Employee e ON m.manager_code = e.manager_code   
+GROUP BY c.company_code, c.founder ORDER BY c.company_code;
+
+
+
+select c.company_code, c.founder, distinct(l.lead_manager_code), distinct(s.senior_manager_code),
+       distinct (m.manager_code), distinct (e.employee_code)
+FROM Company c 
+JOIN Lead_Manager l ON c.company_code = l.company_code 
+JOIN Senior_Manager s ON l.lead_manager_code = s.lead_manager_code 
+JOIN Manager m ON s.senior_manager_code = m.senior_manager_code 
+JOIN Employee e ON m.manager_code = e.manager_code   
+GROUP BY c.company_code, c.founder ORDER BY c.company_code;
+
+
+select c.company_code, c.founder, distinct l.lead_manager_code
+from Company c 
+join Lead_Manager l ON c.company_code = l.company_code ;
+
+select c.company_code, c.founder, count (distinct l.lead_manager_code), count (distinct s.senior_manager_code), count (distinct m.manager_code), count (distinct e.employee_code)
+from company c 
+join lead_manager l on c.company_code = l.company_code
+join senior_manager s on l.lead_manager_code = s.lead_manager_code
+join manager m on s.senior_manager_code = m.senior_manager_code
+join employee e on m.manager_code = e.manager_code
+group by c.company_code, c.founder
+order by c.company_code;
+
+
+order by right(name, 3), id;
+
+order by Cast(SUBSTRING(ColumnName, 7) as INT) ASC
+
+This sorted the output better. 
+
+order by cast(substring(c.company_code, 2, 3) as int) asc;
+
+_________________________________________
+
+Weather Observation Station 19
+
+SELECT ROUND(SQRT(POW(MIN(LAT_N)-MAX(LAT_N), 2) + POW(MIN(LONG_W)-MAX(LONG_W), 2)), 4) FROM STATION;
+
+select round(sqrt(power(min(lat_n) - max(lat_n), 2) + power(min(long_w) - max (long_w), 2)), 4) from station;
+
+select sqrt(power(min(lat_n) - max(lat_n), 2) + power(min(long_w) - max (long_w), 2)) from station;
+
+cast(your_float_column as decimal(10,2))
+
+convert(numeric(10,2), column_name)
+
+Answer-
+
+select convert(numeric(10, 4), sqrt(power(min(lat_n) - max(lat_n), 2) + power(min(long_w) - max (long_w),2))) from station;
+
+____________________________
+
+Weather Observation Station 20
+
+Calculate Median
+
+
+SELECT
+(
+ (SELECT MAX(Score) FROM
+   (SELECT TOP 50 PERCENT Score FROM Posts ORDER BY Score) AS BottomHalf)
+ +
+ (SELECT MIN(Score) FROM
+   (SELECT TOP 50 PERCENT Score FROM Posts ORDER BY Score DESC) AS TopHalf)
+) / 2 AS Median
+
+
+
+SELECT SalesOrderID, OrderQty,
+    PERCENTILE_CONT(0.5) 
+        WITHIN GROUP (ORDER BY OrderQty)
+        OVER (PARTITION BY SalesOrderID) AS MedianCont
+FROM Sales.SalesOrderDetail
+WHERE SalesOrderID IN (43670, 43669, 43667, 43663)
+ORDER BY SalesOrderID DESC
+
+
+SELECT @Median = AVG(1.0 * val)
+FROM
+(
+    SELECT o.val, rn = ROW_NUMBER() OVER (ORDER BY o.val), c.c
+    FROM dbo.EvenRows AS o
+    CROSS JOIN (SELECT c = COUNT(*) FROM dbo.EvenRows) AS c
+) AS x
+WHERE rn IN ((c + 1)/2, (c + 2)/2);
+
+From the master Himself, Itzik Ben-Gan!
+
+
+Select round(S.salary,4) median from employee S 
+where (select count(salary) from station 
+where salary < S.salary ) = (select count(salary) from station
+where salary > S.salary)
+
+SELECT
+(
+ (SELECT MAX(Score) FROM
+   (SELECT TOP 50 PERCENT Score FROM Posts ORDER BY Score) AS BottomHalf)
+ +
+ (SELECT MIN(Score) FROM
+   (SELECT TOP 50 PERCENT Score FROM Posts ORDER BY Score DESC) AS TopHalf)
+) / 2 AS Median
+
+Jeff Atwood
+
+SELECT @Median = (
+   (SELECT MAX(val) FROM
+     (SELECT TOP 50 PERCENT val 
+      FROM dbo.EvenRows ORDER BY val, id) AS t)
+ + (SELECT MIN(val) FROM
+     (SELECT TOP 50 PERCENT val 
+      FROM dbo.EvenRows ORDER BY val DESC, id DESC) AS b)
+) / 2.0;
+
+ Aaron Bertrand 
+
+
+
+
+

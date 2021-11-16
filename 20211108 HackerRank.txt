@@ -1,0 +1,1161 @@
+___________________________________
+
+PrepareSQLAdvanced JoinInterviews
+
+
+select * from contests
+
+select contest_id, hacker_id, name
+, sum(total_submissions) as s_ts
+, sum(total_accepted_submissions) as s_tas
+, sum(total_views) as s_tv
+, sum(total_unique_views) as s_tuv
+from contests as c
+join Colleges as co on co.contest_id = c.contest_id
+join Challenges as ch.college_id = co.college_id
+join View_Stats as vs on vs.challenge_id = ch.challenge_id
+join Submission_Stats as ss on ss.challenge_id = vs.challenge_id;
+ 
+
+select *
+from contests as c
+join Colleges as co on co.contest_id = c.contest_id
+join Challenges as ch on ch.college_id = co.college_id
+join View_Stats as vs on vs.challenge_id = ch.challenge_id
+join Submission_Stats as ss on ss.challenge_id = vs.challenge_id;
+
+https://www.hackerrank.com/challenges/interviews/problem?h_r=next-challenge&h_v=zen
+
+select c.contest_id, c.hacker_id, c.name, total_submissions, total_accepted_submissions
+, total_views
+, total_unique_views
+from contests as c
+join Colleges as co on co.contest_id = c.contest_id
+join Challenges as ch on ch.college_id = co.college_id
+join View_Stats as vs on vs.challenge_id = ch.challenge_id
+join Submission_Stats as ss on ss.challenge_id = vs.challenge_id;
+
+
+select c.contest_id, c.hacker_id, c.name
+, sum(total_submissions) as s_ts
+, sum(total_accepted_submissions) as s_tas
+, sum(total_views) as s_tv
+, sum(total_unique_views) as s_tuv
+from contests as c
+join Colleges as co on co.contest_id = c.contest_id
+join Challenges as ch on ch.college_id = co.college_id
+join View_Stats as vs on vs.challenge_id = ch.challenge_id
+join Submission_Stats as ss on ss.challenge_id = vs.challenge_id;
+
+
+select c.contest_id, c.hacker_id, c.name
+, sum(total_submissions) as s_ts
+, sum(total_accepted_submissions) as s_tas
+, sum(total_views) as s_tv
+, sum(total_unique_views) as s_tuv
+from contests as c
+join Colleges as co on co.contest_id = c.contest_id
+join Challenges as ch on ch.college_id = co.college_id
+join View_Stats as vs on vs.challenge_id = ch.challenge_id
+join Submission_Stats as ss on ss.challenge_id = vs.challenge_id
+group by vs.challenge_id, c.contest_id, c.hacker_id,  c.name;
+
+where s_ts + s_tas + s_tv + s_tuv not 0
+
+select c.contest_id, c.hacker_id, c.name
+, sum(total_submissions) s_ts
+, sum(total_accepted_submissions) s_tas
+, sum(total_views) s_tv
+, sum(total_unique_views) s_tuv
+from contests as c
+join Colleges as co on co.contest_id = c.contest_id
+join Challenges as ch on ch.college_id = co.college_id
+join View_Stats as vs on vs.challenge_id = ch.challenge_id
+join Submission_Stats as ss on ss.challenge_id = vs.challenge_id
+where s_ts + s_tas + s_tv + s_tuv != 0
+group by vs.challenge_id, c.contest_id, c.hacker_id,  c.name;
+
+
+select c.contest_id, c.hacker_id, c.name
+, sum(total_submissions) s_ts
+, sum(total_accepted_submissions) s_tas
+, sum(total_views) s_tv
+, sum(total_unique_views) s_tuv
+from contests as c
+join Colleges as co on co.contest_id = c.contest_id
+join Challenges as ch on ch.college_id = co.college_id
+join View_Stats as vs on vs.challenge_id = ch.challenge_id
+join Submission_Stats as ss on ss.challenge_id = vs.challenge_id
+where sum(total_submissions) + sum(total_accepted_submissions) + sum(total_views) + sum(total_unique_views) != 0
+group by vs.challenge_id, c.contest_id, c.hacker_id,  c.name
+
+select c.contest_id, c.hacker_id, c.name
+, sum(total_submissions) as s_ts
+, sum(total_accepted_submissions) as s_tas
+, sum(total_views) as s_tv
+, sum(total_unique_views) as s_tuv
+from contests as c
+join Colleges as co on co.contest_id = c.contest_id
+join Challenges as ch on ch.college_id = co.college_id
+join View_Stats as vs on vs.challenge_id = ch.challenge_id
+join Submission_Stats as ss on ss.challenge_id = vs.challenge_id
+group by vs.challenge_id, c.contest_id, c.hacker_id,  c.name
+having sum(total_submissions) + sum(total_accepted_submissions) + sum(total_views) + sum(total_unique_views) != 0
+
+select c.contest_id, c.hacker_id, c.name
+, sum(total_submissions) as s_ts
+, sum(total_accepted_submissions) as s_tas
+, sum(total_views) as s_tv
+, sum(total_unique_views) as s_tuv
+from contests as c
+join Colleges as co on co.contest_id = c.contest_id
+join Challenges as ch on ch.college_id = co.college_id
+join View_Stats as vs on vs.challenge_id = ch.challenge_id
+join Submission_Stats as ss on ss.challenge_id = vs.challenge_id
+group by vs.challenge_id, c.contest_id, c.hacker_id,  c.name
+having sum(total_submissions) + sum(total_accepted_submissions) + sum(total_views) + sum(total_unique_views) != 0
+order by contest_id
+;
+
+select c.contest_id, c.hacker_id, c.name
+, sum(total_submissions)  OVER (PARTITION BY challenge_id) as s_ts
+, sum(total_accepted_submissions) OVER (PARTITION BY challenge_id) as s_tas
+, sum(total_views) OVER (PARTITION BY challenge_id) as s_tv
+, sum(total_unique_views) OVER (PARTITION BY challenge_id) as s_tuv
+from contests as c
+join Colleges as co on co.contest_id = c.contest_id
+join Challenges as ch on ch.college_id = co.college_id
+join View_Stats as vs on vs.challenge_id = ch.challenge_id
+join Submission_Stats as ss on ss.challenge_id = vs.challenge_id
+group by vs.challenge_id, c.contest_id, c.hacker_id,  c.name
+having sum(total_submissions) + sum(total_accepted_submissions) + sum(total_views) + sum(total_unique_views) != 0
+order by contest_id
+;
+
+select c.contest_id, c.hacker_id, c.name
+, sum(total_submissions)  OVER (PARTITION BY vs.challenge_id) as s_ts
+, sum(total_accepted_submissions) OVER (PARTITION BY vs.challenge_id) as s_tas
+, sum(total_views) OVER (PARTITION BY vs.challenge_id) as s_tv
+, sum(total_unique_views) OVER (PARTITION BY vs.challenge_id) as s_tuv
+from contests as c
+join Colleges as co on co.contest_id = c.contest_id
+join Challenges as ch on ch.college_id = co.college_id
+join View_Stats as vs on vs.challenge_id = ch.challenge_id
+join Submission_Stats as ss on ss.challenge_id = vs.challenge_id
+having sum(total_submissions) + sum(total_accepted_submissions) + sum(total_views) + sum(total_unique_views) != 0
+order by contest_id
+;
+
+select c.contest_id, c.hacker_id, c.name
+, sum(total_submissions) as s_ts
+, sum(total_accepted_submissions) as s_tas
+, sum(total_views) as s_tv
+, sum(total_unique_views) as s_tuv
+from contests as c
+join Colleges as co on co.contest_id = c.contest_id
+join Challenges as ch on ch.college_id = co.college_id
+join View_Stats as vs on vs.challenge_id = ch.challenge_id
+join Submission_Stats as ss on ss.challenge_id = vs.challenge_id
+group by vs.challenge_id, c.contest_id, c.hacker_id,  c.name
+having sum(total_submissions) != 0 or sum(total_accepted_submissions) != 0 or sum(total_views) != 0 or sum(total_unique_views) != 0
+order by contest_id
+;
+
+
+Discussion Answers-
+
+select con.contest_id,
+        con.hacker_id, 
+        con.name, 
+        sum(total_submissions), 
+        sum(total_accepted_submissions), 
+        sum(total_views), sum(total_unique_views)
+from contests con 
+join colleges col on con.contest_id = col.contest_id 
+join challenges cha on  col.college_id = cha.college_id 
+left join
+(select challenge_id, sum(total_views) as total_views, sum(total_unique_views) as total_unique_views
+from view_stats group by challenge_id) vs on cha.challenge_id = vs.challenge_id 
+left join
+(select challenge_id, sum(total_submissions) as total_submissions, sum(total_accepted_submissions) as total_accepted_submissions from submission_stats group by challenge_id) ss on cha.challenge_id = ss.challenge_id
+    group by con.contest_id, con.hacker_id, con.name
+        having sum(total_submissions)!=0 or 
+                sum(total_accepted_submissions)!=0 or
+                sum(total_views)!=0 or
+                sum(total_unique_views)!=0
+            order by contest_id;
+
+My Answer- 
+
+select con.contest_id,
+        con.hacker_id, 
+        con.name, 
+        sum(total_submissions), 
+        sum(total_accepted_submissions), 
+        sum(total_views), sum(total_unique_views)
+from contests con 
+join colleges col on con.contest_id = col.contest_id 
+join challenges cha on  col.college_id = cha.college_id 
+left join
+(select distinct challenge_id, sum(total_views) as total_views, sum(total_unique_views) as total_unique_views
+from view_stats group by challenge_id) vs on cha.challenge_id = vs.challenge_id 
+left join
+(select distinct challenge_id, sum(total_submissions) as total_submissions, sum(total_accepted_submissions) as total_accepted_submissions from submission_stats group by challenge_id) ss on cha.challenge_id = ss.challenge_id
+    group by con.contest_id, con.hacker_id, con.name
+        having sum(total_submissions)!=0 or 
+                sum(total_accepted_submissions)!=0 or
+                sum(total_views)!=0 or
+                sum(total_unique_views)!=0
+            order by contest_id;
+
+
+_______________________________
+
+    PrepareSQLAdvanced Join15 Days of Learning SQL
+
+15 Days of Learning SQL
+
+
+select * 
+from submissions as s
+left join hackers as h on s.hacker_id = h.hacker_id
+;
+
+select s.submission_date, s.hacker_id, h.name
+from submissions as s
+left join hackers as h on s.hacker_id = h.hacker_id
+group by s.submission_date, s.hacker_id, h.name;
+
+select s.submission_date, COUNT(DISTINCT submission_id), s.hacker_id, h.name
+from submissions as s
+left join hackers as h on s.hacker_id = h.hacker_id
+group by s.submission_date, s.hacker_id, h.name
+order by date, hacker_id;
+
+select s.submission_date, COUNT(DISTINCT submission_id), s.hacker_id, h.name
+from submissions as s
+left join hackers as h on s.hacker_id = h.hacker_id
+group by s.submission_date, s.hacker_id, h.name
+order by s.submission_date, COUNT(DISTINCT submission_id) desc, hacker_id;
+
+select top 1 * partition by s.submission_date from
+(select s.submission_date, COUNT(DISTINCT submission_id), s.hacker_id, h.name
+from submissions as s
+left join hackers as h on s.hacker_id = h.hacker_id
+group by s.submission_date, s.hacker_id, h.name
+order by s.submission_date, COUNT(DISTINCT submission_id) desc, hacker_id)
+;
+
+SUM(amount) OVER(PARTITION BY city) TotalOrderAmount
+
+select temp.submission_date, max(temp.csub_id) over (partition by temp.submission_date) , temp.hacker_id, temp.name  
+from
+(select s.submission_date, COUNT(DISTINCT submission_id) as csub_id, s.hacker_id, h.name
+from submissions as s
+left join hackers as h on s.hacker_id = h.hacker_id
+group by s.submission_date, s.hacker_id, h.name) as temp
+order by temp.submission_date, temp.csub_id desc, temp.hacker_id asc
+;
+
+
+Discussions Answer-
+
+SELECT SUBMISSION_DATE,
+
+      (SELECT COUNT(DISTINCT HACKER_ID)
+       FROM SUBMISSIONS AS SUB2
+       WHERE SUB2.SUBMISSION_DATE=SUB1.SUBMISSION_DATE
+             AND (SELECT COUNT(DISTINCT SUBMISSION_DATE)
+                  FROM SUBMISSIONS AS SUB3
+                  WHERE SUB3.HACKER_ID=SUB2.HACKER_ID
+                        AND SUB3.SUBMISSION_DATE<SUB1.SUBMISSION_DATE) =DATEDIFF(SUB1.SUBMISSION_DATE,'2016-03-01')),
+                                  
+      (SELECT HACKER_ID
+       FROM SUBMISSIONS AS SUB4
+       WHERE SUB4.SUBMISSION_DATE=SUB1.SUBMISSION_DATE
+       GROUP BY HACKER_ID
+       ORDER BY COUNT(SUBMISSION_ID) DESC, HACKER_ID LIMIT 1) AS HID,
+        
+      (SELECT NAME
+       FROM HACKERS
+       WHERE HACKER_ID=HID)
+        
+FROM (SELECT DISTINCT SUBMISSION_DATE FROM SUBMISSIONS) AS SUB1
+
+_____________________
+
+SELECT SUBMISSION_DATE,
+      (SELECT COUNT(DISTINCT HACKER_ID)
+       FROM SUBMISSIONS AS SUB2
+       WHERE SUB2.SUBMISSION_DATE=SUB1.SUBMISSION_DATE
+             AND (SELECT COUNT(DISTINCT SUBMISSION_DATE)
+                  FROM SUBMISSIONS AS SUB3
+                  WHERE SUB3.HACKER_ID=SUB2.HACKER_ID
+                        AND SUB3.SUBMISSION_DATE<SUB1.SUBMISSION_DATE) =DATEDIFF(day, SUB1.SUBMISSION_DATE,'2016-03-01')),
+      (select * from (select row_number() over (order by hacker_id asc) as rownumber from submissions) as derived
+      where rownumber = 1) AS HID,
+      (SELECT NAME
+       FROM HACKERS
+       WHERE HACKER_ID=HID)
+FROM (SELECT DISTINCT SUBMISSION_DATE FROM SUBMISSIONS) AS SUB1
+
+________________
+
+select * from 
+(select row_number() over (partition by s.hacker_id order by s.hacker_id) as rownumber from submissions as s) as d where rownumber = 1 ;
+
+________________
+
+My answer- 
+
+SELECT inl.*,
+       name
+FROM
+  (SELECT t2.submission_date,
+          t1.ucn,
+          min(t2.hacker_id) hacker_id
+   FROM
+     (SELECT submission_date,
+             count(DISTINCT hacker_id) ucn
+      FROM
+        (SELECT s.*,
+                dense_rank() over(
+                                  ORDER BY submission_date) AS date_rank,
+                dense_rank() over(PARTITION BY hacker_id
+                                  ORDER BY submission_date) AS hacker_rank
+         FROM submissions s) dr
+      where dr.hacker_rank = dr.date_rank
+      GROUP BY submission_date,
+               date_rank,
+               hacker_rank)t1,
+     (SELECT submission_date,
+             max(cn) mcn
+      FROM
+        (SELECT submission_date,
+                hacker_id,
+                count(*) cn
+         FROM submissions s
+         GROUP BY submission_date,
+                  hacker_id) sd
+      GROUP BY sd.submission_date)t3,
+     (SELECT submission_date,
+             hacker_id,
+             count(*) cn
+      FROM submissions
+      GROUP BY submission_date,
+               hacker_id)t2
+   WHERE t1.submission_date=t2.submission_date
+     AND t2.submission_date=t3.submission_date
+     AND t2.cn=t3.mcn
+   GROUP BY t2.submission_date,
+            t1.ucn) inl,
+     hackers h
+WHERE inl.hacker_id=h.hacker_id
+ORDER BY 1;
+
+_____________________
+
+    PrepareSQLAggregationJapan Population
+
+Japan Population
+
+
+select sum(population) from city
+where countrycode = "JPN";
+
+_____________________
+
+    PrepareSQLAggregationPopulation Density Difference
+
+Population Density Difference
+
+
+select max-min as diff
+from 
+(select min(population) from city) min, (select max(population) from city) max;
+
+DECLARE @COURSE_ID AS INT
+SET @COURSE_ID = 5
+PRINT @COURSE_ID
+
+DECLARE @min AS INT
+DECLARE @max AS INT
+set @min= (select min(population) from city)
+set @max= (select max(population) from city)
+print (@max-@min);
+
+_____________________
+
+    PrepareSQLAdvanced SelectType of Triangle
+
+Type of Triangle
+
+SELECT OrderID, Quantity,
+CASE
+    WHEN Quantity > 30 THEN 'The quantity is greater than 30'
+    WHEN Quantity = 30 THEN 'The quantity is 30'
+    ELSE 'The quantity is under 30'
+END AS QuantityText
+FROM OrderDetails; 
+
+select a, b, c, triangletext
+case
+    when a + b < c or a + c < b or b + c < a then 'Not A Triangle'
+    when a = b = c then 'Equilateral'
+    when a = b <> c or a = c <> b or b = c <> a then 'Isosceles'
+    else 'Scalene'
+end as triangletext
+from triangles;
+
+select a, b, c, 
+case
+    when a + b < c or a + c < b or b + c < a then 'Not A Triangle'
+    when a = b and a = c then 'Equilateral'
+    when (a = b and a <> c) or (a = c and a <> b) or (b = c and b <> a) then 'Isosceles'
+    else 'Scalene'
+end as triangletextfrom string
+from triangles;
+
+Correct Answer- 
+
+select
+case
+    when a + b <= c or a + c <= b or b + c <= a then 'Not A Triangle'
+    when a = b and a = c then 'Equilateral'
+    when (a = b and a <> c) or (a = c and a <> b) or (b = c and b <> a) then 'Isosceles'
+    else 'Scalene'
+end as triangletext
+from triangles;
+
+
+________________
+
+    PrepareSQLAdvanced SelectThe PADS
+
+The PADS
+
+
+
+select replace(name, ' ', ''), 
+case 
+    when occupation = "Professor" then '(P)'
+    when occupation = "Doctor" then '(D)'
+    when occupation = "Singer" then '(S)'
+    when occupation = "Actor" then '(A)'
+end as par   
+from occupations;
+
+select trim(temp.name+temp.par) as namepar from (
+select name, 
+case 
+    when occupation = "Professor" then '(P)'
+    when occupation = "Doctor" then '(D)'
+    when occupation = "Singer" then '(S)'
+    when occupation = "Actor" then '(A)'
+end as par   
+from occupations) temp;
+
+There are a total of [occupation_count] [occupation]s.
+
+CONVERT(VARCHAR(250),'This is a really long piece of string') AS TestString
+
+
+select trim(temp.name+temp.par) as namepar from (
+select name, 
+case 
+    when occupation = "Professor" then '(P)'
+    when occupation = "Doctor" then '(D)'
+    when occupation = "Singer" then '(S)'
+    when occupation = "Actor" then '(A)'
+end as par   
+from occupations) temp;
+select 'There are a total of ' + convert(varchar,temp2.count) + ' ' + lower(convert(varchar,temp2.occupation)) + 's.' from
+(select occupation, count(occupation) as count
+from occupations
+group by occupation) temp2
+order by count, occupation;
+
+My Answer-
+
+select trim(temp.name+temp.par) as namepar from (
+select name, 
+case 
+    when occupation = "Professor" then '(P)'
+    when occupation = "Doctor" then '(D)'
+    when occupation = "Singer" then '(S)'
+    when occupation = "Actor" then '(A)'
+end as par   
+from occupations) temp
+order by name;
+
+select 'There are a total of ' + convert(varchar,temp2.count) + ' ' + lower(convert(varchar,temp2.occupation)) + 's.' from
+(select occupation, count(occupation) as count
+from occupations
+group by occupation) temp2
+order by count, occupation;
+
+_______________
+
+    PrepareSQLAdvanced SelectOccupations
+
+Occupations
+
+
+Discussions Answer- MS Sql
+
+
+SELECT
+    [Doctor], [Professor], [Singer], [Actor]
+FROM
+(
+    SELECT ROW_NUMBER() OVER (PARTITION BY OCCUPATION ORDER BY NAME) [RowNumber], * FROM OCCUPATIONS
+) AS tempTable
+PIVOT
+(
+    MAX(NAME) FOR OCCUPATION IN ([Doctor], [Professor], [Singer], [Actor])
+) AS pivotTable
+
+______________________
+
+    PrepareSQLAdvanced SelectBinary Tree Nodes
+
+Binary Tree Nodes
+
+
+
+select N, output= 
+case 
+    when P is null then 'Root'
+    when P is not null then 'Leaf'
+    else 'Inner'
+end
+from bst
+;
+
+select N, 
+output= 
+case 
+    when P is null then 'Root'
+    when P not(is null) then 'Leaf'
+    else 'Inner'
+end
+from (select N, P from bst
+group by N, P) temp
+;
+
+select N, P from bst
+group by N, P;
+
+Discussion Answer-
+
+SELECT CASE
+    WHEN P IS NULL THEN CONCAT(N, ' Root')
+    WHEN N IN (SELECT DISTINCT P FROM BST) THEN CONCAT(N, ' Inner')
+    ELSE CONCAT(N, ' Leaf')
+    END
+FROM BST
+order by N;
+
+___________________
+
+    PrepareSQLBasic JoinAverage Population of Each Continent
+
+Average Population of Each Continent
+
+
+
+select city.population from city
+join country on CITY.CountryCode = COUNTRY.Code
+group by country.continent;
+
+select avg(temp.population) from 
+(select city.population from city
+join country on CITY.CountryCode = COUNTRY.Code) temp
+group by temp.continent;
+
+select avg(temp.population) from 
+(select city.population, country.continent from city
+join country on CITY.CountryCode = COUNTRY.Code) temp
+group by temp.continent;
+
+My Answer-
+
+select temp.continent, avg(temp.population) from 
+(select city.population, country.continent from city
+join country on CITY.CountryCode = COUNTRY.Code) temp
+group by temp.continent
+order by temp.continent;
+
+select temp.continent, avg(temp.population) average from 
+(select city.population, country.continent from city
+join country on CITY.CountryCode = COUNTRY.Code) temp
+group by temp.continent
+order by average;
+
+________________________
+
+    PrepareSQLAlternative QueriesPrint Prime NumbersDiscussions
+
+Print Prime Numbers
+
+
+select 
+(WITH nums AS
+   (SELECT 1 AS value
+    UNION ALL
+    SELECT value + 1 AS value
+    FROM nums
+    WHERE nums.value <= 999)
+SELECT *
+FROM nums) temp 
+
+Discussion Answer-
+
+set @x:=1000;
+select group_concat(numb separator '&')
+from (
+    select @n1:=@n1+1 as numb
+    from information_schema.tables t1,information_schema.tables t2, (select @n1:=1)t1
+    where @n1<@x
+) t2
+where not exists (
+select * from (
+    select @n2:=@n2+1 as numb2
+    from information_schema.tables t1,information_schema.tables t2, (select @n2:=1)t3
+    where @n2<@x
+) t4
+where numb2<=floor(sqrt(numb)) and mod(numb,numb2)=0
+);
+
+declare @x as int;
+declare @n as int;
+declare @n1 as int;
+declare @n2 as int;
+set @x =1000;
+select group_concat(numb separator '&')
+from (
+    select (@n1+1) as numb
+    from information_schema.tables as t1, information_schema.tables as t2, (select @n1=1) t1
+    where @n1<@x
+) t2
+where not exists (
+select * from (
+    select (@n2+1) as numb2
+    from information_schema.tables t1,information_schema.tables t2, (select @n2=1)t3
+    where @n2<@x
+) t4
+where numb2<=floor(sqrt(numb)) and mod(numb,numb2)=0
+);
+
+SELECT REPLACE('SQL Tutorial', 'T', 'M'); 
+
+STRING_AGG ( expression, separator )
+
+declare @x as int;
+declare @n as int;
+declare @n1 as int;
+declare @n2 as int;
+set @x =1000;
+select string_agg(numb, '&')
+from (
+    select (@n1+1) as numb
+    from information_schema.tables as t1, information_schema.tables as t2, (select @n1=1) t1
+    where @n1<@x
+) t2
+where not exists (
+select * from (
+    select (@n2+1) as numb2
+    from information_schema.tables t1,information_schema.tables t2, (select @n2=1)t3
+    where @n2<@x
+) t4
+where numb2<=floor(sqrt(numb)) and mod(numb,numb2)=0
+);
+
+Discussion Answer-
+
+DECLARE @row int = 3;
+DECLARE @max int = 1000;
+
+CREATE TABLE prime (n int);
+INSERT INTO prime VALUES (2);
+
+WHILE (@row <= @max)
+BEGIN
+    IF (SELECT count(*) FROM prime WHERE @row % n = 0) = 0
+        INSERT INTO prime VALUES (@row);
+    ELSE
+        SET @row = @row + 1;
+END
+SELECT string_agg(n, '&') FROM prime;
+
+create table numbers (m int);
+create table prime (n int);
+insert into prime values(2);
+select 
+(WITH nums AS
+   (SELECT 1 AS value
+    UNION ALL
+    SELECT value + 1 AS value
+    FROM nums
+    WHERE nums.value <= 999)
+SELECT *
+FROM nums) numbers
+SELECT prime
+FROM numbers n
+WHERE NOT EXISTS (SELECT 1 
+                  FROM numbers AS p 
+                  WHERE p.Squared <= n.Prime 
+                  AND n.Prime % p.Prime = 0)
+
+SELECT count(*) FROM prime WHERE @row % n = 0
+
+Final answer- 
+
+DECLARE @row int = 3;
+DECLARE @max int = 1000;
+CREATE TABLE prime (n int);
+INSERT INTO prime VALUES (2);
+WHILE (@row <= @max)
+BEGIN
+    IF (SELECT count(n) FROM prime WHERE @row % n = 0) = 0
+        INSERT INTO prime VALUES (@row);
+    ELSE
+        SET @row = @row + 1;
+END
+SELECT string_agg(n, '&') FROM prime;
+
+
+____________________
+
+    PrepareSQLAdvanced JoinPlacements
+
+Placements
+
+
+select * 
+from students s
+join packages p on p.id = s.id
+join friends f on s.id = f.id;
+
+select * 
+from students s
+left join packages p on p.id = s.id
+left join (select * from friends f join packages p on f.id= p.id) temp;
+
+select * from students s
+left join packages p on p.id = s.id
+select * from friends f 
+left join packages p on f.id= p.id
+
+Discussion Answers-
+
+Select S.Name
+From ( Students S join Friends F Using(ID)
+       join Packages P1 on S.ID=P1.ID
+       join Packages P2 on F.Friend_ID=P2.ID)
+Where P2.Salary > P1.Salary
+Order By P2.Salary;
+
+select * 
+from students s
+join packages p on p.id = s.id
+join (friends f join packages on s.id = f.friend_id;
+
+select * from Students S 
+join Friends F on f.friend_id = s.id 
+join Packages P1 on S.ID=P1.ID
+join Packages P2 on F.Friend_ID=P2.ID
+
+select s.name from
+(Students S 
+join Friends F on f.friend_id = s.id 
+join Packages P1 on S.ID=P1.ID
+join Packages P2 on F.Friend_ID=P2.ID)
+where p2.salary > p1.salary
+
+select s.name from
+(Students S 
+join Friends F on f.friend_id = s.id 
+join Packages P1 on S.ID=P1.ID
+join Packages P2 on F.Friend_ID=P2.ID)
+where p2.salary > p1.salary
+order by p2.salary;
+
+Select s.name, s.id, p1.salary, f.friend_id, p2.salary 
+From ( Students S join Friends F on f.friend_id = s.id
+       join Packages P1 on S.ID=P1.ID
+       join Packages P2 on F.Friend_ID=P2.ID);
+
+select f.friend_id, p.salary from friends f
+left join packages p on p.id = f.friend_id 
+
+select * from students s
+left join packages p1 on s.id=p1.id 
+left join (friends f left join packages p2 on p.id = f.friend_id) 
+
+select s.id, s.name, p1.salary, f.friend_id, fs.salary from students s
+left join packages p1 on s.id=p1.id 
+left join friends f on f.id=s.id
+left join packages fs on f.friend_id=fs.salary
+
+select s.id, s.name, p1.salary, f.friend_id, p2.salary from students s
+left join packages p1 on s.id=p1.id 
+left join friends f on f.id=s.id
+left join packages p2 on f.friend_id=p2.id
+where p1.salary < p2.salary
+order by p2.salary
+
+
+My Answer- I did this one myself by thinking about how the left joins fit together. This was 40 points- medium difficulty. 
+
+select s.name from students s
+left join packages p1 on s.id=p1.id 
+left join friends f on f.id=s.id
+left join packages p2 on f.friend_id=p2.id
+where p1.salary < p2.salary
+order by p2.salary
+
+_____________________
+
+    PrepareSQLAlternative QueriesDraw The Triangle 2
+
+Draw The Triangle 2
+
+
+create function P(@num int)
+return text
+as
+begin
+declare @char char;
+declare @string text;
+set @string = ''
+for a in 1 .. @num loop
+@string = @string + @char
+print (@string)
+end loop;
+end;
+go
+P(20);
+
+create function P(@num int)
+return text
+as
+begin
+declare @char char;
+declare @string text;
+set @string = '';
+set @char = '*';
+for a in 1 .. @num loop
+@string = @string + @char
+print (@string);
+end loop;
+end;
+go
+P(20);
+
+DECLARE @Counter INT 
+SET @Counter=1
+WHILE ( @Counter <= 10)
+BEGIN
+    PRINT 'The counter value is = ' + CONVERT(VARCHAR,@Counter)
+    SET @Counter  = @Counter  + 1
+END
+
+DECLARE @Counter INT 
+declare @char varchar(2)
+declare @string varchar(21)
+SET @Counter=1
+set @char = '* '
+set @string = ''
+WHILE ( @Counter <= 20)
+BEGIN
+    set @string = @string + @char	
+    PRINT (@string)
+    SET @Counter  = @Counter  + 1
+END
+
+Discussion Answer-
+
+declare @row int;
+set @row := 0;
+select repeat('* ', set @row = @row + 1) from information_schema.tables where @row < 20
+
+My answer-
+
+DECLARE @Counter INT 
+declare @char varchar(2)
+declare @string varchar(42)
+SET @Counter=1
+set @char = '* '
+set @string = ''
+WHILE ( @Counter <= 20)
+BEGIN
+    set @string = @string + @char    
+    PRINT (@string)
+    SET @Counter  = @Counter  + 1
+END
+
+
+Discussion Answer- also works. 
+
+with cte as
+(select 1 i union all
+ select i+1 i from cte where i < 20)
+select REPLICATE('* ', i) from cte
+order by i 
+
+________________________
+
+    PrepareSQLBasic JoinAfrican Cities
+
+African Cities
+
+
+select distinct c.name from city c 
+join country n on c.countrycode = n.code
+where n.continent= Africa;
+
+select distinct c.name, n.continent from city c 
+join country n on c.countrycode = n.code
+where n.continent = 'Africa';
+
+select distinct c.name from city c 
+join country n on c.countrycode = n.code
+where n.continent = 'Africa';
+
+_________________
+
+
+    PrepareSQLAggregationRevising Aggregations - The Sum Function
+
+Revising Aggregations - The Sum Function
+
+select * from city c where c.district =  California;
+
+select population from city c where c.district =  California;
+
+select sum(population) from city c where c.district =  'California';
+
+___________________
+
+    PrepareSQLAggregationRevising Aggregations - Averages
+
+Revising Aggregations - Averages
+
+
+
+select avg(population) from city c where c.district =  'California';
+
+_____________
+
+    PrepareSQLAdvanced JoinSQL Project Planning
+
+SQL Project Planning
+
+print "task_id, start_date, end_date"
+select distinct * from Projects p1
+left join Projects p2 on p1.end_date=p2.start_date;
+
+
+
+WITH RECURSIVE cte_name AS (
+    cte_query_definition (the anchor member)
+ 
+    UNION ALL
+ 
+    cte_query_definition (the recursive member)
+)
+SELECT *
+FROM   cte_name;
+
+WITH RECURSIVE cte_name AS (
+    select * from Projects p1 left join Projects p2 on p1.end_date=p2.start_date
+ 
+    UNION ALL
+ 
+    select * from Projects p1 left join Projects p2 on p1.end_date=p2.start_date
+)
+SELECT *
+FROM   cte_name;
+
+WITH expression_name (column_list)
+AS
+(
+    -- Anchor member
+    initial_query  
+    UNION ALL
+    -- Recursive member that references expression_name.
+    recursive_query  
+)
+-- references expression name
+SELECT *
+FROM   expression_name
+
+
+WITH cte_name 
+AS
+(
+    -- Anchor member
+    select p1.task_id from Projects p1 left join Projects p2 on p1.end_date=p2.start_date  
+    UNION ALL
+    -- Recursive member that references expression_name.
+    select p1.task_id from Projects p1 left join Projects p2 on p1.end_date=p2.start_date
+)
+-- references expression name
+SELECT distinct *
+FROM   cte_name
+
+
+Discussion Answer-
+
+
+select min(start_date), min(start_date) + count(*) from (select * from projects order by start_date) group by start_date - rownum order by count(*), min(start_date) ;
+
+WITH CTE_Projects AS 
+(
+  SELECT Start_Date, End_Date, ROW_NUMBER() OVER (ORDER BY Start_Date) AS RowNumber
+  FROM Projects WITH (NOLOCK)
+)
+SELECT MIN(Start_Date), MAX(End_Date) 
+FROM CTE_Projects WITH (NOLOCK)
+GROUP BY DATEDIFF(DAY, RowNumber, Start_Date)
+ORDER BY DATEDIFF(DAY, MIN(Start_Date), MAX(End_Date)), MIN(Start_Date)
+
+
+WITH RecursiveProjects (Project_ID, Task_ID, Start_Date, End_Date)
+AS
+(
+    -- anchor
+    SELECT DENSE_RANK() OVER (ORDER BY p1.Start_Date), p1.Task_ID, p1.Start_Date, p1.End_Date
+    FROM Projects AS p1
+    LEFT JOIN Projects p2
+         ON p1.End_Date = p2.Start_Date
+    WHERE p2.Task_ID IS NULL
+    UNION ALL
+    -- recursive member definition
+    SELECT r.Project_ID, p.Task_ID, p.Start_Date, p.End_Date
+    FROM Projects AS p
+    INNER JOIN RecursiveProjects AS r
+        ON p.End_Date = r.Start_Date
+)
+SELECT MIN(Start_Date), MAX(End_Date)
+FROM RecursiveProjects
+GROUP BY Project_ID
+ORDER BY DATEDIFF(day, MIN(Start_Date), MAX(End_Date)) ASC, MIN(Start_Date)
+
+select min(start_date), max(end_date)
+from 
+(select start_date, end_date, start_date-row_number() over (order by start_date) as rnk
+  from Projects p) tmp
+group by rnk
+order by max(start_date) - min(start_date), min(start_date);
+
+
+select Start_Date,End_Date 
+from
+    (SELECT row_number() over (order by Start_Date) as num
+     ,Start_Date 
+	 FROM PROJECTS 
+	 WHERE Start_Date NOT IN (SELECT End_Date FROM PROJECTS)) a 
+inner join
+    (SELECT row_number() over (order by End_date) as num, End_Date 
+	 FROM PROJECTS 
+	 WHERE End_Date NOT IN (SELECT Start_Date FROM PROJECTS)) b on a.num=b.num
+order by datediff(day,Start_Date,End_Date),Start_Date
+
+My Answer- With help from discussions- using recursive cte's.
+
+-- Recursive cte
+with sol1 
+AS(
+    select start_date, end_date, 2 as cnt 
+    from Projects where start_date not in (select end_date from Projects)
+    union all
+    select sol1.start_date, a.end_date, sol1.cnt+1 from sol1, Projects a
+    where sol1.end_date = a.start_date
+)
+select start_date, max(end_date) from sol1 group by start_date order by max(cnt), start_date;
+
+_________________________
+
+    PrepareSQLAlternative QueriesDraw The Triangle 1
+
+Draw The Triangle 1
+
+Discussion Answers-
+
+set @number = 21;
+select repeat('* ', @number := @number - 1) from information_schema.tables;
+
+My Answer- With help from discussion. 
+
+DECLARE @i INT = 20;
+WHILE (@i > 0) 
+BEGIN
+   PRINT REPLICATE('* ', @i) 
+   SET @i = @i - 1
+END;
+
+________________________
+
+    PrepareSQLAggregationRevising Aggregations - The Count Function
+
+Revising Aggregations - The Count Function
+
+My Answer-
+
+select count(*) from city where population > 100000;
+
+__________________________
+
+
+    PrepareSQLBasic JoinPopulation Census 
+
+Population Census 
+
+
+My answer- 
+
+select sum(c.population) from city c 
+left join country n on c.CountryCode = n.Code
+where n.continent= 'Asia'; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

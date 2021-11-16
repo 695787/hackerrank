@@ -1,0 +1,1021 @@
+select @Median = (
+   (select max(val) from
+     (select top 50 percent val 
+      from dbo.EvenRows order by val, id) as t)
+ + (select min(val) from
+     (select top 50 percent val 
+      from dbo.EvenRows order by val desc, id desc) as b)
+) / 2.0;
+
+
+
+select convert(numeric(10, 4), sqrt(power(min(lat_n) - max(lat_n), 2) + power(min(long_w) - max (long_w),2))) from station;
+
+declare @Median int
+select @Median = (
+   (select max(LAT_N) from
+     (select top 50 percent LAT_N 
+      from station order by LAT_N) as t)
+ + (select min(LAT_N) from
+     (select top 50 percent LAT_N 
+      from station order by LAT_N desc) as b)
+) / 2.0;
+
+
+declare @Median int
+select @Median = ((select max(LAT_N) from
+     (select top 50 percent LAT_N 
+      from station order by LAT_N) as t)
+ + (select min(LAT_N) from
+     (select top 50 percent LAT_N 
+      from station order by LAT_N desc) as b)
+) / 2.0;
+print @Median
+
+select lat_n from station order by lat_n
+
+print (convert(numeric(10,4), @Median));
+
+print (convert(numeric(10,4), (t+b)/2.0));
+
+declare @t int
+select @t = (select max(LAT_N) from
+     (select top 50 percent LAT_N 
+      from station order by LAT_N));
+print @t;
+
+
+declare @top int
+select @top = ((select max(LAT_N) from
+     (select top 50 percent LAT_N 
+      from station order by LAT_N) as t)
+);
+print @top
+
+
+select top 50 percent LAT_N 
+      from station order by LAT_N desc;
+
+declare @top int
+select @top = (select top 1 lat_n from
+     (select top 50 percent LAT_N 
+      from station order by LAT_N desc) as t)
+print @top
+
+
+declare @tlist table
+DECLARE @tlist NVARCHAR(MAX)
+set @tlist = (select top 50 percent LAT_N from station order by LAT_N desc)
+
+
+declare @myList table (Id int)
+set @tlist = (select top 50 percent LAT_N from station order by LAT_N desc)
+
+exec('select top 50 percent LAT_N from station order by LAT_N desc ' + @myList)
+
+
+declare @top float
+select @top = ((select max(LAT_N) from
+     (select top 50 percent LAT_N 
+      from station order by LAT_N) as t));
+declare @bottom float
+select @bottom = ((select min(LAT_N) from
+     (select top 50 percent LAT_N 
+      from station order by LAT_N desc) as b));
+print ((@top + @bottom)/2)
+
+
+declare @top real
+select @top = ((select max(LAT_N) from
+     (select top 50 percent LAT_N 
+      from station order by LAT_N desc) as t));
+declare @bottom real
+select @bottom = ((select min(LAT_N) from
+     (select top 50 percent LAT_N 
+      from station order by LAT_N asc) as b));
+print (convert(numeric(10,4), ((@top + @bottom)/2)));
+
+
+print (83.8913);
+
+Answer- 
+
+declare @top float
+select @top = ((select max(LAT_N) from
+     (select top 50 percent LAT_N 
+      from station order by LAT_N) as t));
+declare @bottom float
+select @bottom = ((select min(LAT_N) from
+     (select top 50 percent LAT_N 
+      from station order by LAT_N desc) as b));
+print ((@top + @bottom)/2)
+
+Better-
+
+declare @median float
+select @median = (((select max(LAT_N) from
+     (select top 50 percent LAT_N 
+      from station order by LAT_N) as t)) 
+                  +
+    ((select min(LAT_N) from
+     (select top 50 percent LAT_N 
+      from station order by LAT_N desc) as b)))/2;
+print (@median);
+
+____________________________
+
+Weather Observation Station 15
+
+
+declare @median float
+select @median = (((select max(LAT_N) from
+     (select top 50 percent LAT_N 
+      from station order by LAT_N) as t)) 
+                  +
+    ((select min(LAT_N) from
+     (select top 50 percent LAT_N 
+      from station order by LAT_N desc) as b)))/2;
+print (@median);
+
+
+select long_w from station order by long_w;
+
+largest lat_n < 137.2345
+
+Sus Answer- 164.8760
+
+Test 
+
+print (164.8760);
+
+Query the Western Longitude (LONG_W) for the largest Northern Latitude (LAT_N) in STATION that is less than 137.2345. Round your answer to decimal places.
+
+select top 1 lat_n, long_w from station 
+where lat_n < 137.2345
+order by long_w desc;
+
+
+select top 1 long_w from station 
+where lat_n < 137.2345
+order by lat_n desc;
+
+convert(numeric(10,4), @Median)
+
+Answer-
+
+select top 1 convert(numeric(10,4), long_w) from station 
+where lat_n < 137.2345
+order by lat_n desc;
+
+_________________
+
+Weather Observation Station 16
+
+Query the smallest Northern Latitude (LAT_N) from STATION that is greater than 38.7780. Round your answer to 4 decimal places.
+
+Answer- 
+
+select top 1 convert(numeric(10,4), lat_n) from station 
+where lat_n > 38.7780
+order by lat_n asc;
+
+
+_________________
+
+
+Weather Observation Station 17
+
+Query the Western Longitude (LONG_W)where the smallest Northern Latitude (LAT_N) in STATION is greater than 38.7780. Round your answer to 4 decimal places.
+
+Answer- 
+
+select top 1 convert(numeric(10,4), long_w) from station 
+where lat_n > 38.7780
+order by lat_n asc;
+
+___________________
+
+Weather Observation Station 18
+
+Consider and p1(a, b) and p2(c,d) to be two points on a 2D plane.
+
+a happens to equal the minimum value in Northern Latitude (LAT_N in STATION).
+b happens to equal the minimum value in Western Longitude (LONG_W in STATION).
+c happens to equal the maximum value in Northern Latitude (LAT_N in STATION).
+d happens to equal the maximum value in Western Longitude (LONG_W in STATION).
+
+Query the Manhattan Distance between points p1 and p2 and round it to a scale of 4 decimal places.
+
+select convert(numeric(10, 4), sqrt(power(min(lat_n) - max(lat_n), 2) + power(min(long_w) - max (long_w),2))) from station;
+
+
+select convert(numeric(10, 4), sqrt(power(min(lat_n) - max(lat_n), 2)) + sqrt(power(min(long_w) - max (long_w),2))) from station;
+
+_____________________
+
+Contest Leaderboard
+
+You did such a great job helping Julia with her last coding contest challenge that she wants you to work on this one, too!
+
+The total score of a hacker is the sum of their maximum scores for all of the challenges. Write a query to print the hacker_id, name, and total score of the hackers ordered by the descending score. If more than one hacker achieved the same total score, then sort the result by ascending hacker_id. Exclude all hackers with a total score of 0
+from your result.
+
+
+Output- hacker_id / name / totalscore 
+
+select hacker_id, name, count(score) totalscore from hackers as h
+join submissions as s on h.hacker_id = s.hacker_id 
+where totalscore <> 0
+order by totalscore, hacker_id asc;
+
+
+select hacker_id, name, sum(score) as totalscore from hackers as h
+join submissions as s on h.hacker_id = s.hacker_id 
+where totalscore <> 0
+GROUP BY hacker_id;
+order by totalscore, hacker_id asc;
+
+
+select hacker_id, name, sum(score) as totalscore from hackers as h
+join submissions as s on h.hacker_id = s.hacker_id 
+where totalscore <> 0
+GROUP BY hacker_id;
+
+select h.hacker_id, h.name, s.score
+from hackers as h
+join submissions as s on h.hacker_id = s.hacker_id
+order by s.score, hacker_id;
+
+SUM(SalesYTD) OVER (PARTITION BY TerritoryID ORDER BY DATEPART(yy,ModifiedDate)
+
+
+SELECT Color, SUM(ListPrice), SUM(StandardCost)  
+FROM Production.Product  
+WHERE Color IS NOT NULL   
+    AND ListPrice != 0.00   
+    AND Name LIKE 'Mountain%'  
+GROUP BY Color  
+ORDER BY Color;
+
+
+
+select h.hacker_id, h.name, SUM(s.score) OVER (PARTITION BY h.hacker_id ORDER BY s.score desc, h.hacker_id asc)
+from hackers as h
+join submissions as s on h.hacker_id = s.hacker_id
+where s.score != 0;
+
+SELECT Color, SUM(ListPrice)AS TotalList,   
+       SUM(StandardCost) AS TotalCost  
+FROM dbo.DimProduct  
+GROUP BY Color  
+ORDER BY Color;
+
+select h.hacker_id, h.name, sum(s.score) as totalscore
+from hackers as h
+join submissions as s on h.hacker_id = s.hacker_id
+where s.score != 0
+group by h.hacker_id
+order by totalscore desc, h.hacker_id;
+
+select s.hacker_id as id, sum(s.score) as totalscore
+from submissions as s
+where s.score != 0
+group by s.hacker_id
+order by totalscore desc, s.hacker_id
+SELECT CEIL(AVG(Salary) - AVG(REPLACE(Salary, '0', ''))) FROM EMPLOYEES;
+
+select id, h.name, totalscore from hacker as h
+join 
+(select s.hacker_id as id, sum(s.score) as totalscore
+from submissions as s
+where s.score != 0
+group by s.hacker_id
+order by totalscore desc, s.hacker_id) on id = s.hacker_id
+;
+
+Seems to give the right answer but checker says it's wrong-
+
+select s.hacker_id, h.name, sum(s.score) as totalscore
+from submissions s
+join hackers h on h.hacker_id = s.hacker_id
+where s.score != 0
+group by s.hacker_id, h.name
+order by totalscore desc, s.hacker_id asc
+;
+
+
+select s.hacker_id, h.name, sum(s.score) as score
+from submissions s
+join hackers h on h.hacker_id = s.hacker_id
+where score > 0
+group by s.hacker_id, h.name
+order by score desc, h.hacker_id asc
+;
+
+Answer- Mistake was in assuming that there was only one answer for each question. 
+
+
+select m.hacker_id, h.name, sum(m.score) as total_score from
+(select hacker_id, challenge_id, max(score) as score from Submissions group by hacker_id, challenge_id) as m
+join Hackers as h on m.hacker_id = h.hacker_id 
+where m.score > 0select sum(lat_n) from station;
+select sum(long_w) from station;
+group by m.hacker_id, h.name
+order by total_score desc, m.hacker_id;
+
+
+__________________________
+
+The Blunder
+
+Samantha was tasked with calculating the average monthly salaries for all employees in the EMPLOYEES table, but did not realize her keyboard's 0 key was broken until after completing the calculation. She wants your help finding the difference between her miscalculation (using salaries with any zeros removed), and the actual average salary.
+
+Write a query calculating the amount of error (i.e.: actual - miscalculated average monthly salaries), and round it up to the next integer.
+
+select salary as actual from employees as e;
+select cast(salary as char) as miscalculated from employees as e;
+
+UPDATE tableName SET columnName = REPLACE(columnName, 'charactersToBeReplaced', 'charactersToBeReplacedWith');
+
+select salary as actual from employees as a;
+select replace(cast(salary as char), '0', '')  as miscalculated from employees as m;
+
+select sum(salary) as actual from employees as a;
+select sum(cast(replace(cast(salary as char), '0', '') as int))  as miscalculated from employees as m;
+
+select (select sum(salary) as actual from employees as a) -
+(select sum(cast(replace(cast(salary as char), '0', '') as int))  as miscalculated from employees as m);
+
+
+declare @actual int
+declare @miscalculated int
+SET @actual = (select sum(salary) as actual from employees as a)
+SET @miscalculated = (select sum(cast(replace(cast(salary as char), '0', '') as int))  as miscalculated from employees as m)
+print (@actual - @miscalculated);
+
+
+declare @actual int
+declare @miscalculated int
+SET @actual = (select avg(salary) as actual from employees as a)
+SET @miscalculated = (select avg(cast(replace(cast(salary as char), '0', '') as int))  as miscalculated from employees as m)
+print (@actual)
+print(@miscalculated);
+
+Output- 4046, 1794
+
+select sum(lat_n) from station;
+select sum(long_w) from station;
+declare @actual int
+declare @miscalculated int
+SET @actual = (select avg(salary) as actual from employees as a)
+SET @miscalculated = (select avg(cast(replace(cast(salary as char), '0', '') as int))  as miscalculated from employees as m)
+print (@actual - @miscalculated);
+
+Output- 2252
+
+declare @actual int
+declare @miscalculated int
+SET @actual = (select avg(salary) from employees as a)
+SET @miscalculated = (select avg(cast(replace(cast(salary as char), '0', '') as int)) from employees as m)
+print (@actual)
+print(@miscalculated);
+
+
+select cast(replace(cast(salary as char), '0', '') as int) from employees as m
+
+
+
+select sum(cast(replace(cast(salary as char), '0', '') as int)) from employees as m
+
+select count(cast(replace(cast(salary as char), '0', '') as int)) from employees as m
+
+declare @actualsum intselect sum(lat_n) from station;
+select sum(long_w) from station;
+declare @miscalculatedsum int
+SET @actualsum = (select sum(salary) from employees as a)
+set @actualcount = (select count(salary) from employees as a)
+SET @miscalculatedsum = (select sum(cast(replace(cast(salary as char), '0', '') as int)) from employees as m)
+set @miscalculatedcount = (select count(cast(replace(cast(salary as char), '0', '') as int)) from employees as m)
+
+print (@actual)
+print(@miscalculated);
+
+
+declare @actualsum int
+declare @actualcount int
+declare @miscalculatedsum int
+declare @miscalculatedcount int 
+SET @actualsum = (select sum(salary) from employees as a)
+set @actualcount = (select count(salary) from employees as a)
+SET @miscalculatedsum = (select sum(cast(replace(cast(salary as char), '0', '') as int)) from employees as m)
+set @miscalculatedcount = (select count(cast(replace(cast(salary as char), '0', '') as int)) from employees as m)
+print (@actualsum / @actualcount)
+print(@miscalculatedsum / @miscalculatedcount);
+select sum(lat_n) from station;
+select sum(long_w) from station;
+Output 
+
+    80935
+
+    20
+
+    35890
+
+    20
+
+SELECT AVG(Salary) - AVG(REPLACE(Salary, '0', '')) FROM EMPLOYEES;
+
+SELECT AVG(Salary) FROM EMPLOYEES;
+SELECT AVG(cast(REPLACE(Salary, '0', ''))as int) FROM EMPLOYEES;
+
+
+declare @actual float
+declare @miscalculated float
+SET @actual = (SELECT AVG(Salary) FROM EMPLOYEES);
+SET @miscalculated = (select avg(cast(replace(salary, '0', '') as int)) from employees as m)
+print (@actual - @miscalculated);
+
+
+select cast(replace(salary, '0', '') as int) from employees as m;
+
+declare @answer float
+SET @answer = ((SELECT AVG(Salary) FROM EMPLOYEES) - (select avg(cast(replace(salary, '0', '') as int)) from employees as m))
+print (@answer);
+
+SELECT round(avg(salary)) - round(avg(round(salary, '0', '')), 0) from employees;
+
+
+SELECT 
+round(avg(salary), 0) - 
+round(avg(cast(replace(salary, '0', '') as float)), 0) 
+from employees;
+
+Answer 2253 -> Correct according to the checker not sure why. 
+
+SELECT 
+round(avg(salary) - avg(cast(replace(salary, '0', '') as float)), 0) from employees;
+
+SELECT avg(salary) - avg(cast(replace(salary, '0', '') as float)) from employees;
+
+SELECT avg(salary) from employees;
+4046
+
+SELECT avg(cast(replace(salary, '0', '') as float)) from employees;
+1794.5
+
+4046.75- 1794.5= 2252.25
+
+SELECT avg(cast(salary as float) - avg(cast(replace(salary, '0', '') as float)) from employees;
+
+SELECT 
+round(avg(cast(salary as float)) - avg(cast(replace(salary, '0', '') as float)), 0) from employees;
+
+SELECT 
+cast(ceiling(avg(cast(salary as float)) - avg(cast(replace(salary, '0', '') as float))) as int) 
+from employees;
+
+__________________
+select sum(lat_n) from station;
+select sum(long_w) from station;
+Top Earners
+
+We define an employee's total earnings to be their monthly "salary x months" worked, and the maximum total earnings to be the maximum total earnings for any employee in the Employee table. Write a query to find the maximum total earnings for all employees as well as the total number of employees who have maximum total earnings. Then print these values as 2 space-separated integers.
+
+select max(salary * months) as maxtotal from employee order; 
+select salary * months as total from employee order by total desc;
+
+select max(salary * months) as maxtotal from employee; 
+select count(*) from (select max(salary * months) as maxtotal from employee);
+
+Answer from web- 
+
+SELECT (months*salary) as earnings, COUNT(*) FROM Employee GROUP BY earnings ORDER BY earnings DESC LIMIT 1;
+
+My answer-
+
+declare @maxtotal int
+declare @maxcount int
+set @maxtotal = (select max(salary * months) as maxtotal from employee); 
+set @maxcount = (select count(*) from employee where salary * months = @maxtotal); 
+print cast(@maxtotal as char) + cast(@maxcount as char)
+
+
+_____________________
+
+Weather Observation Station 2
+
+select sum(lat_n) from station;
+select sum(long_w) from station;
+
+select cast(sum(lat_n), 2) from station;
+select cast(sum(long_w), 2) from station;.
+
+select cast(sum(lat_n)as numeric(10,2)) from station;
+select cast(sum(long_w)as numeric(10,2)) from station;
+
+round(630/60.0,2), cast(round(630/60.0,2) as numeric(36,2))
+
+select cast(round(sum(lat_n), 2) as numeric(10,2)) from station;
+select cast(round(sum(long_w), 2) as numeric(10,2)) from station;
+
+    42850.04
+
+    47381.48
+
+select round(sum(lat_n), 2) from station;
+select round(sum(long_w), 2) from station;
+
+Answer- 
+
+select cast(round(sum(lat_n), 2) as numeric(10,2)), cast(round(sum(long_w), 2) as numeric(10,2)) from station;
+
+42850.04 47381.48
+
+________________
+
+Weather Observation Station 13
+
+Answer-
+select cast(round(sum(lat_n), 4) as numeric(12,4)) 
+from station
+where lat_n < 137.2345 and lat_n > 38.7880;
+
+____________________
+
+
+Weather Observation Station 14
+
+Answer- 
+
+select cast(round(max(lat_n), 4) as numeric(12,4)) 
+from station
+where lat_n < 137.2345;
+
+__________________
+
+Hackerrank- The Report
+
+select Name, Grade, Mark
+
+Students contains three columns ID, Name and Marks.
+
+Grades contains the following data- Grade, Min_Mark, Max_Mark
+
+select name, grade, marks from students as s 
+join grades as g on s.marks > g.min_mark and s.marks < g.max_mark
+;
+
+select name, grade, marks from students as s 
+join grades as g on s.marks > g.min_mark and s.marks < g.max_mark
+order by grade desc, marks desc;
+
+select name, grade, marks from students as s 
+join grades as g on s.marks > g.min_mark and s.marks < g.max_mark
+order by grade desc, marks desc;
+
+select s.name = iff(g.grade < 8, null, s.name), grade, marks from students as s 
+join grades as g on s.marks > g.min_mark and s.marks < g.max_mark
+order by grade desc, marks desc;
+
+select case when (g.grade < 8) then null as s.name, grade, marks from students as s 
+join grades as g on s.marks > g.min_mark and s.marks < g.max_mark
+order by grade desc, marks desc;
+
+select cast(case when g.grade < 8 then 'NULL' end as s.name) as s.name, g.grade, s.marks from students as s 
+join grades as g on s.marks > g.min_mark and s.marks < g.max_mark
+order by grade desc, marks desc;
+
+SELECT CAST(CASE WHEN Obsolete = 'N' or InStock = 'Y' THEN 1 ELSE 0 END AS bit)
+
+select cast(case when g.grade < 8 then 'NULL' else s.name end as s.name), g.grade, s.marks from students as s 
+join grades as g on s.marks > g.min_mark and s.marks < g.max_mark
+order by grade desc, marks desc;
+
+select s.name, g.grade, s.marks from students as s 
+join grades as g on s.marks > g.min_mark and s.marks < g.max_mark
+order by grade desc, marks desc;
+
+
+select s.name, g.grade, s.marks into temp from students as s 
+join grades as g on s.marks > g.min_mark and s.marks < g.max_mark
+order by grade desc, marks desc;
+select * from temp
+order by grade desc, marks desc;
+
+select s.name, g.grade, s.marks into temp 
+from students as s 
+join grades as g on s.marks > g.min_mark and s.marks < g.max_mark
+order by grade desc, marks desc;
+select CASE WHEN grade < 8 THEN 'NULL' when grade >= 8 then name END AS name, grade, marks from temp
+order by grade desc, marks desc, name asc;
+
+Answer from web-
+
+/* Variant 3*/
+SELECT 
+    CASE
+        WHEN Grades.Grade > 7
+        THEN Students.Name
+        WHEN Grades.Grade <= 7
+        THEN NULL
+    END, Grades.Grade, Students.Marks FROM Students INNER JOIN Grades ON Students.Marks BETWEEN Grades.Min_Mark AND Max_Mark ORDER BY Grades.Grade DESC, Students.Name ASC, Students.Marks ASC;
+
+
+select s.name, g.grade, s.marks into temp 
+from students as s 
+join grades as g on s.marks > g.min_mark and s.marks < g.max_mark
+order by grade desc, marks desc;
+select CASE WHEN grade < 8 THEN NULL when grade >= 8 then name END, grade, marks from temp
+order by grade desc, marks desc, name asc
+where grade >= 8;
+
+select s.name, g.grade, s.marks into temp 
+from students as s 
+join grades as g on s.marks > g.min_mark and s.marks < g.max_mark
+order by grade desc, marks desc;
+select CASE WHEN grade < 8 THEN NULL when grade >= 8 then name END, grade, marks from temp
+order by grade desc, marks asc
+where grade < 8;
+
+****I didn't solve this one but used the web answer. It seems to sort differently when grade >= 8 and < 8.  
+
+___________________________
+
+Top Competitors
+
+Julia just finished conducting a coding contest, and she needs your help assembling the leaderboard! Write a query to print the respective hacker_id and name of hackers who achieved full scores for more than one challenge. Order your output in descending order by the total number of challenges in which the hacker earned a full score. If more than one hacker received full scores in same number of challenges, then sort them by ascending hacker_id.
+
+
+Schema- Tables
+--------------
+
+Hackers, h- hacker_id, name
+
+Difficulty, d- difficulty_level, score
+
+Challenges, c- challenge_id, hacker_id, difficulty_level
+
+Submissions, s- submission_id, hacker_id, challenge_id, score.
+
+select * from submissions as s 
+join challenges as c on s.challenge_id = c.challenge_id
+join difficulty as d on d.difficulty_level = d.difficulty_level
+join hackers as h on h.hacker_id = s.hacker_id
+;
+
+select 
+'s.submission_id'= s.submission_id, 
+'s.hacker_id' = s.hacker_id, 
+'s.challenge_id' = s.challenge_id, 
+'s.score' = s.score,
+'c.challenge_id' = c.challenge_id,
+'c.hacker_id' = c.hacker_id, 
+'c.difficulty_level' = c.difficulty_level,
+'d.difficulty_level' = d.difficulty_level, 
+'d.score' = d.score,
+'h.hacker_id' = h.hacker_id,
+'h.name' = h.name
+from submissions as s 
+join challenges as c on s.challenge_id = c.challenge_id
+join difficulty as d on d.difficulty_level = d.difficulty_level
+join hackers as h on h.hacker_id = s.hacker_id
+;
+
+select
+'s.submission_id' 
+'s.hacker_id' 
+'s.challenge_id' 
+'s.score' 
+'c.challenge_id' 
+'c.hacker_id' 
+'c.difficulty_level' 
+'d.difficulty_level' 
+'d.score' 
+'h.hacker_id' 
+'h.name' 
+union
+select 
+ s.submission_id , 
+ s.hacker_id, 
+ s.challenge_id, 
+ s.score,
+ c.challenge_id,
+ c.hacker_id, 
+ c.difficulty_level,
+ d.difficulty_level, 
+ d.score,
+ h.hacker_id,
+ h.name
+from submissions as s 
+join challenges as c on s.challenge_id = c.challenge_id
+join difficulty as d on d.difficulty_level = d.difficulty_level
+join hackers as h on h.hacker_id = s.hacker_id
+;
+
+select
+'s.submission_id', 
+'s.hacker_id', 
+'s.challenge_id', 
+'s.score', 
+'c.challenge_id', 
+'c.hacker_id', 
+'c.difficulty_level', 
+'d.difficulty_level', 
+'d.score', 
+'h.hacker_id', 
+'h.name' 
+union all
+select 
+ s.submission_id , 
+ s.hacker_id, 
+ s.challenge_id, 
+ s.score,
+ c.challenge_id,
+ c.hacker_id, 
+ c.difficulty_level,
+ d.difficulty_level, 
+ d.score,
+ h.hacker_id,
+ h.name
+from submissions as s 
+join challenges as c on s.challenge_id = c.challenge_id
+join difficulty as d on d.difficulty_level = d.difficulty_level
+join hackers as h on h.hacker_id = s.hacker_id
+;
+
+SET FMTONLY ON
+
+print 
+("s.submission_id ,  s.hacker_id, s.challenge_id, s.score, c.challenge_id, c.hacker_id,  c.difficulty_level, d.difficulty_level, d.score, h.hacker_id, h.name")
+select 
+ s.submission_id , 
+ s.hacker_id, 
+ s.challenge_id, 
+ s.score,
+ c.challenge_id,
+ c.hacker_id, 
+ c.difficulty_level,
+ d.difficulty_level, 
+ d.score,
+ h.hacker_id,
+ h.name
+from submissions as s 
+join challenges as c on s.challenge_id = c.challenge_id
+join difficulty as d on d.difficulty_level = d.difficulty_level
+join hackers as h on h.hacker_id = s.hacker_id
+;
+
+select 
+ s.submission_id,
+ s.hacker_id, 
+ s.challenge_id, 
+ s.score,
+ c.challenge_id,
+ c.hacker_id, 
+ c.difficulty_level,
+ d.difficulty_level, 
+ d.score,
+ h.hacker_id,
+ h.name
+from submissions as s 
+join challenges as c on s.challenge_id = c.challenge_id
+join difficulty as d on d.difficulty_level = d.difficulty_level
+join hackers as h on h.hacker_id = s.hacker_id
+where s.score = d.score
+;
+
+
+
+print 
+("s.hacker_id, s.challenge_id, s.score, c.challenge_id, c.hacker_id,  c.difficulty_level, d.difficulty_level, d.score, h.hacker_id, h.name")
+
+select 
+ s.hacker_id, 
+ s.challenge_id, 
+ s.score,
+ c.challenge_id,
+ c.hacker_id, 
+ c.difficulty_level,
+ d.difficulty_level, 
+ d.score,
+ h.hacker_id,
+ h.name
+from submissions as s 
+join challenges as c on s.challenge_id = c.challenge_id
+join difficulty as d on d.difficulty_level = d.difficulty_level
+join hackers as h on h.hacker_id = s.hacker_id
+where s.score = d.score
+group by s.hacker_id, s.challenge_id
+;
+
+select 
+ s.hacker_id, 
+ s.challenge_id,
+ count(s.challenge_id), 
+ h.name
+from submissions as s 
+join challenges as c on s.challenge_id = c.challenge_id
+join difficulty as d on d.difficulty_level = d.difficulty_level
+join hackers as h on h.hacker_id = s.hacker_id
+where s.score = d.score
+group by s.hacker_id, s.challenge_id, h.name
+;
+
+select 
+ s.hacker_id, 
+ s.challenge_id,
+ count(s.challenge_id) over(partition by h.hacker_id), 
+ h.name
+from submissions as s 
+join challenges as c on s.challenge_id = c.challenge_id
+join difficulty as d on d.difficulty_level = d.difficulty_level
+join hackers as h on h.hacker_id = s.hacker_id
+where s.score = d.score
+;
+
+select 
+ s.hacker_id, 
+ s.challenge_id,
+ count(s.challenge_id) over(partition by h.hacker_id) as c_count, 
+ h.name
+from submissions as s 
+join challenges as c on s.challenge_id = c.challenge_id
+join difficulty as d on d.difficulty_level = d.difficulty_level
+join hackers as h on h.hacker_id = s.hacker_id
+where s.score = d.score
+;
+
+select s.hacker_id, s.name from
+(select 
+ s.hacker_id, 
+ s.challenge_id,
+ count(s.challenge_id) over(partition by h.hacker_id) as c_count, 
+ h.name
+from submissions as s 
+join challenges as c on s.challenge_id = c.challenge_id
+join difficulty as d on d.difficulty_level = d.difficulty_level
+join hackers as h on h.hacker_id = s.hacker_id
+where s.score = d.score
+)
+where c_count >= 2
+order by c_count desc, hacker_id asc;
+
+select hacker_id, name from
+(select 
+ s.hacker_id, 
+ s.challenge_id,
+ count(s.challenge_id) over(partition by h.hacker_id) as c_count, 
+ h.name
+from submissions as s 
+join challenges as c on s.challenge_id = c.challenge_id
+join difficulty as d on d.difficulty_level = d.difficulty_level
+join hackers as h on h.hacker_id = s.hacker_id
+where s.score = d.score) as c_table
+where c_count > 1
+order by c_count desc, hacker_id asc;
+
+Julia just finished conducting a coding contest, and she needs your help assembling the leaderboard! Write a query to print the respective hacker_id and name of hackers who achieved full scores for more than one challenge. Order your output in descending order by the total number of challenges in which the hacker earned a full score. If more than one hacker received full scores in same number of challenges, then sort them by ascending hacker_id.
+
+hackerrank Top Competitors Answers- 
+
+SELECT h.hacker_id, h.name FROM Submissions AS s 
+JOIN Hackers AS h ON s.hacker_id = h.hacker_id
+JOIN Challenges AS c ON s.challenge_id = c.challenge_id
+JOIN Difficulty AS d ON c.difficulty_level = d.difficulty_level
+WHERE s.score = d.score 
+GROUP BY h.hacker_id, h.name 
+HAVING COUNT(*)>1 
+ORDER BY COUNT(*) DESC, h.hacker_id;
+
+My Answer- Was originally wrong
+
+select h.hacker_id, h.name from submissions as s 
+join hackers as h on h.hacker_id = s.hacker_id
+join challenges as c on s.challenge_id = c.challenge_id
+join difficulty as d on d.difficulty_level = c.difficulty_level   
+where s.score = d.score
+group by h.hacker_id, h.name
+having count(*) > 1
+order by count(*) desc, h.hacker_id;
+
+This line was incorrect
+join difficulty as d on d.difficulty_level = d.difficulty_level   
+
+_____________________________
+
+PrepareSQL > Basic Join > Ollivander's Inventory
+hackerrank Ollivander's Inventory
+
+Harry Potter and his friends are at Ollivander's with Ron, finally replacing Charlie's old broken wand.
+Hermione decides the best way to choose is by determining the minimum number of gold galleons needed to buy each non-evil wand of high power and age. Write a query to print the id, age, coins_needed, and power of the wands that Ron's interested in, sorted in order of descending power. If more than one wand has same power, sort the result in order of descending age.
+
+The following tables contain data on the wands in Ollivander's inventory:
+Wands: The id is the id of the wand, code is the code of the wand, coins_needed is the total number of gold galleons needed to buy the wand, and power denotes the quality of the wand (the higher the power, the better the wand is). 
+Wands_Property: The code is the code of the wand, age is the age of the wand, and is_evil denotes whether the wand is good for the dark arts. If the value of is_evil is 0, it means that the wand is not evil. The mapping between code and age is one-one, meaning that if there are two pairs, (code1, age1) and (code2, age2) then code1 <> code2 and age1 <> age2.
+
+wands: id, code, coins_needed, power
+wands_property: code, age, is_evil
+
+select id, age, coins_needed, power from wands as w
+join wands_property as p on p.code = w.code
+where is_evil = 0;
+
+select id, age, coins_needed, power from wands as w
+join wands_property as p on p.code = w.code
+where is_evil = 0
+order by power desc, age desc
+;
+
+Web Answer-
+
+SELECT id, age, m.coins_needed, m.power FROM 
+(SELECT code, power, MIN(coins_needed) AS coins_needed FROM Wands GROUP BY code, power) AS m
+JOIN Wands AS w ON m.code = w.code AND m.power = w.power AND m.coins_needed = w.coins_needed
+JOIN Wands_Property AS p ON m.code = p.code
+WHERE p.is_evil = 0
+ORDER BY m.power DESC, age DESC;
+
+select id, age, min(coins_needed), power from wands as w
+join wands_property as p on p.code = w.code
+where is_evil = 0
+group by power, age
+order by power desc, age desc
+;
+
+________________________
+
+Prepare > SQL > Basic Join > Challenges
+hackerrank Challenges
+
+Julia asked her students to create some coding challenges. Write a query to print the hacker_id, name, and the total number of challenges created by each student. Sort your results by the total number of challenges in descending order. If more than one student created the same number of challenges, then sort the result by hacker_id. If more than one student created the same number of challenges and the count is less than the maximum number of challenges created, then exclude those students from the result.
+
+Hackers: The hacker_id is the id of the hacker, and name is the name of the hacker. 
+Challenges: The challenge_id is the id of the challenge, and hacker_id is the id of the student who created the challenge. 
+
+Output: hacker_id, name, total challenge count.
+
+print ("h.hacker_id, h.name, c.challenge_id, c.hacker_id")
+
+select h.hacker_id, h.name, c.challenge_id, c.hacker_id from hackers as h
+join challenges as c on c.hacker_id = h.hacker_id
+
+select h.hacker_id, h.name, count(c.challenge_id) as c_count from hackers as h
+join challenges as c on c.hacker_id = h.hacker_id
+group by h.hacker_id, h.name
+order by c_count desc, h.hacker_id asc
+;
+
+Web answer- 
+
+/* count total submissions of challenges of each user */
+WITH data
+AS
+(
+SELECT c.hacker_id as id, h.name as name, count(c.hacker_id) as counter
+FROM Hackers h
+JOIN Challenges c on c.hacker_id = h.hacker_id
+GROUP BY c.hacker_id, h.name
+)
+/* select records from above */
+SELECT id,name,counter
+FROM data
+WHERE
+counter=(SELECT max(counter) FROM data) /*select user that has max count submission*/
+OR
+counter in (SELECT counter FROM data
+GROUP BY counter
+HAVING count(counter)=1 ) /*filter out the submission count which is unique*/
+ORDER BY counter desc, id
+
+__________________________-
+
+Prepare > SQL > Advanced Join > Symmetric Pairs
+hackerrank Symmetric Pairs
+
+Web answer-
+
+SELECT f1.X, f1.Y FROM Functions f1
+INNER JOIN Functions f2 ON f1.X=f2.Y AND f1.Y=f2.X
+GROUP BY f1.X, f1.Y
+HAVING COUNT(f1.X)>1 or f1.X<f1.Y
+ORDER BY f1.X 
+ 
+
+SELECT f1.X, f1.Y FROM Functions f1
+JOIN Functions f2 ON f1.X=f2.Y AND f1.Y=f2.X
+group by f1.x, f1.y
+having COUNT(f1.X)>1 or f1.x <= f1.y
+order by f1.x;
+
+___________________________
+
+
+
+
+
+
+
+
+
+
+

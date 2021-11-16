@@ -1,0 +1,315 @@
+
+    PreparePythonIntroductionPython If-Else
+
+Python If-Else
+
+
+import math
+import os
+import random
+import re
+import sys
+if __name__ == '__main__':
+    n = int(input().strip())
+    if n%2!=0 and n>=2 and n<=5:
+        print('Weird')
+    elif n%2==0 and n>=2 and n<=5:
+        print('Not Weird')
+    elif n%2==0 and n>=6 and n<=20:
+        print('Weird')
+    elif n>20:    
+        print('Not Weird')
+    else:
+        print('error')
+
+
+import math
+import os
+import random
+import re
+import sys
+if __name__ == '__main__':
+    n = int(input().strip())
+    if n%2!=0 and n>=2 and n<=5:
+        print('Weird')
+    elif n%2==0 and n>=2 and n<=5:
+        print('Not Weird')
+    elif n%2==0 and n>=6 and n<=20:
+        print('Weird')
+    elif n>20:    
+        print('Not Weird')
+    else:
+        print('')
+
+import math
+import os
+import random
+import re
+import sys
+if __name__ == '__main__':
+    n = int(input().strip())
+    if n%2!=0:
+        print('Weird')
+    elif n%2==0 and n>=2 and n<=5:
+        print('Not Weird')
+    elif n%2==0 and n>=6 and n<=20:
+        print('Weird')
+    elif n>20:    
+        print('Not Weird')
+    else:
+        print('')
+
+__________________
+
+    PreparePythonIntroductionArithmetic Operators
+
+Arithmetic Operators
+
+
+if __name__ == '__main__':
+    a = int(input())
+    b = int(input())
+    class Calculator:
+        def __init__(self, n, m):
+            self.n = n
+            self.m = m
+        def addition(self, n, m):
+            add= n+m;
+            return self.add
+        def subtract(self, n, m):
+            sub= n-m;
+            return self.sub        
+        def multiply(self, n, m):
+            mul= n*m;
+            return self.mul
+    print(Calculator.addition(a, b));
+    print(Calculator.subtract(a, b));
+    print(Calculator.multiply(a, b));
+
+Attempt at class based answer- failed. 
+
+
+import math
+import os
+import random
+import re
+import sys
+class Calculator:
+    def __init__(self, n, m):
+        self.n = n
+        self.m = m
+    def addition(self, n, m):
+        add= n+m;
+        return self.add
+    def subtract(self, n, m):
+        sub= n-m;
+        return self.sub        
+    def multiply(self, n, m):
+        mul= n*m;
+        return self.mul
+if __name__ == '__main__':
+    a = int(input())
+    b = int(input())
+    calc= Calculator(a,b);
+    print(calc.addition(a, b));
+    print(calc.subtract(a, b));
+    print(calc.multiply(a, b));
+
+My Answer-
+
+if __name__ == '__main__':
+    a = int(input())
+    b = int(input())
+    print(a+b);
+    print(a-b);
+    print(a*b);
+
+Discussion answers interesting-
+
+print(a+b,a-b,a*b, sep="\n")
+    
+tambah, tolak, darab = a+b, a-b, a*b
+print(tambah)
+print(tolak)
+print(darab)
+
+
+def fun(m,n):
+    print(m+n,m-n,m*n,sep="\n")
+    return
+if __name__ == '__main__':
+    a = int(input())
+    b = int(input())
+    fun(a,b)
+
+a = int(input())
+b = int(input())
+def operaciones (a,b):
+    suma = a+b
+    print (suma)
+    resta = a-b
+    print (resta)
+    multiplicacion = a*b
+    print (multiplicacion)
+operaciones (a,b)
+
+
+def function(a, b):
+    print(a+b)
+    print(a-b)
+    print(a*b)
+a = int(raw_input())
+b = int(raw_input())
+function(a, b)
+
+if __name__ == '__main__':
+    a = int(input())
+    b = int(input())
+    print(a//b);
+    print(a/b);
+    /*
+    if b== 0:
+	print('error');
+    else: 
+	print(a/b);
+        */
+        
+________________
+
+    PreparePythonIntroductionLoops
+
+Loops
+
+My answer-
+
+if __name__ == '__main__':
+    n = int(input())
+    list= []; #Define list.
+    for a in range(0, n):
+        list.append(a) 
+        print(a*a);
+
+if __name__ == '__main__':
+    n = int(input())
+    for a in range(0, n):
+        print(a*a);
+
+
+def is_leap(year):
+    leap = False
+    # Write your logic here
+    if year%4==0:
+        leap= True;
+        if year%100:
+            leap= False;
+            if year%400:
+                leap= True;
+    return leap
+year = int(input())
+
+My Answer- 
+
+def is_leap(year):
+    leap = False
+    # Write your logic here
+    if year%4==0:
+        leap= True;
+        if year%100==0:
+            leap= False;
+            if year%400==0:
+                leap= True;
+    return leap
+year = int(input())
+
+____________________
+
+    PreparePythonIntroductionPrint Function
+
+Print Function
+
+
+from __future__ import print_function
+
+if __name__ == '__main__':
+    n = int(raw_input())
+    for a in range(1, n+1):
+        print(a , end ='' );
+
+__________________
+
+    PreparePythonRegex and ParsingGroup(), Groups() & Groupdict()
+
+Group(), Groups() & Groupdict()
+
+import re
+if __name__ == '__main__':
+    S = input()
+    #print (S);
+    out= re.findall("+", S)
+    print(out);
+    #x = re.findall(".+", S)
+
+Discussion answer- 
+
+import re
+m = re.search(r'([a-zA-Z0-9])\1+', input().strip())    # Also could use (\w(?!_))\1+ as the regular expression. 
+print(m.group(1) if m else -1)
+
+_____________________
+
+
+    PreparePythonRegex and ParsingRe.findall() & Re.finditer()
+
+Re.findall() & Re.finditer()
+
+
+import re
+m = re.search(r'([a-zA-Z0-9])\1+', input().strip())    # Also could use (\w(?!_))\1+ as the regular expression. 
+print(m.group(1) if m else -1)
+
+Discussion answers-
+
+import re
+s = '[qwrtypsdfghjklzxcvbnm]'
+a = re.findall('(?<=' + s +')([aeiou]{2,})' + s, input(), re.I)
+print('\n'.join(a or ['-1']))
+
+
+?    Causes the resulting RE to match 0 or 1 repetitions of the preceding RE. ab? will match either ‘a’ or ‘ab’.
+
+(?<=...)    Matches if the current position in the string is preceded by a match for ... that ends at the current position. This is called a positive lookbehind assertion. (?<=abc)def will find a match in 'abcdef', since the lookbehind will back up 3 characters and check if the contained pattern matches. The contained pattern must only match strings of some fixed length, meaning that abc or a|b are allowed, but a* and a{3,4} are not. Note that patterns which start with positive lookbehind assertions will not match at the beginning of the string being searched; you will most likely want to use the search() function rather than the match() function:
+    >>>import re
+m = re.search('(?<=abc)def', 'abcdef')
+m.group(0)
+'def'
+This example looks for a word following a hyphen:
+>>>m = re.search(r'(?<=-)\w+', 'spam-egg')
+m.group(0)
+'egg'
+
+
++    Causes the resulting RE to match 1 or more repetitions of the preceding RE. ab+ will match ‘a’ followed by any non-zero number of ‘b’s; it will not match just ‘a’.
+
+
+
+
+
+______________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
