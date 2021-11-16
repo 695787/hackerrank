@@ -291,13 +291,82 @@ m.group(0)
 +    Causes the resulting RE to match 1 or more repetitions of the preceding RE. ab+ will match ‘a’ followed by any non-zero number of ‘b’s; it will not match just ‘a’.
 
 
+match = re.findall(r'(?<=['+consonants+'])(['+vowels+']{2,})(?=['+consonants+'])',raw_input(),flags = re.I)
 
 
+(?=...)    Matches if ... matches next, but doesn’t consume any of the string. This is called a lookahead assertion. For example, Isaac (?=Asimov) will match 'Isaac ' only if it’s followed by 'Asimov'.
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+import re
+s = '[qwrtypsdfghjklzxcvbnm]'
+a = re.findall('(?<=' + s +')([aeiou]{2,})' + s, input(), re.I)
+print('\n'.join(a or ['-1']))
+
+
+Interesting regex answer-
+
+import re
+e=re.findall(r'(?<=[^aieou])([aeiou]{2,})(?=[^aieou])', input().strip(), re.I)
+print(*e if e!=[] else [-1], sep='\n')
 
 ______________________
 
+    PreparePythonRegex and ParsingRe.start() & Re.end()
+
+Re.start() & Re.end()
+
+import re
+S = input()
+k = input()
+m = re.search(r'(?<=k)',S)
+m.end();
+m.start();
+print(m.end(), m.start());
+
+Discussion answer-
+
+import re
+s = input()
+k = input()
+index = 0
+if re.search(k, s):
+    while index+len(k) < len(s):
+        m = re.search(k, s[index:]) #begins search with new index
+        print("({0}, {1})".format(index+m.start(), index+m.end()-1)) 
+        index += m.start() + 1 #assign new index by +1 
+else:
+    print((-1, -1))
+
+import re
+s = input()
+print (s);
+k = input()
+print (k);
+if (input()):
+    l = input()
+    print (l);
+else:
+    print('No further inputs');
 
 
+import re
+s = input()
+print (s);
+k = input()
+print (k);
+m = re.search(r'(?<='+ k +')',s, );
+print(m);
+print(m.start());
+print(m.end());
+
+
+import re
+text, pattern = input(), input()
+m= list(re.finditer("(?=(%s))"%pattern,text))
+if not m:
+    print((-1,-1))
+for i in m:
+    print((i.start(1),i.end(1)-1))
 
 
 
