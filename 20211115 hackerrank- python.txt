@@ -376,6 +376,8 @@ ________________
 Regex Substitution
 
 
+re.sub(r"\d+", square, "1 2 3 4 5 6 7 8 9")
+
 /s/&/&/s 	#I think &, | are escape characters so they need / before them. /s... /s means that spaces are either side of the search term.
 /s/|/|/s
 
@@ -394,6 +396,9 @@ print (string);
 import re
 print('\n'.join(re.sub(R'(?<= )(&&|\|\|)(?= )', lambda x: 'and' if x.group()=='&&' else 'or', input()) for _ in range(int(input().strip()))))
 
+
+Discussion answer-
+
 import re
 S=int(input())
 for i in range(S):
@@ -401,6 +406,17 @@ for i in range(S):
       pattern2=re.compile(r'(?<= )(\|\|)(?= )')
       print(pattern2.sub('or', pattern1.sub('and', input())))
 
+Tried unsuccessfully-
+
+import re
+S=int(input());
+T= S;
+for i in range(T):
+        T= re.sub(r'(?<= )(&&)(?= )', 'and', T);
+        #T=re.sub(r'(?<= )(&&)(?= )')
+        T= re.sub(r'(?<= )(\|\|)(?= )', 'or', T);
+        #T=re.sub(r'(?<= )(\|\|)(?= )')
+        print(T);
 
 
 
