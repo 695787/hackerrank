@@ -371,10 +371,35 @@ for i in m:
 ________________
 
 
+    PreparePythonRegex and ParsingRegex Substitution
+
+Regex Substitution
 
 
+/s/&/&/s 	#I think &, | are escape characters so they need / before them. /s... /s means that spaces are either side of the search term.
+/s/|/|/s
+
+or could match ' && ' or ' || '.
+
+import re
+string= input();
+#for input():
+#    string= string+ input();
+string= re.sub(r"/s&&/s", " and ", string);
+print (string);
+string= re.sub(r"/s/|/|/s", " or ", string);
+print (string);
 
 
+import re
+print('\n'.join(re.sub(R'(?<= )(&&|\|\|)(?= )', lambda x: 'and' if x.group()=='&&' else 'or', input()) for _ in range(int(input().strip()))))
+
+import re
+S=int(input())
+for i in range(S):
+      pattern1=re.compile(r'(?<= )(&&)(?= )')
+      pattern2=re.compile(r'(?<= )(\|\|)(?= )')
+      print(pattern2.sub('or', pattern1.sub('and', input())))
 
 
 
