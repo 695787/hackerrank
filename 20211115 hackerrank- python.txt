@@ -418,7 +418,14 @@ for i in range(T):
         #T=re.sub(r'(?<= )(\|\|)(?= )')
         print(T);
 
+My answer-
 
+import re
+S=int(input());		# Not sure about this line. 
+for i in range(S):
+      pattern1=re.sub('(?<= )(&&)(?= )', 'and', input())
+      pattern2=re.sub('(?<= )(\|\|)(?= )', 'or', pattern1)
+      print(pattern2)
 
 
 
