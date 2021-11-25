@@ -430,6 +430,44 @@ for i in range(S):
 
 
 
+________________
+
+    PreparePythonRegex and ParsingValidating Roman Numerals
+
+Validating Roman Numerals
+
+
+regex_pattern = r""	# Do not delete 'r'.
+import re
+print(str(bool(re.match(regex_pattern, input()))))
+
+regex_pattern = r""	# Do not delete 'r'.
+# Equals M (1000), D (500), C (100), L (50), X (10), V (5), I (1)
+import re
+print(str(bool(re.match(regex_pattern, input()))))
+
+Discussion Answer-
+
+The engine seems to constrain the answer so you can't add lines etc. So eventually I just put the regex pattern in the quotes. It's a bit cryptic. 
+
+regex_pattern = r"^M{,3}(C(D|M)|D?C{,3})(X(L|C)|L?X{,3})(I(X|V)|(X|V)?I{,3})$"	# Do not delete 'r'.
+import re
+print(str(bool(re.match(regex_pattern, input()))))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
