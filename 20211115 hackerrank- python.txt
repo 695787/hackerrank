@@ -454,6 +454,53 @@ regex_pattern = r"^M{,3}(C(D|M)|D?C{,3})(X(L|C)|L?X{,3})(I(X|V)|(X|V)?I{,3})$"	#
 import re
 print(str(bool(re.match(regex_pattern, input()))))
 
+____________________________
+
+    PreparePythonRegex and ParsingValidating phone numbers
+
+Validating phone numbers
+
+
+regex_pattern = r"^(7|8|9){,1}"    # Do not delete 'r'.
+import re
+# print(str(bool(re.match(regex_pattern, input()))))
+S=int(input());        # Not sure about this line. 
+for i in range(S):
+    if (str(bool(re.match(regex_pattern, input())))):
+        print('YES')
+    else:
+        print('NO')
+
+regex_pattern = r"^7|8|9"    # Do not delete 'r'.
+import re
+# print(str(bool(re.match(regex_pattern, input()))))
+S=int(input());        # Not sure about this line. 
+for i in range(S):
+    print(input())
+    if (str(bool(re.match(regex_pattern, input())))):
+        print('YES')
+    else:
+        print('NO')
+
+Discussion Answer-
+
+import re
+S=int(input());  
+for i in range(S):
+    if re.match(r'[789]\d{9}$',input()):   
+        print('YES' ) 
+    else:  
+        print('NO')  
+
+____________________
+
+    PreparePythonRegex and ParsingValidating and Parsing Email Addresses
+
+Validating and Parsing Email Addresses
+
+
+
+
 
 
 
