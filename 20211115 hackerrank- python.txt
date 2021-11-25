@@ -498,6 +498,75 @@ ____________________
 
 Validating and Parsing Email Addresses
 
+import re
+S=int(input());  
+for i in range(S):
+    if re.match(r'[a-zA-Z]\d@[a-zA-Z.]\d.[a-zA-Z]\d{,3}.[a-zA-Z]\d{,2}$',input()):   
+        print(input()); 
+
+Discussion Answer- 
+
+Failed on 6 out of 7 tests. 
+
+import re
+S=int(input())
+for i in range(S):
+    print(input())
+    if (re.match(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b',input())):   
+        print(input())
+    else: 
+        break
+
+Passed all 7 tests.
+
+import re
+n = int(input())
+for _ in range(n):
+    x, y = input().split(' ')
+    m = re.match(r'<[A-Za-z](\w|-|\.|_)+@[A-Za-z]+\.[A-Za-z]{1,3}>', y)
+    if m:
+        print(x,y)
+
+import re
+n = int(input())
+for _ in range(n):
+    x, y = input().split(' ')
+    if re.match(r'<[A-Za-z](\w|-|\.|_)+@[A-Za-z]+\.[A-Za-z]{1,3}>', y):
+        print(x,y)
+
+Passed 2 out of 7 test cases.
+
+import re
+n = int(input())
+for _ in range(n):
+    x, y = input().split(' ')
+    m = re.search(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', y)
+    if m:
+        print(x,y)
+
+Passed 2 out of 7 test cases. 
+
+import re
+n = int(input())
+for _ in range(n):
+    y = input()
+    m = re.search(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', y)
+    if m:
+        print(y)
+
+Matches all but 1 test case out of 7.
+
+import re
+n = int(input())
+for _ in range(n):
+    x, y = input().split(' ')
+    if re.match(r'<[A-Za-z](\w|-|\.|_)+@[A-Za-z]+\.[A-Za-z]+>', y):
+        print(x,y)
+
+
+_________________________
+
+
 
 
 
