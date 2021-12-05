@@ -605,21 +605,108 @@ for _ in range(n):
 _________________________
 
 
+https://www.hackerrank.com/challenges/hex-color-code/problem?h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen
 
+Discussion Answer- 
 
+```pycon
+import re
+if __name__ == "__main__":
+    # reg = re.compile(r"(#[abcdefABCDEF1234567890]{3}|#[abcdefABCDEF1234567890]{6})")
+    # reg = re.compile(r"#[abcdefABCDEF1234567890]{3,}")
+    reg = re.compile(r"(:|,| +)(#[abcdefABCDEF1234567890]{3}|#[abcdefABCDEF1234567890]{6})\b")
+    n = int(input())
+    for i in range(n):
+        line  = input()
+        items = reg.findall(line)
+        if items:
+            # print(", ".join(str(s) for s in items ))
+            # for match in items:
+            #   print(items.group())
+            for item in items:    
+                print( item[1] )
 
+```
 
+Cleaned up-
+```pycon
+import re
+if __name__ == "__main__":
+    # reg = re.compile(r"(#[abcdefABCDEF1234567890]{3}|#[abcdefABCDEF1234567890]{6})")
+    # reg = re.compile(r"#[abcdefABCDEF1234567890]{3,}")
+    reg = re.compile(r"(:|,| +)(#[abcdefABCDEF1234567890]{3}|#[abcdefABCDEF1234567890]{6})\b")
 
+    n = int(input())
+    
+    for i in range(n):
+        line  = input()
+        items = reg.findall(line)
 
+        if items:
+            # print(", ".join(str(s) for s in items ))
+            # for match in items:
+            #   print(items.group())
+            for item in items:    
+                print( item[1] )
 
+```
 
+Interesting Answer-
 
+```pycon
+import re
 
+pattern = r"\.*#([a-f0-9]{6}|[a-f0-9]{3})(=?[;,)])"
 
+for line in range(int(input())):
+    match = re.finditer(pattern, input(), flags=re.IGNORECASE)
+    for color in match:
+        print(color.group()[:-1])
+```
 
+```pycon
+import re
 
+pattern = r"(#[abcdefABCDEF1234567890]{3}|#[abcdefABCDEF1234567890]{6})(=?[;,)])"
 
+for line in range(int(input())):
+    match = re.finditer(pattern, input(), flags=re.IGNORECASE)
+    for color in match:
+        print(color.group()[:-1])
+```
 
+```pycon
+import re
+pattern = r"(#[abcdefABCDEF1234567890]{3}|#[abcdefABCDEF1234567890]{6})(=?[;,)])"
+n = int(input())
+for _ in range(n):
+    m = re.match(pattern, input())
+    if m:
+        print(m)     
+```
+
+```pycon
+import re
+pattern = r"(#[abcdefABCDEF1234567890]{3}|#[abcdefABCDEF1234567890]{6})(=?[;,)])"
+n = int(input())
+for _ in range(n):
+    m = re.findall(pattern, input())
+    if m:
+        print(m)        
+```
+
+My Answer-
+
+```pycon
+import re
+pattern = r"(#[abcdefABCDEF1234567890]{3}|#[abcdefABCDEF1234567890]{6})(=?[;,)])"
+for line in range(int(input())):
+    match = re.finditer(pattern, input())
+    for color in match:
+        print(color.group()[:-1])
+```
+What does [:-1] mean/do in python? - Stack Overflow
+https://stackoverflow.com/questions/15535205/what-does-1-mean-do-in-python
 
 
 
