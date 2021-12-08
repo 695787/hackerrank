@@ -708,8 +708,77 @@ for line in range(int(input())):
 What does [:-1] mean/do in python? - Stack Overflow
 https://stackoverflow.com/questions/15535205/what-does-1-mean-do-in-python
 
+_______________________
 
+https://www.hackerrank.com/challenges/html-parser-part-1/problem?h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen
 
+Discussion Answer-
 
+```pycon
+from html.parser import HTMLParser
+class MyHTMLParser(HTMLParser):
+    def handle_starttag(self, tag, attrs):        
+        print ('Start :',tag)
+        for ele in attrs:
+            print ('->',ele[0],'>',ele[1])
+            
+    def handle_endtag(self, tag):
+        print ('End   :',tag)
+        
+    def handle_startendtag(self, tag, attrs):
+        print ('Empty :',tag)
+        for ele in attrs:
+            print ('->',ele[0],'>',ele[1])
+            
+MyParser = MyHTMLParser()
+MyParser.feed(''.join([input().strip() for _ in range(int(input()))]))
 
+```
+
+Discussion Answer 2- 
+
+```pycon
+from html.parser import HTMLParser
+class MyHTMLParser(HTMLParser):
+    def handle_starttag(self, tag, attrs):        
+        print ('Start :',tag)
+        for ele in attrs:	# Needs this for loop for the different input values
+            print ('->',ele[0],'>',ele[1])
+            
+    def handle_endtag(self, tag):
+        print ('End   :',tag)
+        
+    def handle_startendtag(self, tag, attrs):
+        print ('Empty :',tag)
+        for ele in attrs:	# Needs this for loop for the different input values
+            print ('->',ele[0],'>',ele[1])
+            
+MyParser = MyHTMLParser()
+for _ in range(int(input())):
+    MyParser.feed(input())
+```
+Interesting Answer- DRY Solution
+
+```pycon
+from html.parser import HTMLParser
+
+class MyHTMLParser(HTMLParser):
+    def _handler_factory(msg):
+        msg = msg.ljust(6) + ':'
+        def handler(self, tag, attrs=[]):
+            print(msg, tag)
+            for a in attrs:
+                print("-> %s > %s" % a)
+        return handler
+
+    locals().update(zip(
+        map("handle_{}tag".format, ("start", "end", "startend")),
+        map(_handler_factory, ("Start", "End", "Empty"))
+    ))
+
+MyHTMLParser().feed(' '.join(input() for _ in range(int(input()))))
+
+```
+
+Not certain I understood this exercise completely. 
 
