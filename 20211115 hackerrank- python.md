@@ -782,3 +782,79 @@ MyHTMLParser().feed(' '.join(input() for _ in range(int(input()))))
 
 Not certain I understood this exercise completely. 
 
+_______________________
+
+https://www.hackerrank.com/challenges/html-parser-part-2/problem?h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen
+
+
+```pycon
+from HTMLParser import HTMLParser
+
+class MyHTMLParser(HTMLParser):
+    def handle_comment(self, data):
+          print "Comment  :", data
+```
+```pycon
+from HTMLParser import HTMLParser
+
+class MyHTMLParser(HTMLParser):
+    def handle_data(self, data):
+        print "Data     :", data
+```
+My Attempt-
+
+```pycon
+from HTMLParser import HTMLParser
+
+class MyHTMLParser(HTMLParser):
+# If single line comment then 
+# If multi line comment then
+    def handle_comment(self, data):
+	for _ in data:
+		if data[1]: # If there is more than one element in data array.
+			print ">>> Multi-line Comment"
+			for _ in array:
+				print data
+		else:
+			print ">>> Single-line Comment"
+			print data
+
+    def handle_data(self, data):
+        print ">>> Data"
+	print data
+
+```
+
+Discussion Answer-
+
+```pycom
+from html.parser import HTMLParser
+
+class MyHTMLParser(HTMLParser):
+    def handle_comment(self, comment):
+        if '\n' in comment:
+            print('>>> Multi-line Comment')
+        else:
+            print('>>> Single-line Comment')
+            
+        print(comment)
+    
+    def handle_data(self, data):
+        if data == '\n': return
+        print('>>> Data')
+        print(data)
+  
+html = ""       
+for i in range(int(input())):
+    html += input().rstrip()
+    html += '\n'
+    
+parser = MyHTMLParser()
+parser.feed(html)
+parser.close()
+
+
+```
+
+
+
