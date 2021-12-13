@@ -1036,29 +1036,91 @@ https://www.geeksforgeeks.org/try-except-else-and-finally-in-python/
 
 ___________________
 
+###### Question- Validating Credit Card Numbers
+
+https://www.hackerrank.com/challenges/validating-credit-card-number/problem?h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen
 
 
+A valid credit card from ABCD Bank has the following characteristics:
+
+► It must start with a 4,5 or 6.
+► It must contain exactly 16 digits.
+► It must only consist of digits (0-9).
+► It may have digits in groups of 4, separated by one hyphen "-".
+► It must NOT use any other separator like ' ' , '_', etc.
+► It must NOT have or more consecutive repeated digits. 
 
 
-
+Answer- First Try-
 
 ```pycon
-
+import re
+for _ in range(int(input())):
+    u = ''.join(input().strip())
+    try:
+        assert re.search(r'[4,5,6]{1}',u) #
+        # assert len(u) == 16 # This doesn't take account of spaces or hyphens. 
+	assert re.match(r'(\d{4}-){3}\d{4}$', n) or re.match(r'\d{16}$', n)
+        assert not re.search(r'[^0-9]', u)
+        assert re.search(r'[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}', u)
+        assert not re.search(r'(.)\1', u)
+    except:
+        print('Invalid')
+    else:
+        print('Valid')
 ```
 
 ```pycon
-
+import re
+for _ in range(int(input())):
+    u = ''.join(input().strip())
+    try:
+        assert re.search(r'[4,5,6]{1}',u) #First digit 4,5 or 6- Criteria 1
+        # assert len(u) == 16 # Doesn't account spaces hyphens.
+        assert re.match(r'(\d{4}-){3}\d{4}', u) or re.match(r'\d{16}', u)#16 digits-Criteria 2345
+        #assert not re.search(r'(.)\1', u)
+    except:
+        print('Invalid')
+    else:
+        print('Valid')
 ```
-
-
+```pycon
+import re
+for _ in range(int(input())):
+    u = ''.join(input().strip())
+    try:
+        assert re.search(r'[4,5,6]{1}',u) #First digit 4,5 or 6- Criteria 1
+        # assert len(u) == 16 # Doesn't account spaces hyphens.
+        assert re.match(r'(\d{4}-){3}\d{4}', u) or re.match(r'\d{16}', u)#16 digits-Criteria 2345
+        #assert not (re.match(r'([(.)\1]{4}-){3}[(.)\1]{4}', u) or re.match(r'([(.)\1]{4}){4}', u))
+        #assert not re.match(r'([(.)\1]{4}){4}', u) # I can't get the last criteria to work Criteria 6. 
+    except:
+        print('Invalid')
+    else:
+        print('Valid')
+```
+Gave up and used discussion answer below. 
 
 ```pycon
-
+import re
+def check(card):
+    if not re.search("^[456]\d{3}(-?\d{4}){3}$",card) or re.search(r"(\d)\1{3}", re.sub("-", "",card)):
+        return False
+    return True
+for i in range(int(input())):
+    print("Valid" if check(input()) else "Invalid")
 ```
+_____________________
 
-```pycon
+###### Questions- Validating Postal Codes
 
-```
+https://www.hackerrank.com/challenges/validating-postalcode/problem?h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen
+
+
+
+
+
+
 
 
 ```pycon
