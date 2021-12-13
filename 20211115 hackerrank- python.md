@@ -858,8 +858,120 @@ parser = MyHTMLParser()
 parser.feed(html)
 parser.close()
 
+```
+________________________
+
+###### Question- Detect HTML Tags, Attributes and Attribute Values
+
+
+
+
+```pycon
+from html.parser import HTMLParser
+
+class MyHTMLParser(HTMLParser):
+    def handle_starttag(self, tag, attrs):
+        print(tag)
+
+    def handle_endtag(self, tag):
+        print(tag)
+
+    def handle_data(self, data):
+        print("-> ", )
+        print("Encountered some data  :", data)
+
+parser = MyHTMLParser()
+parser.feed(input())
+
+```
+```pycon
+from html.parser import HTMLParser
+class MyHTMLParser(HTMLParser):
+    def handle_starttag(self, tag, attrs):
+        print(tag)
+        [print('-> {} > {}'.format(*attr)) for attr in attrs]
+        
+html = '\n'.join([input() for _ in range(int(input()))])
+parser = MyHTMLParser()
+parser.feed(html)
+parser.close()
 
 ```
 
+```pycon
+from html.parser import HTMLParser
+class MyHTMLParser(HTMLParser):
+    def handle_starttag(self, tag, attrs):
+        print(tag)
+        [print('-> {} > {}'.format(*attr)) for attr in attrs]
+        
+html = '\n'.join([input() for _ in range(int(input()))])
+parser = MyHTMLParser()
+parser.feed(html)
+parser.close()
 
+```
+Test- Code- 
+
+```pycon
+from html.parser import HTMLParser
+class MyHTMLParser(HTMLParser):
+    def handle_starttag(self, tag, attrs):
+        print(tag)
+        [print(*attr) for attr in attrs]
+html = '\n'.join([input() for _ in range(int(input()))])
+parser = MyHTMLParser()
+parser.feed(html)
+parser.close()
+```
+
+Test- Output
+
+
+```pycon
+
+    head
+
+    title
+
+    object
+
+    type application/x-flash
+
+    data your-file.swf
+
+    width 0
+
+    height 0
+
+    param
+
+    name quality
+
+    value high
+
+```
+Test- Expected Output
+
+```pycon
+    head
+
+    title
+
+    object
+
+    -> type > application/x-flash
+
+    -> data > your-file.swf
+
+    -> width > 0
+
+    -> height > 0
+
+    param
+
+    -> name > quality
+
+    -> value > high
+```
 
