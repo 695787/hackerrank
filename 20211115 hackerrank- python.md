@@ -975,3 +975,102 @@ Test- Expected Output
     -> value > high
 ```
 
+
+_______________________
+
+###### Question- Validating UID
+
+
+https://www.hackerrank.com/challenges/validating-uid/problem?h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen
+
+A valid UID must follow the rules below:
+
+	It must contain at least 2 uppercase English alphabet characters.
+	It must contain at least 3 digits (0-9).
+	It should only contain alphanumeric characters (a-z, A-Z & 0-9).
+	No character should repeat.
+	There must be exactly 10 characters in a valid UID.
+
+
+```pycon
+
+[A-Z|a-z]{2,}
+print ("Invalid")
+print ("Valid")
+
+import re
+for _ in range(int(input())):
+    u = ''.join(sorted(input()))
+    try:
+        assert re.search(r'[A-Z]{2}', u)
+        assert re.search(r'\d\d\d', u)
+        assert not re.search(r'[^a-zA-Z0-9]', u)
+        assert not re.search(r'(.)\1', u)
+        assert len(u) == 10
+    except:
+        print('Invalid')
+    else:
+        print('Valid')
+```
+
+https://docs.python.org/3/library/re.html
+
+.
+
+(Dot.) In the default mode, this matches any character except a newline. If the DOTALL flag has been specified, this matches any character including a newline.
+
+\number
+
+Matches the contents of the group of the same number. Groups are numbered starting from 1. For example, (.+) \1 matches 'the the' or '55 55', but not 'thethe' (note the space after the group). This special sequence can only be used to match one of the first 99 groups. If the first digit of number is 0, or number is 3 octal digits long, it will not be interpreted as a group match, but as the character with octal value number. Inside the '[' and ']' of a character class, all numeric escapes are treated as characters.
+
+
+(...)
+
+Matches whatever regular expression is inside the parentheses, and indicates the start and end of a group; the contents of a group can be retrieved after a match has been performed, and can be matched later in the string with the \number special sequence, described below. To match the literals '(' or ')', use \( or \), or enclose them inside a character class: [(], [)].
+
+https://www.journaldev.com/24588/python-string-functions
+
+https://www.journaldev.com/23571/python-string-join
+
+https://www.geeksforgeeks.org/try-except-else-and-finally-in-python/
+
+___________________
+
+
+
+
+
+
+
+```pycon
+
+```
+
+```pycon
+
+```
+
+
+
+```pycon
+
+```
+
+```pycon
+
+```
+
+
+```pycon
+
+```
+
+```pycon
+
+```
+
+
+
+
+
+
