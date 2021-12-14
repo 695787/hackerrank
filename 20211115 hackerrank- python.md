@@ -1153,3 +1153,29 @@ print (bool(re.match(regex_integer_in_range, P))
 and len(re.findall(regex_alternating_repetitive_digit_pair, P)) < 2)
 ```
 
+Don't completely understand the information below- from Discussion. 
+
+'''
+regex_alternating_repetitive_digit_pair checks that 
+it not contains more than one alternating repetitive digit pair
+Alternating repetitive digits are digits which repeat immediately after the next digit. In other words, an alternating repetitive digit pair is formed by two equal digits that have just a single digit between them.
+'''
+regex_alternating_repetitive_digit_pair = r"(\d)(?=.\1)"	
+
+'''
+() groups sub-patterns
+? matches zero or one occurrence of the pattern left to it.
+
+(?=...)
+Matches if ... matches next, but doesn’t consume any of the string. This is called a lookahead assertion. For example, Isaac (?=Asimov) will match 'Isaac ' only if it’s followed by 'Asimov'.
+
+. a period matches any single character (except newline '\n').
+
+\number
+Matches the contents of the group of the same number. Groups are numbered starting from 1. For example, (.+) \1 matches 'the the' or '55 55', but not 'thethe'
+
+'''
+
+
+
+
