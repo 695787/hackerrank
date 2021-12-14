@@ -1117,22 +1117,39 @@ _____________________
 https://www.hackerrank.com/challenges/validating-postalcode/problem?h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen
 
 
+regex_integer_in_range should match only integers range from 100000 to 999999 inclusive
 
+regex_alternating_repetitive_digit_pair should find alternating repetitive digits pairs in a given string.
 
-
-
+From Discussion Answers- 
 
 
 ```pycon
+import re
 
+print(bool(re.match(
+    r'^'
+    r'(?!.*(.).\1.*(.).\2)'
+    r'(?!.*(.)(.)\3\4)'
+    r'[1-9]\d{5}'
+    r'$', input()
+)))
 ```
 
 ```pycon
-
+regex_integer_in_range = r"^[1-9][0-9]{5}$"
+regex_alternating_repetitive_digit_pair = r"(\d)(?=.\1)"
 ```
 
+```pycon
+regex_integer_in_range = r"_________"	# Do not delete 'r'.
+regex_alternating_repetitive_digit_pair = r"_________"	# Do not delete 'r'.
 
 
+import re
+P = input()
 
-
+print (bool(re.match(regex_integer_in_range, P)) 
+and len(re.findall(regex_alternating_repetitive_digit_pair, P)) < 2)
+```
 
