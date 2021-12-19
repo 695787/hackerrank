@@ -1174,7 +1174,116 @@ Matches if ... matches next, but doesn’t consume any of the string. This is ca
 \number
 Matches the contents of the group of the same number. Groups are numbered starting from 1. For example, (.+) \1 matches 'the the' or '55 55', but not 'thethe'
 
-'''
+'''use bignum
+
+______________________
+
+###### Question- Extra Long Factorials
+
+Function Description
+
+Complete the extraLongFactorials function in the editor below. It should print the result and return. 
+
+```pycon
+import math
+import os
+import random
+import re
+import sys
+#
+# Complete the 'extraLongFactorials' function below.
+#
+# The function accepts INTEGER n as parameter.
+#
+
+def extraLongFactorials(n):
+    # Write your code here
+    factorial = 1
+    for i in range(1, n+1):
+       factorial *= i 
+       #print (factorial)
+    else:
+        print (factorial)
+        return factorial
+if __name__ == '__main__':
+    n = int(input().strip())
+
+    extraLongFactorials(n)
+
+```
+________________________
+
+###### Question- Matrix Script
+
+https://www.hackerrank.com/challenges/matrix-script/problem?h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen
+
+
+```pycon
+#!/bin/python
+import math
+import os
+import random
+import re
+import sys
+first_multiple_input = raw_input().rstrip().split()
+n = int(first_multiple_input[0])
+m = int(first_multiple_input[1])
+matrix = []
+for _ in xrange(n):
+    matrix_item = raw_input()
+    matrix.append(matrix_item)
+    print (matrix)
+
+```
+
+```pycon
+matrix = [][]
+for _ in xrange(n):
+    matrix_item = []
+    matrix_item = split_str(raw_input())
+    matrix.append(matrix_item)
+    print (matrix)
+
+
+```
+
+Discussion Answer- 
+
+```pycon
+import re
+import sys
+
+first_multiple_input = input().rstrip().split()
+
+n = int(first_multiple_input[0])
+
+m = int(first_multiple_input[1])
+
+matrix = []
+
+for _ in range(n):
+    matrix_item = input()
+    matrix.append(matrix_item)
+
+new = ''
+for i in range(0,m):
+    for j in range(0,n):
+        new = new + matrix[j][i]
+ 
+t1 = re.match(r'\W*',new[::-1]).group()
+
+t1= t1[::-1]
+t2 = re.match(r'\W*',new).group()
+s = re.sub('[^0-9a-zA-Z]+', ' ', new).rstrip().lstrip()
+k = t2 + s + t1
+print((k, t1) [s==''])
+
+```
+
+
+
+
+
 
 
 
