@@ -1270,7 +1270,13 @@ for i in range(0,m):
     for j in range(0,n):
         new = new + matrix[j][i]
  
-t1 = re.match(r'\W*',new[::-1]).group()
+t1 = re.match(r'\W*',new[::-1]).group() 
+# https://stackoverflow.com/questions/21617586/reverse-string-string-1-works-but-string0-1-and-others-dont#21617612
+# Not sure why but [::-1] seems to be a Python string operation that reverses the order of the string array. 
+#For example-  
+#txt = "The best things in life are free!"
+#print(txt[::-1]) 
+# Output- !eerf era efil ni sgniht tseb ehT
 
 t1= t1[::-1]
 t2 = re.match(r'\W*',new).group()
@@ -1279,6 +1285,42 @@ k = t2 + s + t1
 print((k, t1) [s==''])
 
 ```
+See https://stackoverflow.com/questions/21617586/reverse-string-string-1-works-but-string0-1-and-others-dont#21617612
+
+See https://www.w3schools.com/python/trypython.asp?filename=demo_default
+
+See https://docs.python.org/3/library/string.html
+
+https://www.w3schools.com/python/python_ref_string.asp
+
+https://www.w3schools.com/python/python_strings.asp
+
+https://www.educba.com/python-string-to-array/
+
+https://docs.python.org/3.8/library/re.html#re.sub
+
+Some demonstration code below
+
+```pycon
+import re
+string = "999999999 22 333 4444 55555 666666 7777777 88888888 "
+## Matching five or more consecutive chars
+print (string)
+array = re.findall(r"(.)\1{4,}", string)
+print (array)
+```
+```pycon
+import re
+s1 = 'Blue Berries'
+pattern = 'Blue Berries'
+for match in re.finditer(pattern, s1):
+    s = match.start()
+    e = match.end()
+    print ('String match "%s" at %d:%d' % (s1[s:e], s, e))
+```
+Output- String match "Blue Berries" at 0:12
+
+
 
 
 
