@@ -1320,11 +1320,90 @@ for match in re.finditer(pattern, s1):
 ```
 Output- String match "Blue Berries" at 0:12
 
+_______________________
+
+
+###### Question- Any or All
+
+https://www.hackerrank.com/challenges/any-or-all/problem?h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen
+
+Condition 1: All the integers in the list are positive.
+Condition 2: 5 is a palindromic integer.
+
+
+```pycon
+any([1>0,1==0,1<0])
+all(['a'<'b','b'<'c'])
+
+```
+```pycon
+
+all(['a'<'b','b'<'c'])
+any([1>0,1==0,1<0])
+```
+
+Discussion Answer-
+
+I suspect that j == j[::-1] below would fail the palindrome test for N > 100 
+ie It works for one and two characters but not for three characters. 
+To produce something that works for more than two characters should compare j[::1] == j[::-1] or something similar perhaps?
+
+```pycon
+N,n = int(raw_input()),raw_input().split()
+print all([int(i)>0 for i in n]) and any([j == j[::-1] for j in n])
+
+
+```
+
+What does [:-1] mean/do in python? - Stack Overflow
+https://stackoverflow.com/questions/15535205/what-does-1-mean-do-in-python
+
+python string [::-1]- Slice Notation
+
+https://stackoverflow.com/questions/21617586/reverse-string-string-1-works-but-string0-1-and-others-dont#21617612
+
+
+My attempted answer-
+
+```pycon
+var1, var2 = int(input()),input().split()
+#var= input().rstrip().split()
+print (all(int(i)>0 for i in var2) and ) # Need to add the palindrome condition 2- the hints suggests to use "any" method. 
+
+```
+
+```pycon
+N,n = int(input()),input().split()
+print (all([int(i)>0 for i in n]) and any([j == j[::-1] for j in n]))
+```
+
+Use input() not raw_input() for Python 3. 
+Also print (var) not print var
+
+Below works- should work for three character palindromes too N > 100. 
+
+```pycon
+N,n = int(input()),input().split()
+print (all([int(i)>0 for i in n]) and any([j[::1] == j[::-1] for j in n]))
+```
+
+___________
+
+###### Question- ginortS (Sorting??)
+
+https://www.hackerrank.com/challenges/ginorts/problem?h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen
+
+```pycon
 
 
 
+```
+
+```pycon
 
 
+
+```
 
 
 
