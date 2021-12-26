@@ -1445,17 +1445,41 @@ arr= []
 arr = [ int(input()) for i <> ""]
 
 
+A= []
+for i in input():
+    A[i]= int(input().split())
+    print (A[i])
+print ("A = ")
+print (A)
+
 ```
 https://stackoverflow.com/questions/56615312/how-to-take-input-in-array-in-python-3#56624087
 
 
+Discussion Answer- 
+
 ```pycon
-    
+a,b,c,d = (int(input()) for _ in range(4))
+print (pow(a,b)+pow(c,d))    
 
 ```
+___________
+
+###### Question- Triangle Quest
+
+https://www.hackerrank.com/challenges/python-quest-1/problem
+
+Discussion Answer- 
+
+```pycon
 
 
 
+```
+```pycon
 
+
+
+```
 
 
