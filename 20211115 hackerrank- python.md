@@ -1413,6 +1413,8 @@ for _ in S:
 
 Discussion Answer- 
 
+https://www.hackerrank.com/challenges/ginorts/forum
+
 The sorted function will return the sort as "an array"/ *sorted will return the sort as "a string".
 
 ```pycon
@@ -1420,6 +1422,38 @@ order = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1357902468'
 print(*sorted(input(), key=order.index), sep='')
 
 ```
+___________
+
+###### Question- Integers Come In All Sizes
+
+https://www.hackerrank.com/challenges/python-integers-come-in-all-sizes/problem
+
+```pycon
+a,b,c,d = (int(input()) for _ in range(4))
+A= []
+A= input().split
+#for i in input():
+    #A[i]= input()
+#print (A[0], A[1], A[2], A[3])
+print (A)
+  
+'''a,b,c,d = (int(input()) for _ in range(4))
+#print ("a= ", a, "b= ", b, "c=", c, "d=", d)
+print (pow(a,b)+pow(c,d))'''
+#arr = [ int(input()) for i in range(n)]
+arr= []
+arr = [ int(input()) for i <> ""]
+
+
+```
+https://stackoverflow.com/questions/56615312/how-to-take-input-in-array-in-python-3#56624087
+
+
+```pycon
+    
+
+```
+
 
 
 
