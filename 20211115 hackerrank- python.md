@@ -1393,15 +1393,31 @@ ___________
 
 https://www.hackerrank.com/challenges/ginorts/problem?h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen
 
+Your task is to sort the string S in the following manner:
+
+    All sorted lowercase letters are ahead of uppercase letters.
+    All sorted uppercase letters are ahead of digits.
+    All sorted odd digits are ahead of sorted even digits.
+
+https://www.asciitable.com/
+https://www.pythonforbeginners.com/basics/ascii-value-in-python
+The ord() function takes the given character as input and returns the ASCII value of the character.
+
 ```pycon
-
-
+S= input()
+Out= ""
+for _ in S:
+    
 
 ```
 
+Discussion Answer- 
+
+The sorted function will return the sort as "an array"/ *sorted will return the sort as "a string".
+
 ```pycon
-
-
+order = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1357902468'
+print(*sorted(input(), key=order.index), sep='')
 
 ```
 
