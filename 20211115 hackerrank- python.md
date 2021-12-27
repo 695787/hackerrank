@@ -1498,10 +1498,54 @@ Discussion Answers-
 
 https://www.hackerrank.com/challenges/python-tuples/forum
 
+I don't understand this question at all. But the code below gives the correct answer. 
+
+```pycon
+if __name__ == '__main__':
+    n = int(raw_input())
+    integer_list = map(int, raw_input().split())
+    print(hash(tuple(integer_list)))
+```
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
 ```pycon
 
 
 
 ```
 
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+```pycon
+
+
+
+```
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+```pycon
+
+
+
+```
 
