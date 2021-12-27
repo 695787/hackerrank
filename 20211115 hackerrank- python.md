@@ -1492,6 +1492,8 @@ ___________
 
 https://www.hackerrank.com/challenges/python-tuples/problem
 
+This question doesn't allow answers in Python 3 only Python 2.  
+
 Discussion Answers-
 
 https://www.hackerrank.com/challenges/python-tuples/forum
