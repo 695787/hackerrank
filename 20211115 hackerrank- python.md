@@ -1490,6 +1490,8 @@ ___________
 
 ###### Question- Tuples
 
+Date: 28 Dec 2021 
+
 https://www.hackerrank.com/challenges/python-tuples/problem
 
 This question doesn't allow answers in Python 3 only Python 2.  
@@ -1506,6 +1508,125 @@ if __name__ == '__main__':
     integer_list = map(int, raw_input().split())
     print(hash(tuple(integer_list)))
 ```
+
+https://docs.python.org/3.8/library/functions.html#map
+
+map(function, iterable, ...)
+
+    Return an iterator that applies function to every item of iterable, yielding the results. If additional iterable arguments are passed, function must take that many arguments and is applied to the items from all iterables in parallel. With multiple iterables, the iterator stops when the shortest iterable is exhausted. For cases where the function inputs are already arranged into argument tuples, see itertools.starmap().
+
+https://docs.python.org/3.8/library/functions.html#hash
+
+ hash(object)
+
+    Return the hash value of the object (if it has one). Hash values are integers. They are used to quickly compare dictionary keys during a dictionary lookup. Numeric values that compare equal have the same hash value (even if they are of different types, as is the case for 1 and 1.0).
+
+https://docs.python.org/3.8/library/functions.html
+
+
+class tuple([iterable])
+
+    Rather than being a function, tuple is actually an immutable sequence type, as documented in Tuples and Sequence Types — list, tuple, range.
+
+https://www.tutorialspoint.com/python3/tuple_tuple.htm
+The tuple() method converts a list of items into tuples.
+
+
+_____________
+
+###### Question- List Comprehensions
+
+Date: 28 Dec 2021 
+
+https://www.hackerrank.com/challenges/list-comprehensions/problem
+
+Answer First attempt-
+
+```pycon
+if __name__ == '__main__':
+    x = int(input())
+    y = int(input())
+    z = int(input())
+    n = int(input())
+    for i in x:
+        for j in y:
+            for k in z:
+                #if x+y+z!= n:
+               #Create 1D / 3 element array and add it to the output list. 
+    for i in y:
+        for j in z:
+            for k in x:
+                #if x+y+z!= n:
+                #Create 1D / 3 element array and add it to the output list. 
+    for i in z:
+        for j in x:
+            for k in y:
+                #if x+y+z!= n:  
+                #Create 1D / 3 element array and add it to the output list. 
+    #print output list
+
+```
+
+Discussion Answers-
+
+https://www.hackerrank.com/challenges/list-comprehensions/forum
+
+```pycon
+x, y, z, n = (int(raw_input())+1 for _ in range(4))
+print [[a,b,c] for a in range(x) for b in range(y) for c in range(z) if a+b+c!=n-1]
+
+
+listijk = []
+for i in range(x + 1):
+    for j in range (y + 1):
+        for k in range (z + 1):
+            if i + j + k != n: #before printing the result, it will exclude the output which 'i' + 'j' + 'k' is the same as 'n'.
+                listijk.append([i,j,k])
+print(listijk)
+
+# Below passes test case. 
+
+if __name__ == '__main__':
+    x = int(input())
+    y = int(input())
+    z = int(input())
+    n = int(input())
+    print ([[a,b,c] for a in range(x+1) for b in range(y+1) for c in range(z+1) if a+b+c!=n])
+```
+
+_____________
+
+###### Question- Find the Runner-Up Score
+
+Date: 28 Dec 2021 
+
+https://www.hackerrank.com/challenges/find-second-maximum-number-in-a-list/problem
+
+Discussion Answers-
+
+https://www.hackerrank.com/challenges/find-second-maximum-number-in-a-list/forum
+
+```pycon
+
+
+
+```
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+```pycon
+
+
+
+```
+
+
 
 _____________
 
