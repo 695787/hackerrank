@@ -1607,10 +1607,47 @@ Discussion Answers-
 https://www.hackerrank.com/challenges/find-second-maximum-number-in-a-list/forum
 
 ```pycon
-
+if __name__ == '__main__':
+    max = max2 = -100 - int(input())
+    nums = list(map(int,input().split(' ')))
+    for i in range(len(nums)):
+        if nums[i] > max2:
+            if nums[i] > max:
+                max,max2 = nums[i],max
+            elif nums[i] < max:
+                max2 = nums[i]
+    print(max2)      
 
 
 ```
+
+https://www.geeksforgeeks.org/numpy-argsort-in-python/
+
+numpy.argsort() function is used to perform an indirect sort along the given axis using the algorithm specified by the kind keyword. It returns an array of indices of the same shape as arr that that would sort the array.
+
+    Syntax : numpy.argsort(arr, axis=-1, kind=’quicksort’, order=None)
+
+```pycon
+a = list(map(int, input().split(' ')))
+a.sort()
+
+a = sorted(map(int, input().split(' ')))
+
+# My attempted answer-
+
+if __name__ == '__main__':
+    n = int(input())
+    arr = map(int, input().split())
+    output= sorted(arr)
+    #output[n]
+    #print (output[n-2])
+    maximum= output[n-1]
+    for i in reversed (output):
+        if output [n-i] != maximum:
+             print (output [n-i])
+             exit
+```
+
 
 _____________
 
