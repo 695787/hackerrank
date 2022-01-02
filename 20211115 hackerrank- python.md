@@ -1651,18 +1651,35 @@ if __name__ == '__main__':
 
 _____________
 
-###### Question- 
+###### Question- Nested Lists
 
+https://www.hackerrank.com/challenges/nested-list/problem
 
 Discussion Answers-
 
+https://www.hackerrank.com/challenges/nested-list/forum
 
 ```pycon
+marksheet = []
+for _ in range(0,int(input())):
+    marksheet.append([input(), float(input())])
 
-
-
+second_highest = sorted(list(set([marks for name, marks in marksheet])))[1]
+print('\n'.join([a for a,b in sorted(marksheet) if b == second_highest]))
 ```
 
+```pycon
+if __name__ == '__main__':
+    for _ in range(int(input())):
+        name = input()
+        score = float(input())
+        student= [name, score]
+        students.append(student)
+    print (len(students))
+    # Find minimum value of score and remove item from array. 
+    # Find minimum value of score and print all names with this score. 
+    studsort= sorted(students)
+```
 
 
 _____________
