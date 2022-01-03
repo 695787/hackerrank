@@ -1695,6 +1695,94 @@ if __name__ == '__main__':
 
 _____________
 
+###### Question- Finding the percentage
+
+https://www.hackerrank.com/challenges/finding-the-percentage/problem
+
+Discussion Answers- 
+
+https://www.hackerrank.com/challenges/finding-the-percentage/forum
+
+
+My Answer-
+
+
+```pycon
+if __name__ == '__main__':
+    n = int(input())
+    student_marks = {}
+    for _ in range(n):
+        name, *line = input().split()
+        scores = list(map(float, line))
+        student_marks[name] = scores
+    query_name = input()
+    #student_marks[query_name]
+    # "{:.2f}".format(float)
+    print ("{:.2f}".format((student_marks[query_name][0] + student_marks[query_name][1] + student_marks[query_name][2])/3))
+
+
+print (student_marks)
+{'Krishna': [67.0, 68.0, 69.0], 'Arjun': [70.0, 98.0, 63.0], 'Malika': [52.0, 56.0, 60.0]}
+
+```
+
+I wasn't convinced that I understood how to access "student_marks" based on an index. I considered that "student_marks" is like a 2-D array- it appears to be a "dictionary". Some information on dictionaries appears below.  
+
+https://pythonguides.com/python-print-2-decimal-places/
+https://www.w3schools.com/python/python_dictionaries.asp
+https://docs.python.org/3/tutorial/datastructures.html
+
+Ordered or Unordered?
+As of Python version 3.7, dictionaries are ordered. In Python 3.6 and earlier, dictionaries are unordered.
+When we say that dictionaries are ordered, it means that the items have a defined order, and that order will not change. Unordered means that the items does not have a defined order, you cannot refer to an item by using an index.
+
+_____________
+
+###### Question- The Captain's Room
+
+https://www.hackerrank.com/challenges/py-the-captains-room/problem
+
+Discussion Answers-
+
+https://www.hackerrank.com/challenges/py-the-captains-room/forum
+
+```pycon
+
+
+
+```
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+```pycon
+
+
+
+```
+
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+```pycon
+
+
+
+```
+
+_____________
+
 ###### Question- 
 
 
@@ -1734,4 +1822,19 @@ Discussion Answers-
 
 
 ```
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+```pycon
+
+
+
+```
+
 
