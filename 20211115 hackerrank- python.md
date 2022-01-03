@@ -1786,23 +1786,70 @@ Discussion Answers-
 https://www.hackerrank.com/challenges/py-check-subset/forum
 
 ```pycon
-
-
-
+if __name__ == '__main__':
+    #k, rooms, single, multiple = input(), input().split(), set(), set()
+    # T, A, A_set, B, B_set
+    T = int(input())
+    for _ in T:
+	A= int(input())
+	A_set= input().split()
+	B= int(input())
+	B_set= input().split()
+	print (A_set in B_set)
+    #for room in rooms: single.add(room) if room not in single else multiple.add(room)
+    #print(single.difference(multiple).pop()) 
 ```
+
+Tests ok-
+
 ```pycon
+if __name__ == '__main__':
+    T = int(input())
+    #print (T)
+    for _ in range(T):
+        A= input()
+        A_set= set(input())
+        B= input()
+        B_set= set(input())
+        #print (A)
+        #print (A_set)
+        #print (B)
+        #print (B_set)
+        print (A_set.issubset(B_set))
+```
 
+Shorter- Failed on submit.
 
+```pycon
+if __name__ == '__main__':
+    T = int(input())
+    for _ in range(T):
+        A, A_set, B, B_set= input(), set(input()), input(), set(input())
+        print (A_set.issubset(B_set))
+
+# Fixed with split()
+
+if __name__ == '__main__':
+    T = int(input())
+    for _ in range(T):
+        A, A_set, B, B_set= input(), set(input().split()), input(), set(input().split())
+        print (A_set.issubset(B_set))
 
 ```
+
+
 
 
 _____________
 
-###### Question- 
+###### Question- Check Strict Superset
+
+https://www.hackerrank.com/challenges/py-check-strict-superset/problem
 
 
 Discussion Answers-
+
+https://www.hackerrank.com/challenges/py-check-strict-superset/forum
 
 
 ```pycon
@@ -1811,6 +1858,18 @@ Discussion Answers-
 
 ```
 
+
+```pycon
+
+
+
+```
+
+```pycon
+
+
+
+```
 _____________
 
 ###### Question- 
