@@ -1746,20 +1746,50 @@ Discussion Answers-
 
 https://www.hackerrank.com/challenges/py-the-captains-room/forum
 
+Solution using sets. 
+
+```pycon
+if __name__ == '__main__':
+    k, rooms, single, multiple = input(), input().split(), set(), set()
+    for room in rooms: single.add(room) if room not in single else multiple.add(room)
+    print(single.difference(multiple).pop()) 
+```
+
+
+My attempt-
+
+```pycon
+if __name__ == '__main__':
+    K = int(input())
+    persons_room = list(map(int,input().split(' ')))
+    room_count = [] # Should be list of tuples or 2D array 
+    for _ in len(persons_room):
+        if not room_count[persons_room]:
+            room_count.append(persons_room)
+            # Put number 1 in the room count column.  
+        else:
+            # Add 1 to the room count column.
+    # Find the column that has a room count of 1.
+    print (persons_room)  
+    print (room_count) 
+```
+
+
+_____________
+
+###### Question- Check Subset
+
+https://www.hackerrank.com/challenges/py-check-subset/problem
+
+Discussion Answers-
+
+https://www.hackerrank.com/challenges/py-check-subset/forum
+
 ```pycon
 
 
 
 ```
-
-_____________
-
-###### Question- 
-
-
-Discussion Answers-
-
-
 ```pycon
 
 
