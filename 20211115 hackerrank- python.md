@@ -1836,9 +1836,36 @@ if __name__ == '__main__':
         print (A_set.issubset(B_set))
 
 ```
+Here is some information on Nested List Comprehensions in Python. Seems to be related to multi-dimensional arrays in Python. A couple of times in the about questions I thought that a better understanding of Multi-D Arrays would come in handy. 
+ 
+https://www.geeksforgeeks.org/nested-list-comprehensions-in-python/
+
+Also see Flatten List example in above link. 
+
+https://docs.python.org/3/library/stdtypes.html#typesseq
+
+https://www.plus2net.com/python/mutable-immutable.php
+
+https://docs.python.org/3/faq/programming.html#faq-multidimensional-list
 
 
 
+```pycon
+# 3D Array (i, j, k)?
+matrix = [[[k for k in range(5)] for j in range(5)] for i in range(5)]
+```
+>>> print(matrix)
+[[[0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4]], [[0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4]], [[0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4]], [[0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4]], [[0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4]]]
+
+>>> matrix[1][1][1]
+1
+>>> matrix[1][1][0]
+0
+>>> matrix[1][0][1]
+1
+>>> matrix[0][0][1]
+1
+>>> 
 
 _____________
 
