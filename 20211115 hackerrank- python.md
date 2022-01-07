@@ -1873,29 +1873,53 @@ _____________
 
 https://www.hackerrank.com/challenges/py-check-strict-superset/problem
 
-
 Discussion Answers-
 
 https://www.hackerrank.com/challenges/py-check-strict-superset/forum
 
 
 ```pycon
-
-
-
+A, n  = set(input().split()), int(input())
+Other= []
+for i in range(n):
+    Other[i]= set(input().split())
+    print (A_set.issubset(B_set)) 
 ```
 
+Passed Commit Test but didn't pass all Submit Tests. 
 
 ```pycon
-
-
-
+A, n  = set(input().split()), int(input())
+$##print (n)
+Other= []
+for i in range(n):
+    Other.append(set(input().split()))
+    #Other[i]= set(input().split())
+    #print (i)
+    #print (Other[i])
+    print (Other[i].issubset(A))
+    '''if not (Other[i].issubset(A))
+        print (Other[i].issubset(A))
+        break '''
 ```
+Submitted ok. 
 
 ```pycon
-
-
-
+A, n  = set(input().split()), int(input())
+#print (A)
+#print (n)
+Other= []
+result= True
+for i in range(n):
+    Other.append(set(input().split()))
+    #Other[i]= set(input().split())
+    #print (i)
+    #print (Other[i])
+    #print (Other[i].issubset(A))
+    if not (Other[i].issubset(A)):  # If Other is not a subset of A- ie False.
+        result= Other[i].issubset(A)
+        break
+print (result)
 ```
 _____________
 
