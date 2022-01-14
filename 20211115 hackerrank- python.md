@@ -1923,14 +1923,21 @@ print (result)
 ```
 _____________
 
-###### Question- 
+###### Question- Python Evaluation
+
+https://www.hackerrank.com/challenges/python-eval/problem
 
 
 Discussion Answers-
 
+https://www.hackerrank.com/challenges/python-eval/forum
+
+Compiled fine. 
 
 ```pycon
 
+#print(str(eval(input())))
+eval(input())
 
 
 ```
