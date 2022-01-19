@@ -1951,10 +1951,354 @@ Discussion Answers-
 https://www.hackerrank.com/challenges/python-sort-sort/forum
 
 ```pycon
+N, M = map(int, input().split())
+rows = [input() for _ in range(N)]
+K = int(input())
+
+for row in sorted(rows, key=lambda row: int(row.split()[K])):
+    print(row)
+```
+
+```pycon
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+if __name__ == '__main__':
+    nm = input().split()
+    n = int(nm[0])
+    m = int(nm[1])
+    arr = []
+    for _ in range(n):
+        arr.append(list(map(int, input().rstrip().split())))
+    k = int(input())
+    for row in sorted(rows, key=lambda row: int(row.split()[K])):
+        print(row)
+```
+I'm not sure what this question is doing. But the code below submits.
+The first row shows the number of data rows and columns. 
+The last row shows the column number that the data is to be sorted by.  
+
+```pycon
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+if __name__ == '__main__':
+    N, M = map(int, input().split())
+    rows = [input() for _ in range(N)]
+    K = int(input())
+
+    for row in sorted(rows, key=lambda row: int(row.split()[K])):
+        print(row)
+```
+
+Notes- on Lambda, Map, Input() see below. 
+https://www.w3schools.com/python/ref_func_map.asp
+https://www.geeksforgeeks.org/python-input-methods-competitive-programming/?ref=rp
+https://docs.python.org/3.8/library/functions.html#map
+https://docs.python.org/3/howto/sorting.html
+https://stackoverflow.com/questions/13669252/what-is-key-lambda
+https://stackoverflow.com/questions/8966538/syntax-behind-sortedkey-lambda
+https://www.programiz.com/python-programming/anonymous-function
+https://www.geeksforgeeks.org/python-lambda-anonymous-functions-filter-map-reduce/
+https://pythonguides.com/python-anonymous-function/
+
+_____________
+
+###### Question- Default Arguments
+
+https://www.hackerrank.com/challenges/default-arguments/problem
+
+```pycon
+class EvenStream(object):
+    def __init__(self):
+        self.current = 0
+
+    def get_next(self):
+        to_return = self.current
+        self.current += 2
+        return to_return
+
+class OddStream(object):
+    def __init__(self):
+        self.current = 1
+
+    def get_next(self):
+        to_return = self.current
+        self.current += 2
+        return to_return
+
+def print_from_stream(n, stream=EvenStream()):
+    for _ in range(n):
+        print(stream.get_next())
+
+
+queries = int(input())
+for _ in range(queries):
+    stream_name, n = input().split()
+    n = int(n)
+    if stream_name == "even":
+        print_from_stream(n)
+    else:
+        print_from_stream(n, OddStream())
+
+
+```
+
+
+Discussion Answers-
+
+https://www.hackerrank.com/challenges/default-arguments/forum
+
+<b>not sure I really understand this completely </b>
+The line that needs to be added is "stream.__init__()" to reset the stream- class instance- .  
+
+```pycon
+class EvenStream(object):
+    def __init__(self):
+        self.current = 0
+
+    def get_next(self):
+        to_return = self.current
+        self.current += 2
+        return to_return
+
+class OddStream(object):
+    def __init__(self):
+        self.current = 1
+
+    def get_next(self):
+        to_return = self.current
+        self.current += 2
+        return to_return
+
+def print_from_stream(n, stream=EvenStream()):
+    stream.__init__()	# Need to reset the Stream. 
+    for _ in range(n):
+        print(stream.get_next())
+
+
+queries = int(input())
+for _ in range(queries):
+    stream_name, n = input().split()
+    n = int(n)
+    if stream_name == "even":
+        print_from_stream(n)
+    else:
+        print_from_stream(n, OddStream())
+
+
+```
+
+Useful links- 
+https://stackoverflow.com/questions/46592445/python3-best-way-to-read-unknown-multi-line-input
+
+
+
+_____________
+
+###### Question- Triangle Quest 2
+
+https://www.hackerrank.com/challenges/triangle-quest-2/problem
+
+
+Discussion Answers-
+https://www.hackerrank.com/challenges/triangle-quest-2/forum
+
+```pycon
+for i in range(0,int(input())): #More than 2 lines will result in 0 score. Do not leave a blank line also
+    print ([1, 121, 12321, 1234321, 123454321, 12345654321, 1234567654321, 123456787654321, 12345678987654321, 12345678910987654321][i])
+
+```
+
+
+_____________
+
+###### Question- Mod Divmod
+https://www.hackerrank.com/challenges/python-mod-divmod/problem
+
+
+```pycon
+num= int(input())
+den= int(input())
+tup= divmod(num, den)
+print(tup[0])
+print(tup[1])
+print(tup)
+
+```
+
+Discussion Answers-
+https://www.hackerrank.com/challenges/python-mod-divmod/forum
+
+_____________
+
+###### Question- Power - Mod Power
+https://www.hackerrank.com/challenges/python-power-mod-power/problem
+
+Discussion Answers-
+https://www.hackerrank.com/challenges/python-power-mod-power/forum
+
+```pycon
+a= int(input())
+b= int(input())
+m= int(input())
+print(pow(a,b))
+print(pow(a,b,m))
+
+```
+
+_____________
+
+###### Question- String Validators
+https://www.hackerrank.com/challenges/string-validators/problem
+
+
+Answer- 
+```pycon
+if __name__ == '__main__':
+    inpu = input()
+    isalnum= False
+    isalpha= False
+    isdigit= False
+    islower= False
+    isupper= False
+
+    for i in range(len(inpu)):
+        if inpu[i].isalnum():
+            isalnum= True
+        if inpu[i].isalpha():
+            isalpha= True
+        if inpu[i].isdigit():
+            isdigit= True
+        if inpu[i].islower():
+            islower= True
+        if inpu[i].isupper():
+            isupper= True
+    print(isalnum)
+    print(isalpha)
+    print(isdigit)
+    print(islower)
+    print(isupper)
+
+```
+Discussion Answers-
+https://www.hackerrank.com/challenges/string-validators/forum
+
+Interesting Discussion Answers-
+
+```pycon
+str = raw_input()
+print any(c.isalnum()  for c in str)
+print any(c.isalpha() for c in str)
+print any(c.isdigit() for c in str)
+print any(c.islower() for c in str)
+print any(c.isupper() for c in str)
+
+
+# This one is very compact
+print "\n".join([str(any(i)) for i in (list(zip(*[[c.isalnum(), c.isalpha(), c.isdigit(), c.islower(), c.isupper()] for c in raw_input()])))])
+
+
+# Python has a function called any() that returns True if any one of the list elements evals to True.
+
+print(any([0, 1, 0, 0])) # will print True
+print(any([0, 0, 0, 0])) # will print False
+
+# This one is similar to my answer
+string = raw_input()
+l=list(string)
+a,b,c,d,e=False,False,False,False,False
+for i in l:
+    if i.isalnum():
+        a=True
+    if i.isalpha():
+        b=True
+    if i.isdigit():
+        c=True
+    if i.islower():
+        d=True
+    if i.isupper():
+        e=True
+print a
+print b
+print c
+print d
+print e
+
+# I used similar approach, but with a stopper after we found all the cases.
+
+rv = [False,False,False,False,False]
+...
+for i in range(0,len(s)):
+    if rv[0] & rv[1] & rv[2] & rv[3] & rv[4]:
+        break # no need to read the whole string if all cases passed
+    if not rv[0]:
+        rv[0] = s[i].isalnum():
+    if not rv[1]:
+        ...
+
+```
+
+
+_____________
+
+###### Question- Text Alignment
+https://www.hackerrank.com/challenges/text-alignment/problem
+
+Discussion Answers-
+https://www.hackerrank.com/challenges/text-alignment/forum
+
+```pycon
 
 
 
 ```
+
+```pycon
+
+
+
+```
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+```pycon
+
+
+
+```
+
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+```pycon
+
+
+
+```
+
 
 _____________
 
@@ -1983,5 +2327,54 @@ Discussion Answers-
 
 
 ```
+
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+```pycon
+
+
+
+```
+
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+```pycon
+
+
+
+```
+
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+```pycon
+
+
+
+```
+
+
+
+
 
 
