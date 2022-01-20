@@ -2204,10 +2204,8 @@ print any(c.isdigit() for c in str)
 print any(c.islower() for c in str)
 print any(c.isupper() for c in str)
 
-
 # This one is very compact
 print "\n".join([str(any(i)) for i in (list(zip(*[[c.isalnum(), c.isalpha(), c.isdigit(), c.islower(), c.isupper()] for c in raw_input()])))])
-
 
 # Python has a function called any() that returns True if any one of the list elements evals to True.
 
@@ -2246,37 +2244,81 @@ for i in range(0,len(s)):
         rv[0] = s[i].isalnum():
     if not rv[1]:
         ...
-
 ```
-
-
 _____________
 
 ###### Question- Text Alignment
 https://www.hackerrank.com/challenges/text-alignment/problem
 
+
+```pycon
+#Replace all ______ with rjust, ljust or center. 
+
+thickness = int(input()) #This must be an odd number
+c = 'H'
+
+#Top Cone
+for i in range(thickness):
+    print((c*i).rjust(thickness-1)+c+(c*i).rjust(thickness-1))
+
+#Top Pillars
+for i in range(thickness+1):
+    print((c*thickness).rjust(thickness*2)+(c*thickness).rjust(thickness*6))
+
+#Middle Belt
+for i in range((thickness+1)//2):
+    print((c*thickness*5).rjust(thickness*6))    
+
+#Bottom Pillars
+for i in range(thickness+1):
+    print((c*thickness).rjust(thickness*2)+(c*thickness).rjust(thickness*6))    
+
+#Bottom Cone
+for i in range(thickness):
+    print(((c*(thickness-i-1)).rjust(thickness)+c+(c*(thickness-i-1)).rjust(thickness)).rjust(thickness*6))
+
+```
 Discussion Answers-
 https://www.hackerrank.com/challenges/text-alignment/forum
 
 ```pycon
+#Replace all ______ with rjust, ljust or center. 
 
+thickness = int(input()) #This must be an odd number
+c = 'H'
 
+#Top Cone
+for i in range(thickness):
+    print((c*i).rjust(thickness-1)+c+(c*i).ljust(thickness-1))
 
+#Top Pillars
+for i in range(thickness+1):
+    print((c*thickness).center(thickness*2)+(c*thickness).center(thickness*6))
+
+#Middle Belt
+for i in range((thickness+1)//2):
+    print((c*thickness*5).center(thickness*6))    
+
+#Bottom Pillars
+for i in range(thickness+1):
+    print((c*thickness).center(thickness*2)+(c*thickness).center(thickness*6))    
+
+#Bottom Cone
+for i in range(thickness):
+    print(((c*(thickness-i-1)).rjust(thickness)+c+(c*(thickness-i-1)).ljust(thickness)).rjust(thickness*6))
 ```
 
-```pycon
-
-
-
-```
+See solution / interesting links- 
+https://programs.programmingoneonone.com/2021/01/hackerrank-text-alignment-solution-python.html
+https://www.w3schools.com/python/trypython.asp?filename=demo_ref_string_rjust
 
 _____________
 
-###### Question- 
+###### Question- Text Wrap
+https://www.hackerrank.com/challenges/text-wrap/problem
 
-
-Discussion Answers-
-
+Discussion Answers- 
+https://www.hackerrank.com/challenges/text-wrap/forum
 
 ```pycon
 
