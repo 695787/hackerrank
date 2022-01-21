@@ -2321,19 +2321,30 @@ Discussion Answers-
 https://www.hackerrank.com/challenges/text-wrap/forum
 
 ```pycon
+import textwrap
 
+def wrap(string, max_width):
+    return "\n".join(textwrap.wrap(string, max_width))    # The "return" variable is the piece that needs to be modified. 
 
-
+if __name__ == '__main__':
+    string, max_width = input(), int(input())
+    result = wrap(string, max_width)
+    print(result)
 ```
 
+Interesting solution-
+```pycon
+def wrap(string, max_width):
+    return "\n".join([string[i:i+max_width] for i in range(0, len(string), max_width)])
+```
 
 _____________
 
-###### Question- 
-
+###### Question- Designer Door Mat
+https://www.hackerrank.com/challenges/designer-door-mat/problem 
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/designer-door-mat/forum
 
 ```pycon
 
