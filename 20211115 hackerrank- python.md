@@ -2225,7 +2225,7 @@ for i in l:
         c=True
     if i.islower():
         d=True
-    if i.isupper():
+    if i.isupper():https://www.w3schools.com/python/trypython.asp?filename=demo_ref_string_join
         e=True
 print a
 print b
@@ -2337,21 +2337,43 @@ Interesting solution-
 def wrap(string, max_width):
     return "\n".join([string[i:i+max_width] for i in range(0, len(string), max_width)])
 ```
+Links-
+https://www.w3schools.com/python/trypython.asp?filename=demo_ref_string_join
+https://docs.python.org/3/library/textwrap.html
+https://docs.python.org/3/library/textwrap.html#textwrap.TextWrapper.wrap
 
 _____________
 
 ###### Question- Designer Door Mat
 https://www.hackerrank.com/challenges/designer-door-mat/problem 
 
+
+```pycon
+N, M= input().split()
+N, M= int(N), int(M)
+print (N, M)
+for i in range(M-3/2):
+
+
+```
 Discussion Answers-
 https://www.hackerrank.com/challenges/designer-door-mat/forum
 
 ```pycon
+n, m = map(int,input().split())
+pattern = [('.|.'*(2*i + 1)).center(m, '-') for i in range(n//2)]
+print('\n'.join(pattern + ['WELCOME'.center(m, '-')] + pattern[::-1]))
 
 
+
+N, M = map(int,input().split())
+for i in range(1,N,2): 
+    print((i * ".|.").center(M, "-"))
+print("WELCOME".center(M,"-"))
+for i in range(N-2,-1,-2): 
+    print((i * ".|.").center(M, "-"))
 
 ```
-
 
 _____________
 
