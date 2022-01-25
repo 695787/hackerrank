@@ -2377,13 +2377,41 @@ for i in range(N-2,-1,-2):
 
 _____________
 
-###### Question- 
+###### Question- String Formatting
+https://www.hackerrank.com/challenges/python-string-formatting/problem
 
-
-Discussion Answers-
-
+Answers-
 
 ```pycon
+def print_formatted(number):
+    # your code goes here
+    for i in range(1, number +1):
+        print (i, oct(i).replace("0o", ""), hex(i).replace("0x", "") , (bin(i).replace("0b", "")).rjust(5))     
+if __name__ == '__main__':
+    n = int(input())
+    print_formatted(n)
+
+
+```
+Discussion Answers-
+https://www.hackerrank.com/challenges/python-string-formatting/forum
+
+```pycon
+
+n = int(raw_input())
+width = len("{0:b}".format(n))
+for i in xrange(1,n+1):
+  print "{0:{width}d} {0:{width}o} {0:{width}X} {0:{width}b}".format(i, width=width)
+
+
+STDIN = int(raw_input())
+w = len(str(bin(STDIN)).replace('0b',''))
+for i in xrange(1, STDIN+1):
+    b = bin(int(i)).replace('0b','').rjust(w, ' ')
+    o = oct(int(i)).replace('0','', 1).rjust(w, ' ')
+    h = hex(int(i)).replace('0x','').upper().rjust(w, ' ')
+    j = str(i).rjust(w, ' ')
+    print j, o, h, b
 
 
 
