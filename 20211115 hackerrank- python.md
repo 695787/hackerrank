@@ -2413,17 +2413,42 @@ for i in xrange(1, STDIN+1):
     j = str(i).rjust(w, ' ')
     print j, o, h, b
 
+#Compiled ok. 
 
+def print_formatted(number):
+    # your code goes here
+    #STDIN = int(input())
+    # print (STDIN)
+    w = len(str(bin(number)).replace('0b',''))
+    for i in range(1, number+1):
+        b = bin(int(i)).replace('0b','').rjust(w, ' ')
+        o = oct(int(i)).replace('0o','', 1).rjust(w, ' ')
+        h = hex(int(i)).replace('0x','').upper().rjust(w,  ' ')
+        j = str(i).rjust(w, ' ')
+        print (j, o, h, b)
+
+if __name__ == '__main__':
+    n = int(input())
+    print_formatted(n)
 
 ```
 
 _____________
 
-###### Question- 
+###### Question- Alphabet Rangoli
+https://www.hackerrank.com/challenges/alphabet-rangoli/problem
+
+
+
+```pycon
+
+
+
+```
 
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/alphabet-rangoli/forum
 
 ```pycon
 
