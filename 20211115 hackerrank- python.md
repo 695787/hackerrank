@@ -2438,8 +2438,6 @@ _____________
 ###### Question- Alphabet Rangoli
 https://www.hackerrank.com/challenges/alphabet-rangoli/problem
 
-
-
 ```pycon
 
 
@@ -2451,12 +2449,95 @@ Discussion Answers-
 https://www.hackerrank.com/challenges/alphabet-rangoli/forum
 
 ```pycon
+import string
+alpha = string.ascii_lowercase
 
+n = int(input())
+L = []
+for i in range(n):
+    s = "-".join(alpha[i:n])
+    L.append((s[::-1]+s[1:]).center(4*n-3, "-"))
+print('\n'.join(L[:0:-1]+L))
+
+
+
+def print_rangoli(n):
+    from string import ascii_lowercase as chars
+    heap = [(('-'.join(chars[i:n])[::-1]+'-'.join(chars[i:n])[1:])).center(4*n-3, '-')for i in range(n)]
+    print(*(heap[::-1]+heap[1:]), sep="\n")
+
+
+
+def print_rangoli(size):
+    width = 4 * size - 3
+    alpha = string.ascii_lowercase
+    for i in list(range(size))[::-1] + list(range(1, size)):
+        print('-'.join(alpha[size-1:i:-1] + alpha[i:size]).center(width, '-'))
+
+
+def print_rangoli(size):
+    myStr = 'abcdefghijklmnopqrstuvwxyz'[0:size]
+    
+    for i in range(size-1, -size, -1):
+        x = abs(i)
+        if x >= 0:
+            line = myStr[size:x:-1]+myStr[x:size]
+            print ("--"*x+ '-'.join(line)+"--"*x)
+
+
+def print_rangoli(size):
+    alp = 'abcdefghijklmnopqrstuvwxyz'
+    for i in range(size-1,-size,-1):
+        temp = '-'.join(alp[size-1:abs(i):-1]+alp[abs(i):size])
+        print(temp.center(4*size-3,'-'))
+          
+if __name__ == '__main__':
+    n = int(input())
+    print_rangoli(n)
+
+
+import string
+
+size = int(input())
+alphabet = string.ascii_lowercase
+
+for i in range(size - 1, 0, -1):
+    row = ["-"] * (size * 2 - 1)
+    for j in range(0, size - i):
+        row[size - 1 - j] = alphabet[j + i]
+        row[size - 1 + j] = alphabet[j + i]
+    print("-".join(row))
+
+for i in range(0, size):
+    row = ["-"] * (size * 2 - 1)
+    for j in range(0, size - i):
+        row[size - 1 - j] = alphabet[j + i]
+        row[size - 1 + j] = alphabet[j + i]
+    print("-".join(row))
+
+
+import string
+N = int(input())
+alphabet = string.ascii_lowercase
+
+for i in range(N-1, -N, -1):
+    row = ["-"]*(4*N-3)
+    for j in range(0, N - abs(i)):
+        row[2*(N-1+j)] = alphabet[abs(i)+j]
+        row[2*(N-1-j)] = alphabet[abs(i)+j]
+    print("".join(row))
+
+
+instead of typing the alphabet use:
+import string
+alphabet = string.ascii_lowercase
+
+
+l = [chr(96+i) for i in range(size, 0, -1)]
+{print(('-'.join(l[:i]+l[i::-1])).center(size*4-3, '-')) for i in list(range(size))+list(range(size-2, -1, -1))}
 
 
 ```
-
-
 _____________
 
 ###### Question- 
