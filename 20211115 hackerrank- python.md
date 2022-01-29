@@ -2528,7 +2528,7 @@ for i in range(N-1, -N, -1):
     print("".join(row))
 
 
-instead of typing the alphabet use:
+# instead of typing the alphabet use:
 import string
 alphabet = string.ascii_lowercase
 
@@ -2537,7 +2537,29 @@ l = [chr(96+i) for i in range(size, 0, -1)]
 {print(('-'.join(l[:i]+l[i::-1])).center(size*4-3, '-')) for i in list(range(size))+list(range(size-2, -1, -1))}
 
 
+
+# Syntax
+# string.center(string_length, fill_character_default_space)
+
+
+import string
+alpha = string.ascii_lowercase
+
+n = 7
+L = []
+for i in range(n):
+    s = "-".join(alpha[i:n])
+    L.append((s[::-1]+s[1:]).center(4*n, " ")) # The reason for the 4*n-3 value is because the line needs to be of length approximately 7x2 to include all the characters plus 7x2 to account for the whitespace characters- in this case '-'
+print('\n'.join(L[:0:-1]+L))
+
+
 ```
+
+Links- 
+https://www.w3schools.com/python/ref_string_center.asp
+https://realpython.com/python-print/
+https://realpython.com/python-f-strings/
+
 _____________
 
 ###### Question- 
