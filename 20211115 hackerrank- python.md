@@ -2583,9 +2583,70 @@ Discussion Answers-
 
 
 ```pycon
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the solve function below.
+def solve(s):
+    for x in s[:].split():
+        s = s.replace(x, x.capitalize())
+    return s
+    
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = solve(s)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
 
 
+```
 
+
+_____________
+
+###### Question- The Minion Game
+
+https://www.hackerrank.com/challenges/the-minion-game/problem
+
+Discussion Answers-
+https://www.hackerrank.com/challenges/the-minion-game/forum
+
+```pycon
+def minion_game(string):
+    # your code goes here
+        #s = raw_input()
+
+    vowels = 'AEIOU'
+
+    kevsc = 0
+    stusc = 0
+    for i in range(len(s)):
+        if s[i] in vowels:
+            kevsc += (len(s)-i)
+        else:
+            stusc += (len(s)-i)
+
+    if kevsc > stusc:
+        print ("Kevin", kevsc)
+    elif kevsc < stusc:
+        print ("Stuart", stusc)
+    else:
+        print ("Draw")
+
+if __name__ == '__main__':
+    s = input()
+    minion_game(s)
 ```
 
 
@@ -2618,7 +2679,32 @@ Discussion Answers-
 
 ```
 
+_____________
 
+###### Question- 
+
+
+Discussion Answers-
+
+
+```pycon
+
+
+
+```
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+```pycon
+
+
+
+```
 
 
 
