@@ -1,0 +1,6 @@
+select * from users
+left join trips on users.usersid = trips.clientid or users.usersid = trips.driverid
+;
+
+select * from users
+left join trips on users.users_id = trips.client_id  or users.users_id = trips.driver_id;

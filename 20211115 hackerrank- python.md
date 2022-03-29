@@ -2652,6 +2652,147 @@ if __name__ == '__main__':
 
 _____________
 
+###### Question- Merge the Tools!
+https://www.hackerrank.com/challenges/merge-the-tools/problem
+
+Discussion Answers-
+https://www.hackerrank.com/challenges/merge-the-tools/forum
+
+https://www.thepoorcoder.com/hackerrank-merge-the-tools-solution/
+
+
+```pycon
+# I Couldn't work out completely what they were trying to say in the question- but the below code worked.
+
+def merge_the_tools(string, k):
+    # your code goes here
+    for i in range(0,len(string), k):
+        #slice string upto k characters
+        line = string[i:i+k]
+        seen = set()
+        for i in line:
+            #only print if we haven't already seen this character
+            if i not in seen:
+                print(i,end="")
+                seen.add(i)
+        #prints a new line
+        print()
+if __name__ == '__main__':
+    string, k = input(), int(input())
+    merge_the_tools(string, k)
+
+```
+
+_____________
+
+###### Question- Arrays- Date 17/03/2022
+https://www.hackerrank.com/challenges/np-arrays/problem
+
+
+Discussion Answers-
+https://www.hackerrank.com/challenges/np-arrays/forum
+
+```pycon
+import numpy
+
+def arrays(arr):
+    # complete this function
+    # use numpy.array
+    for i in len(arr):
+        result[i]= arr[len(arr)-i]
+    return result
+    
+
+arr = input().strip().split(' ')
+result = arrays(arr)
+print(result)
+
+
+______________
+
+
+import numpy
+
+def arrays(arr):
+    # complete this function
+    # use numpy.array
+    for i in range(0, len(arr)):
+        array[i]= arr[len(arr)-i-1]
+    return array
+    
+
+arr = input().strip().split(' ')
+result = arrays(arr)
+print(result)
+
+________________
+
+import numpy
+
+def arrays(arr):
+    # complete this function
+    # use numpy.array
+    #print (arr)
+    #array= []
+    # for i in range(0, len(arr)-1):
+        #print ("i= ", i)
+        #print ("len(arr)-1 = ", len(arr)-1)
+        #print (arr[len(arr)-i-1])
+        # my_array = np.asarray(my_list)
+        #array= numpy.array(arr)
+        # data.astype(float)
+        #array.astype(float)
+        # print(array)
+        # result = arr[::-1]
+        # array[i]= arr[len(arr)-i-1]
+        # print (L1[-1])
+    #return array[::-1]
+    return(numpy.array(arr[::-1], float))    
+    
+
+arr = input().strip().split(' ')
+result = arrays(arr)
+print(result)
+
+_______________
+
+
+# From discussion answers.
+
+import numpy
+
+def arrays(arr):
+    # complete this function
+    # use numpy.array
+    return(numpy.array(arr[::-1], float))    
+    
+
+arr = input().strip().split(' ')
+result = arrays(arr)
+print(result)
+
+________
+
+
+
+
+```
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+```pycon
+
+
+
+```
+_____________
+
 ###### Question- 
 
 
@@ -2706,6 +2847,46 @@ Discussion Answers-
 
 ```
 
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+```pycon
+
+
+
+```
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+```pycon
+
+
+
+```
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+```pycon
+
+
+
+```
 
 
 
