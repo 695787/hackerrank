@@ -2771,36 +2771,60 @@ arr = input().strip().split(' ')
 result = arrays(arr)
 print(result)
 
+```
 ________
 
 
 
 
-```
+
 
 _____________
 
-###### Question- 
-
+###### Question- Shape and Reshape- Date 09/04/2022
+https://www.hackerrank.com/challenges/np-shape-reshape/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/np-shape-reshape/forum
 
 ```pycon
+# My Answer
+import numpy
+array= list(map(int,input().split()))
+print (numpy.reshape(array,(3,3)))
 
-
+# Other answers
+import numpy;print(numpy.reshape(numpy.array(list(map(int,input().split()))),(3,3)))
 
 ```
-_____________
 
-###### Question- 
 
+
+
+____________
+
+###### Question- Transpose and Flatten- Date 20220410
+https://www.hackerrank.com/challenges/np-transpose-and-flatten/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/np-transpose-and-flatten/forum
 
 ```pycon
+# Solution
+import numpy
+narr = numpy.array([input().split() for _ in range(int(input().split()[0]))],int)
+print (narr.transpose())
+print (narr.flatten())
 
+
+# Another solution
+import numpy
+from sys import stdin
+array = []
+input()
+p = numpy.array([line.split() for line in stdin], int)
+print(p.transpose())
+print(p.flatten())
 
 
 ```
