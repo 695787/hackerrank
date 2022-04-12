@@ -2833,14 +2833,17 @@ print(p.flatten())
 _____________
 
 ###### Question- 
-
+https://www.hackerrank.com/challenges/np-concatenate/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/np-concatenate/forum
 
 ```pycon
-
-
+import numpy
+a, b, c = map(int,input().split())
+array_1 = numpy.array([input().split() for _ in range(a)],int)
+array_2 = numpy.array([input().split() for _ in range(b)],int)
+print (numpy.concatenate((array_1, array_2), axis = 0)) 
 
 ```
 
