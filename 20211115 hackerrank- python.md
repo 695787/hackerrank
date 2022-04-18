@@ -2849,40 +2849,80 @@ print (numpy.concatenate((array_1, array_2), axis = 0))
 
 _____________
 
-###### Question- 
-
+###### Question- np-zeros-and-ones
+https://www.hackerrank.com/challenges/np-zeros-and-ones/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/np-zeros-and-ones/forum
 
 ```pycon
+nums = tuple(map(int, input().split()))
+print (numpy.zeros(nums, dtype = numpy.int))
+print (numpy.ones(nums, dtype = numpy.int))
+```
 
+My Answer- Failed Submit
+```pycon
+import numpy
+a, b, c = map(int,input().split())
+print (numpy.zeros((a, b, c), dtype=int))
+print (numpy.ones((a, b, c), dtype=int))
+
+import numpy
+nums = tuple(map(int, input().split()))
+print (numpy.zeros(nums, dtype = int))
+print (numpy.ones(nums, dtype = int))
 
 
 ```
 _____________
 
 ###### Question- 
-
+https://www.hackerrank.com/challenges/np-eye-and-identity/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/np-eye-and-identity/forum
 
 ```pycon
+import numpy
+N, M = map(int,input().split())
+print numpy.eye(N, M)
 
+import numpy
+numpy.set_printoptions(legacy= '1.13')
+N, M = map(int,input().split())
+print (numpy.eye(N, M, dtype = int))
 
+# Answer
+import numpy
+numpy.set_printoptions(legacy= '1.13')
+N, M = map(int,input().split())
+print (numpy.eye(N, M))
 
 ```
 
 _____________
 
 ###### Question- 
-
+https://www.hackerrank.com/challenges/np-array-mathematics/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/np-array-mathematics/forum
 
 ```pycon
+import numpy
+n, m = map(int,input().split())  # eg. 1 4
+# print (n, m)
+#a, b= map(array,input().split())
+# Don't fully understand the line below- the range(2) bit. Could have an issue if it wasn't a 1xM array?
+a, b = (numpy.array([input().split() for _ in range(n)], dtype=int) for _ in range(2))   # 1 2 3 4, 5 6 7 8
+# print (a,b)
+print (numpy.add(a, b))       
+print (numpy.subtract(a, b))   
+print (numpy.multiply(a, b))  
+print (numpy.floor_divide(a, b))  
+print (numpy.mod(a, b))  
+print (numpy.power(a, b))
 
 
 
