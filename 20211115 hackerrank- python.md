@@ -2832,7 +2832,7 @@ print(p.flatten())
 
 _____________
 
-###### Question- 
+###### Question- np-concatenate
 https://www.hackerrank.com/challenges/np-concatenate/problem
 
 Discussion Answers-
@@ -2877,7 +2877,7 @@ print (numpy.ones(nums, dtype = int))
 ```
 _____________
 
-###### Question- 
+###### Question- np-eye-and-identity
 https://www.hackerrank.com/challenges/np-eye-and-identity/problem
 
 Discussion Answers-
@@ -2903,7 +2903,7 @@ print (numpy.eye(N, M))
 
 _____________
 
-###### Question- 
+###### Question- np-array-mathematics
 https://www.hackerrank.com/challenges/np-array-mathematics/problem
 
 Discussion Answers-
@@ -2928,6 +2928,77 @@ print (numpy.power(a, b))
 
 ```
 
+_____________
+
+###### Question- floor-ceil-and-rint
+https://www.hackerrank.com/challenges/floor-ceil-and-rint/problem
+
+Discussion Answers-
+https://www.hackerrank.com/challenges/floor-ceil-and-rint/forum
+
+```pycon
+
+import numpy
+A = map(int,input().split())
+
+# Discussion Solution
+import numpy
+numpy.set_printoptions(sign=' ')
+a = numpy.array(input().split(),float)
+print(numpy.floor(a))
+print(numpy.ceil(a))
+print(numpy.rint(a))
+
+```
+_____________
+
+###### Question- np-sum-and-prod
+https://www.hackerrank.com/challenges/np-sum-and-prod/problem
+
+Discussion Answers-
+https://www.hackerrank.com/challenges/np-sum-and-prod/forum
+
+```pycon
+import numpy
+n, m = map(int,input().split())  
+a = numpy.array([input().split() for _ in range(n)], dtype=int)
+b= numpy.sum(a, axis = 0)
+print (b)
+print (b[0] * b[1])
+
+#print (numpy.prod(a, axis = 0))
+
+# Cleaned up
+import numpy
+n, m = map(int,input().split())  
+a = numpy.array([input().split() for _ in range(n)], dtype=int)
+#print (a)
+b= numpy.sum(a, axis = 0)
+#print (b)
+print (b[0] * b[1])
+
+# Fails one of the tests- probably because not 2x2 matrix. Try again. 
+import numpy
+n, m = map(int,input().split())  
+a = numpy.array([input().split() for _ in range(n)], dtype=int)
+#print (a)
+b= numpy.sum(a, axis = 0)
+#print (b)
+print (numpy.prod(b, axis = 0))
+
+
+```
+_____________
+
+###### Question- np-min-and-max
+https://www.hackerrank.com/challenges/np-min-and-max/problem
+
+Discussion Answers-
+https://www.hackerrank.com/challenges/np-min-and-max/forum
+
+```pycon
+
+```
 _____________
 
 ###### Question- 
