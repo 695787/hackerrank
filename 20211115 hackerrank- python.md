@@ -2997,28 +2997,40 @@ Discussion Answers-
 https://www.hackerrank.com/challenges/np-min-and-max/forum
 
 ```pycon
-
+import numpy
+n, m = map(int,input().split())  
+a = numpy.array([input().split() for _ in range(n)], dtype=int)
+b= numpy.min(a, axis = 1)
+#print (b)
+print (numpy.max(b, axis = 0))
 ```
 _____________
 
-###### Question- 
-
+###### Question- np-mean-var-and-std
+https://www.hackerrank.com/challenges/np-mean-var-and-std/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/np-mean-var-and-std/forum
 
 ```pycon
-
-
-
+import numpy
+#numpy.set_printoptions(legacy='1.13')
+# numpy.set_printoptions(legacy='1.13', sign= ' ')
+# numpy.set_printoptions(sign=' ')
+n, m = map(int,input().split())  
+a = numpy.array([input().split() for _ in range(n)], dtype=int)
+print (numpy.mean(a, axis = 1))
+print (numpy.var(a, axis = 0))
+#print (numpy.std(a, axis = None))
+print(numpy.round(numpy.std(a, axis=None), 11))
 ```
 _____________
 
 ###### Question- 
-
+https://www.hackerrank.com/challenges/np-dot-and-cross/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/np-dot-and-cross/forum
 
 ```pycon
 
