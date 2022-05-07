@@ -3033,10 +3033,162 @@ Discussion Answers-
 https://www.hackerrank.com/challenges/np-dot-and-cross/forum
 
 ```pycon
+import numpy
+N= int(input())  
+#A = (numpy.array([input().split() for _ in range(N)], dtype=int) for _ in range(N))
+#B = (numpy.array([input().split() for _ in range(N)], dtype=int) for _ in range(N))
+#a, b = (numpy.array([input().split() for _ in range(n)], dtype=int) for _ in range(2))
+A= numpy.array([list(map(int,input().split())) for _ in range(N)])
+B= numpy.array([list(map(int,input().split())) for _ in range(N)])
+#print (A)
+#print (B)
+print (numpy.cross(A, B))
+
+#Discussion Solution- Need to read up on Dot / Cross Product to be sure that I understand the calculation.  
+import numpy
+N= int(input())  
+A= numpy.array([list(map(int,input().split())) for _ in range(N)])
+B= numpy.array([list(map(int,input().split())) for _ in range(N)])
+#a, b = (numpy.array([input().split() for _ in range(n)], dtype=int) for _ in range(2))
+print (numpy.dot(A, B))
+```
+_____________
+
+###### Question- np-inner-and-outer
+https://www.hackerrank.com/challenges/np-inner-and-outer/problem
+
+Discussion Answers-
+https://www.hackerrank.com/challenges/np-inner-and-outer/forum
+
+```pycon
 
 
 
 ```
+_____________
+
+###### Question- 
 
 
+Discussion Answers-
+
+
+```pycon
+
+
+
+```
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+```pycon
+
+
+
+```
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+```pycon
+
+
+
+```
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+```pycon
+
+
+
+```
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+```pycon
+
+
+
+```
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+```pycon
+
+
+
+```
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+```pycon
+
+
+
+```
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+```pycon
+
+
+
+```
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+```pycon
+
+
+
+```
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+```pycon
+
+
+
+```
 
