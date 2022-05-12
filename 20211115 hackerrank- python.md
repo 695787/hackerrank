@@ -3107,41 +3107,48 @@ print (numpy.round(numpy.linalg.det(A), 2))
 _____________
 
 ###### Question- 
-
+https://www.hackerrank.com/challenges/py-set-intersection-operation/problem
 
 Discussion Answers-
 
 
 ```pycon
-
-
-
+n= int(input())
+nroll = set(input().split())
+b= int(input())
+broll = set(input().split())
+print (len(nroll.intersection(broll)))
 ```
 _____________
 
 ###### Question- 
-
+https://www.hackerrank.com/challenges/py-set-difference-operation/problem
 
 Discussion Answers-
 
 
 ```pycon
-
-
-
+n= int(input())
+nroll = set(input().split())
+b= int(input())
+broll = set(input().split())
+print (len(nroll.difference(broll)))
 ```
 _____________
 
 ###### Question- 
-
+https://www.hackerrank.com/challenges/py-set-symmetric-difference-operation/problem
 
 Discussion Answers-
 
 
 ```pycon
-
-
-
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+n= int(input())
+nroll = set(input().split())
+b= int(input())
+broll = set(input().split())
+print (len(nroll.symmetric_difference(broll)))
 ```
 _____________
 
