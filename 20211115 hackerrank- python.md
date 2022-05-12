@@ -3075,28 +3075,34 @@ print (numpy.outer(A, B))
 _____________
 
 ###### Question- 
-
+https://www.hackerrank.com/challenges/np-polynomials/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/np-polynomials/forum
 
 ```pycon
-
-
-
+import numpy
+P= numpy.array(input().split(),float)
+x= int(input())  
+#print (P)
+#print (x)
+print (numpy.polyval(P, x))
 ```
 _____________
 
 ###### Question- 
-
+https://www.hackerrank.com/challenges/np-linear-algebra/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/np-linear-algebra/forum
 
 ```pycon
-
-
-
+import numpy
+N= int(input())
+A = numpy.array([input().split() for _ in range(N)], dtype=float)
+#print (N)
+#print (A)
+print (numpy.round(numpy.linalg.det(A), 2))
 ```
 _____________
 
