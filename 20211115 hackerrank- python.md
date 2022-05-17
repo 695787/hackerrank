@@ -3177,14 +3177,17 @@ print (sum(A))
 _____________
 
 ###### Question- 
-
+https://www.hackerrank.com/challenges/re-split/problem
 
 Discussion Answers-
+https://www.hackerrank.com/challenges/re-split/forum
+
 
 ```pycon
+regex_pattern = r"[,.]+"	# Do not delete 'r'.
 
-
-
+import re
+print("\n".join(re.split(regex_pattern, input())))
 ```
 _____________
 
