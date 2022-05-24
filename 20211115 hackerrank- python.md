@@ -3191,28 +3191,77 @@ print("\n".join(re.split(regex_pattern, input())))
 ```
 _____________
 
-###### Question- 
-
+###### Question- simple-array-sum
+https://www.hackerrank.com/challenges/simple-array-sum/problem
 
 Discussion Answers-
 
 ```pycon
+#!/bin/python3
 
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'simpleArraySum' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts INTEGER_ARRAY ar as parameter.
+#
+
+def simpleArraySum(ar):
+    # Write your code here
+    sum = 0
+    for i in range(len(ar)):
+        sum = sum + int(ar[i])
+    return sum
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    ar_count = int(input().strip())
+
+    ar = list(map(int, input().rstrip().split()))
+
+    result = simpleArraySum(ar)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
 
 
 ```
 _____________
 
-###### Question- 
-
+###### Question- reduce-function
+https://www.hackerrank.com/challenges/reduce-function/problem
 
 Discussion Answers-
+https://www.hackerrank.com/challenges/reduce-function/forum
 
 ```pycon
+from fractions import Fraction
+from functools import reduce
 
+def product(fracs):
+    t = reduce(lambda x, y : x * y, fracs)
+    # complete this line with a reduce statement
+    # reduce(operator.mul , fracs) 
+    # reduce(lambda x, y : x * y, fracs)
+    return t.numerator, t.denominator
 
-
+if __name__ == '__main__':
+    fracs = []
+    for _ in range(int(input())):
+        fracs.append(Fraction(*map(int, input().split())))
+    result = product(fracs)
+    print(*result)
 ```
+Notes- Probably need to go over this example again- it's interesting how the fraction interacts with reduce. 
+
 _____________
 
 ###### Question- 
