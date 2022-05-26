@@ -3264,14 +3264,667 @@ Notes- Probably need to go over this example again- it's interesting how the fra
 
 _____________
 
+###### Question- most-commons
+https://www.hackerrank.com/challenges/most-commons/problem
+
+Discussion Answers-
+https://www.hackerrank.com/challenges/most-commons/forum
+
+
+```pycon
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+from collections import Counter
+
+
+if __name__ == '__main__':
+    s = input()
+    #print (s)
+    c = Counter(sorted(s))
+    for i in c.most_common(3):
+        print(*i) 
+```
+Notes- I think that the problem writer was looking to get the solution using Regular Expressions- based on the includes- not using "Counter". I probably need to review the above code so I understand it better. This problem was worth 30 Points- compared with most that are only worth 10 points. 
+
+
+_____________
+
 ###### Question- 
 
 
 Discussion Answers-
 
+
+
 ```pycon
 
+```
+Notes- 
 
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
 
 ```
+Notes- 
 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
