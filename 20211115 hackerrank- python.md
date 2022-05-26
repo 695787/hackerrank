@@ -3294,17 +3294,25 @@ Notes- I think that the problem writer was looking to get the solution using Reg
 
 _____________
 
-###### Question- 
-
+###### Question- py-set-add
+https://www.hackerrank.com/challenges/py-set-add/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/py-set-add/forum
 
 
 ```pycon
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+N= int(input())
+s= set()
+for _ in range(N):
+    s.add(input())
+print(len(s))
 
+#One line answer
+#print(len(set([str(input()) for x in range(int(input()))])))
 ```
-Notes- 
+Notes- Should review the one line answer above.
 
 _____________
 
