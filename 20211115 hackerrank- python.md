@@ -3316,14 +3316,54 @@ Notes- Should review the one line answer above.
 
 _____________
 
-###### Question- 
-
+###### Question- py-set-discard-remove-pop
+https://www.hackerrank.com/challenges/py-set-discard-remove-pop/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/py-set-discard-remove-pop/forum
 
 
 ```pycon
+# First attempt
+command = set()
+n = int(input())
+s = set(map(int, input().split()))
+N = int(input())
+for _ in range(N):
+    command.add(input())
+# command = set(map(int, input().split()))
+
+print (n)
+print (s)
+print (N)
+print (command)
+
+for i in range(N):
+    exec(command[i]o.s)
+    eval("s."+command[i]+"("+args+")")
+
+print(len(s))
+'''
+try:
+
+    # Instruction
+
+except KeyError:
+
+    # Instruction
+'''
+# Discussion Answer-
+n = int(input())
+s = set(map(int, input().split()))
+N = int(input())
+for _ in range(N):
+    command = input().split()
+    cmd  = command[0]
+    args = ""
+    if len(command)>1 :
+        args = command[1]        
+    eval("s."+cmd+"("+args+")")
+print(sum(s))
 
 ```
 Notes- 
