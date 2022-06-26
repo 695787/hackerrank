@@ -3440,28 +3440,114 @@ Notes- The second map statement corresponds with the problem question better.
 
 _____________
 
-###### Question- 
-
+###### Question- symmetric-difference
+https://www.hackerrank.com/challenges/symmetric-difference/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/symmetric-difference/forum
 
 
 ```pycon
+a,b=(int(input()),input().split())
+c,d=(int(input()),input().split())
+x=set(b)
+y=set(d)
+p=y.difference(x)
+q=x.difference(y)
+r=p.union(q)
+print ('\n'.join(sorted(r, key=int)))
+
+
+# https://www.w3schools.com/python/trypython.asp?filename=demo_ref_sorted4
+a = ("1", "2", "3", "4", "10", "9", "8", "7")
+x = sorted(a, key= int, reverse=True)
+print(x)
+
+
+a = ("1", "2", "3", "4", "10", "9", "8", "7")
+b = set(a)
+x = sorted(a, key= int)
+print(x)
+
+# Short version of code. 
+
+a,b=(int(input()),input().split())
+c,d=(int(input()),input().split())
+x, y= set(b), set(d)
+print ('\n'.join(sorted((y.difference(x)).union(x.difference(y)), key=int)))
 
 ```
 Notes- 
+https://www.learnpythonwithrune.org/sort-a-python-list-with-string-of-integers-or-a-mixture/
+
 
 _____________
 
-###### Question- 
-
+###### Question- no-idea
+https://www.hackerrank.com/challenges/no-idea/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/no-idea/forum
 
 
 ```pycon
+# Attempt- Passed one test but failed all the others
+n, m= input().split()
+n_array= input().split()
+a_set= set(input())
+b_set= set(input())
+h= 0
+'''
+for i in range(len(n)):
+    if n[i] in a_set:
+        h+= 1
+        #print (h)
+    elif n[i] in b_set:
+        h-= 1   
+        #print (h) 
+'''        
+#, input()
+#print (n, m)
+#print (n_array)
+#print (a_set)
+#print (b_set)
+#print(h)
+print(sum((i in like) - (i in dislike) for i in array))
+print(sum((i in a_set) - (i in b_set) for i in n_array))
+
+
+#Discussion answer
+_ = input()
+array = input().split()
+like = set(input().split())
+dislike = set(input().split())
+print(sum((i in like) - (i in dislike) for i in array))
+
+
+# Second attempt- Passed 3 tests failed the rest. 
+n, m= input().split()
+n_array= input().split()
+a_set= set(input().split())
+b_set= set(input().split())
+h= 0
+'''
+for i in range(len(n)):
+    if n[i] in a_set:
+        h+= 1
+        #print (h)
+    elif n[i] in b_set:
+        h-= 1   
+        #print (h) 
+'''        
+#, input()
+#print (n, m)
+#print (n_array)
+#print (a_set)
+#print (b_set)
+#print(h)
+#print(sum((i in like) - (i in dislike) for i in array))
+print(sum((i in a_set) - (i in b_set) for i in n_array))
+
 
 ```
 Notes- 
