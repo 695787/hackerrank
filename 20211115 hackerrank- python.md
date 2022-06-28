@@ -3554,17 +3554,174 @@ Notes-
 
 _____________
 
-###### Question- 
-
+###### Question- class-1-dealing-with-complex-numbers
+https://www.hackerrank.com/challenges/class-1-dealing-with-complex-numbers/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/class-1-dealing-with-complex-numbers/forum
 
 
 ```pycon
+# First attempt using discussion answers. 
+
+class Complex(complex):
+    def __add__(self, no):
+        return Complex(complex.__add__(self, no))
+
+    def __sub__(self, no):
+        return Complex(complex.__sub__(self, no))
+
+    def __mul__(self, no):
+        return Complex(complex.__mul__(self, no))
+
+    def __truediv__(self, no):
+        return Complex(complex.__truediv__(self, no))
+
+    def mod(self):
+        return Complex(complex.__abs__(self))
+
+    def __str__(self):
+        return '{0.real:.2f}{0.imag:+.2f}i'.format(self)
+
+# Second attempt. 
+# Apparently need to use truediv rather than div in Python3. Otherwise it works. 
+
+class Complex(object):
+    def __init__(self, real, imag):
+        self.real = real
+        self.imag = imag
+    def __add__(self, no):        
+        x=complex(self.real, self.imag)+complex(no.real, no.imag)
+        return Complex(x.real, x.imag).__str__()
+    def __sub__(self, no):
+        x=complex(self.real, self.imag)-complex(no.real, no.imag)
+        return Complex(x.real, x.imag).__str__()
+    def __mul__(self, no):
+        x=complex(self.real, self.imag)*complex(no.real, no.imag)
+        return Complex(x.real, x.imag).__str__()
+    def __div__(self, no):
+        x=complex(self.real, self.imag)/complex(no.real, no.imag)
+        return Complex(x.real, x.imag).__str__()
+    def mod(self):
+        return Complex(abs(complex(self.real, self.imag)), 0)
+    def __str__(self):
+        if self.imag == 0:
+            result = "%.2f+0.00i" % (self.real)
+        elif self.real == 0:
+            if self.imag >= 0:
+                result = "0.00+%.2fi" % (self.imag)
+            else:
+                result = "0.00-%.2fi" % (abs(self.imag))
+        elif self.imag > 0:
+            result = "%.2f+%.2fi" % (self.real, self.imag)
+        else:
+            result = "%.2f-%.2fi" % (self.real, abs(self.imag))
+        return result
+
+# Failed on test 5. 
+
+class Complex(complex):
+    def __add__(self, no):
+        return Complex(complex.__add__(self, no))
+
+    def __sub__(self, no):
+        return Complex(complex.__sub__(self, no))
+
+    def __mul__(self, no):
+        return Complex(complex.__mul__(self, no))
+
+    def __truediv__(self, no):
+        return Complex(complex.__truediv__(self, no))
+
+    def mod(self):
+        return Complex(complex.__abs__(self))
+
+    def __str__(self):
+        return '{0.real:.2f}{0.imag:+.2f}i'.format(self)
+
+
+
+# Successfully submitted. 
+# I went back to the __str__ method that came with the original script and 
+# commented out the one that came with the discussion. 
+# After passing the tests it seems that you only need to fix the five arithmetic methods 
+# and change object to complex in the class header. 
+
+import math
+
+class Complex(complex):
+    def __add__(self, no):
+        return Complex(complex.__add__(self, no))
+
+    def __sub__(self, no):
+        return Complex(complex.__sub__(self, no))
+
+    def __mul__(self, no):
+        return Complex(complex.__mul__(self, no))
+
+    def __truediv__(self, no):
+        return Complex(complex.__truediv__(self, no))
+
+    def mod(self):
+        return Complex(complex.__abs__(self))
+
+    '''def __str__(self):
+        return '{0.real:.2f}{0.imag:+.2f}i'.format(self)'''
+    def __str__(self):
+        if self.imag == 0:
+            result = "%.2f+0.00i" % (self.real)
+        elif self.real == 0:
+            if self.imag >= 0:
+                result = "0.00+%.2fi" % (self.imag)
+            else:
+                result = "0.00-%.2fi" % (abs(self.imag))
+        elif self.imag > 0:
+            result = "%.2f+%.2fi" % (self.real, self.imag)
+        else:
+            result = "%.2f-%.2fi" % (self.real, abs(self.imag))
+        return result
+        
+
+if __name__ == '__main__':
+    c = map(float, input().split())
+    d = map(float, input().split())
+    x = Complex(*c)	# *c, *d are pointers I suppose. 
+    y = Complex(*d)
+    print(*map(str, [x+y, x-y, x*y, x/y, x.mod(), y.mod()]), sep='\n')
+
 
 ```
 Notes- 
+
+I found understanding both Classes and Complex Numbers tricky. 
+
+https://pythongeeks.org/python-arguments/
+
+Variable length arguments
+
+These arguments are also used when we have a problem of number of arguments. To be specific, these arguments are used when we do not know number of arguments are needed to be passed to the function. These are also called arbitrary arguments.
+
+In this case we use the the asterisk (*) before the parameter name in the definition of the function. For example,
+
+Example of a function with variable length arguments:
+def sum(*nos):
+    total=0
+    for i in nos:
+        total=total+i
+    print(total)
+    
+sum()
+sum(-3,4,5)
+sum(1,2,3,4,5)
+
+Output:
+0
+6
+15
+
+https://www.w3schools.com/python/gloss_python_function_arbitrary_arguments.asp
+https://www.geeksforgeeks.org/args-kwargs-python/
+
 
 _____________
 
