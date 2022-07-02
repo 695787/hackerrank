@@ -3740,27 +3740,119 @@ Notes-
 _____________
 
 ###### Question- 
-
+https://www.hackerrank.com/challenges/class-2-find-the-torsional-angle/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/class-2-find-the-torsional-angle/forum
 
 
 ```pycon
+import math
 
+class Points(object):
+    def __init__(self, x, y, z):
+        self.x= x
+        self.y= y
+        self.z= z
+    def __sub__(self, no):
+        return  Points((self.x-no.x),(self.y-no.y),(self.z-no.z))
+    def dot(self, no):
+        return (self.x*no.x)+(self.y*no.y)+(self.z*no.z)
+    def cross(self, no):
+        return Points((self.y*no.z-self.z*no.y),(self.z*no.x-self.x*no.z),(self.x*no.y-self.y*no.x))
+    def absolute(self):
+        return pow((self.x ** 2 + self.y ** 2 + self.z ** 2), 0.5)
+
+if __name__ == '__main__':
+    points = list()
+    for i in range(4):
+        a = list(map(float, input().split()))
+        points.append(a)
+
+    a, b, c, d = Points(*points[0]), Points(*points[1]), Points(*points[2]), Points(*points[3])
+    x = (b - a).cross(c - b)
+    y = (c - b).cross(d - c)
+    angle = math.acos(x.dot(y) / (x.absolute() * y.absolute()))
+
+    print("%.2f" % math.degrees(angle))
 ```
 Notes- 
 
 _____________
 
-###### Question- 
-
+###### Question- find-a-string
+https://www.hackerrank.com/challenges/find-a-string/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/find-a-string/forum
 
 
 ```pycon
+# First attempt.
+string= input()
+sub_string= input()
+start= 0
+count= 0
+for i in range(in):
+	start= in.find(sub_string, start)
+	if(start == -1):
+    		print("Substring doesn't exist in the string")
+	else:
+    		print("The substring is found on position : ",start)
+		count+= 1 
+
+# Second attempt.
+def count_substring(string, sub_string):
+    start= 0
+    count= 0
+    
+    for i in range(len(string)):
+        start= string.find(sub_string, start)
+        if(start == -1):
+            # print("Substring doesn't exist in the string")
+        else:
+            # print("The substring is found on position : ",start)
+            start+= 1
+            count+= 1 
+    return count
+
+if __name__ == '__main__':
+    string = input().strip()
+    sub_string = input().strip()
+    
+    count = count_substring(string, sub_string)
+    print(count)
+
+
+# Submitted answer- Successful. 
+def count_substring(string, sub_string):
+    start, count= 0, 0    
+    for i in range(len(string)):
+        start= string.find(sub_string, start)
+        if(start != -1):
+            start+= 1
+            count+= 1 
+    return count
+
+if __name__ == '__main__':
+    string = input().strip()
+    sub_string = input().strip()
+    
+    count = count_substring(string, sub_string)
+    print(count)
+
+# Discussion answer
+string, substring = (input().strip(), input().strip())
+print(sum([ 1 for i in range(len(string)-len(substring)+1) if string[i:i+len(substring)] == substring]))
+
+# Discussion answer 2
+def count_substring(s, sub):
+    return [s[i:i+len(sub)] for i in range(len(s))].count(sub)
+
+# Discussion answer 3
+import re
+def count_substring(string, sub_string):
+    return len(re.findall("(?=" + sub_string + ")", string))
 
 ```
 Notes- 
