@@ -3905,11 +3905,83 @@ Notes-
 
 _____________
 
-###### Question- 
-
+###### Question- words-score
+https://www.hackerrank.com/challenges/words-score/problem
 
 Discussion Answers-
+https://www.hackerrank.com/challenges/words-score/forum
 
+
+```pycon
+
+# My answer- Just moved line 'num_vowels= 0' out of the for loop.
+# 8/12 test cases failed :(
+def is_vowel(letter):
+    return letter in ['a', 'e', 'i', 'o', 'u', 'y']
+
+def score_words(words):
+    score = 0
+    num_vowels = 0
+    for word in words:
+        for letter in word:
+            if is_vowel(letter):
+                num_vowels += 1
+        if num_vowels % 2 == 0:
+            score += 2
+        else:
+            ++score
+    return score
+
+
+n = int(input())
+words = input().split()
+print(score_words(words))
+
+#Custom input
+# 5
+# vuv tpikawrurtmtcrs ajhgby tbnvycfnc bdczzgqygrpvoploooab
+
+# 3
+# programming is awesome
+# Ans- 4
+# MyAns- 5
+
+# Second attempt- Congratulations- Passed all tests.
+def is_vowel(letter):
+    return letter in ['a', 'e', 'i', 'o', 'u', 'y']
+
+def score_words(words):
+    score = 0
+    for word in words:
+        num_vowels = 0
+        for letter in word:
+            if is_vowel(letter):
+                num_vowels += 1
+                #print ("letter= ", letter, num_vowels)
+        if num_vowels % 2 == 0:
+            score += 2
+            #print ("even", score)
+        else:
+            score += 1
+            #print ("odd", score)
+    return score
+
+n = int(input())
+words = input().split()
+print(score_words(words))
+
+
+```
+Notes- I think the line ++score doesn't work in Python. 
+
+
+_____________
+
+###### Question- python-lists
+https://www.hackerrank.com/challenges/python-lists/problem
+
+Discussion Answers-
+https://www.hackerrank.com/challenges/python-lists/forum
 
 
 ```pycon
@@ -3917,25 +3989,10 @@ Discussion Answers-
 ```
 Notes- 
 
-
 _____________
 
-###### Question- 
-
-
-Discussion Answers-
-
-
-
-```pycon
-
-```
-Notes- 
-
-_____________
-
-###### Question- 
-
+###### Question- python-lists
+https://www.hackerrank.com/challenges/python-lists/problem
 
 Discussion Answers-
 
