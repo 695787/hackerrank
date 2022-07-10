@@ -3986,30 +3986,104 @@ https://www.hackerrank.com/challenges/python-lists/forum
 
 ```pycon
 # Discussion Answers
-n = input()
+n = int(input())
 l = []
 for _ in range(n):
-    s = raw_input().split()
+    s = input().split()
     cmd = s[0]
     args = s[1:]
     if cmd !="print":
         cmd += "("+ ",".join(args) +")"
         eval("l."+cmd)
     else:
-        print l
+        print (l)
+
+# Alternative Discussion Answer
+n = int(input())
+operations = [input().strip() for _ in range(n)]
+
+list_ = []
+
+commands = {
+    'insert': lambda idx, ele: list_.insert(int(idx), int(ele)),
+    'print': lambda: print(list_),
+    'remove': lambda ele: list_.remove(int(ele)),
+    'append': lambda ele: list_.append(int(ele)),
+    'sort': lambda: list_.sort(),
+    'pop': lambda: list_.pop(),
+    'reverse': lambda: list_.reverse(),
+}
+
+for operation in operations:
+    name, args = [i.strip() for i in (operation + ' ').split(' ', maxsplit=1)]
+    command = commands.get(name)
+    command(*args.split())
+
+# Using Getattr
+if __name__ == '__main__':
+    N = int(raw_input())
+    my_list=[]
+    for x in range(N):
+        args= raw_input().strip().split()
+        args[1:]=map(int,args[1:])
+        try:
+            getattr(my_list,args[0])(*args[1:])
+        except AttributeError:
+            print my_list
+
+# It's possible there is also a good solution using exec rather # than eval
+if __name__ == '__main__':
+    N = int(input())
+    li = list()
+    for dummy in range(N):
+        command = input().split()
+        try:
+            getattr(li, command[0])(*(map(int, command[1:])))
+        except AttributeError:
+            exec('{}({})'.format(command[0], 'li'))
+
+
 ```
 Notes- 
 
 _____________
 
-###### Question- python-lists
-https://www.hackerrank.com/challenges/python-lists/problem
+###### Question- zipped
+https://www.hackerrank.com/challenges/zipped/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/zipped/forum
 
 
 ```pycon
+# First attempt
+N, X= input().split()
+
+print (N, X)
+scores= []
+row_int= []
+sum= 0
+for i in range(int(N)):
+    row= input().split()
+    for j in row:
+        sum = sum + float(j)
+    print (sum/int(X))
+
+
+# Discussion Answers
+scores = []
+n, x = map(int, input().split())
+for i in range(x):
+    scores.append(list(map(float, input().split())))
+print(*[sum(student)/len(student) for student in zip(*scores)],sep='\n')
+
+# Or
+a,y = map(int, input().split())
+scores = [map(float, input().split()) for _ in range(y)]
+
+[print(sum(student)/y) for student in zip(*scores)]
+
+
 
 ```
 Notes- 
