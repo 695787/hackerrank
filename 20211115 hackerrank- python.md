@@ -4107,13 +4107,30 @@ Notes-
 _____________
 
 ###### Question- 
-
+https://www.hackerrank.com/challenges/polar-coordinates/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/polar-coordinates/forum
 
 
 ```pycon
+#My Answer-success
+import cmath
+z= complex(input())
+print (abs(z))
+print(cmath.phase(z))
+
+# Discussion Answer
+import cmath
+print(*cmath.polar(complex(input())), sep='\n')
+
+#Also
+x,y = map(float,re.findall('[+-]?\d+\.?\d*',raw_input().strip()))
+
+#Also
+from cmath import phase
+print((lambda x: '%.3f\n%.3f' % (abs(x), phase(x)))(complex(input())))
+
 
 ```
 Notes- 
