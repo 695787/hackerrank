@@ -4090,15 +4090,17 @@ Notes-
 
 _____________
 
-###### Question- 
-
+###### Question- input
+https://www.hackerrank.com/challenges/input/problem
 
 Discussion Answers-
-
+No Discsussion Tab
 
 
 ```pycon
-
+x, k= map(int, input().split())
+equation= input()
+print (eval(equation)== k)
 ```
 Notes- 
 
