@@ -4137,17 +4137,21 @@ Notes-
 
 _____________
 
-###### Question- 
-
+###### Question- find-angle
+https://www.hackerrank.com/challenges/find-angle/problem
 
 Discussion Answers-
-
-
+https://www.hackerrank.com/challenges/find-angle/forum
 
 ```pycon
+from math import *
+
+ab = float(input())
+bc = float(input())
+print(str(int(round(degrees(atan(ab/bc)),0)))+ '\u00B0')
 
 ```
-Notes- 
+Notes- There seems to be some issues with this question. I didn't spend a lot of time on it- but I don't think that they can use the equation- unless angle MBC = ACB (equation used to calculate angle ACB- ACB angle= arctan(opp- AB/adj- BC))
 
 _____________
 
