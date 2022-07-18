@@ -4155,27 +4155,40 @@ Notes- There seems to be some issues with this question. I didn't spend a lot of
 
 _____________
 
-###### Question- 
-
+###### Question- xml-1-find-the-score
+https://www.hackerrank.com/challenges/xml-1-find-the-score/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/xml-1-find-the-score/forum
 
 
 ```pycon
+import sys
+import xml.etree.ElementTree as etree
+
+def get_attr_number(node):
+    return str(etree.tostring(node)).count("=")
+
+if __name__ == '__main__':
+    sys.stdin.readline()
+    xml = sys.stdin.read()
+    tree = etree.ElementTree(etree.fromstring(xml))
+    root = tree.getroot()
+    print(get_attr_number(root))
 
 ```
 Notes- 
 _____________
 
-###### Question- 
-
+###### Question- XML2 - Find the Maximum Depth
+https://www.hackerrank.com/challenges/xml2-find-the-maximum-depth/problem
 
 Discussion Answers-
-
-
+https://www.hackerrank.com/challenges/xml2-find-the-maximum-depth/forum
 
 ```pycon
+
+
 
 ```
 Notes- 
