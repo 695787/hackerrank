@@ -4215,14 +4215,53 @@ Notes-
 
 _____________
 
-###### Question- 
-
+###### Question- swap-case
+https://www.hackerrank.com/challenges/swap-case/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/swap-case/forum
 
 
 ```pycon
+def swap_case(s):
+    res= ""
+    for i in range(len(s)):
+        res= res+ s[i].swapcase()        
+    return res
+
+if __name__ == '__main__':
+    s = input()
+    result = swap_case(s)
+    print(result)
+
+# Alternative Answer
+def swap_case(s):
+    result = ""
+    for letter in s:
+        if letter == letter.upper():
+            result += letter.lower()
+        else:
+            result += letter.upper()
+    return result
+
+# Alternative Answer 2
+
+def swap_case(s):
+    a = list(s)
+    b = []
+    for i in a:
+        if i.islower():
+             b.append(i.upper())
+        else:
+            b.append(i.lower())
+    return("".join(b))
+
+print(swap_case(input()))
+
+# Alternative Answer 3
+
+return "".join(list(map(lambda x : x.lower() if x.isupper() else x.upper(), list(s)))) 
+
 
 ```
 Notes- 
@@ -4230,14 +4269,25 @@ Notes-
 
 _____________
 
-###### Question- 
-
+###### Question- python-string-split-and-join
+https://www.hackerrank.com/challenges/python-string-split-and-join/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/python-string-split-and-join/forum
 
 
 ```pycon
+
+def split_and_join(line):
+    # write your code here
+    line = line.split(" ")
+    line = "-".join(line)
+    return line
+
+if __name__ == '__main__':
+    line = input()
+    result = split_and_join(line)
+    print(result)
 
 ```
 Notes- 
@@ -4245,39 +4295,62 @@ Notes-
 
 _____________
 
-###### Question- 
-
+###### Question- whats-your-name
+https://www.hackerrank.com/challenges/whats-your-name/problem
 
 Discussion Answers-
-
-
+https://www.hackerrank.com/challenges/whats-your-name/forum
 
 ```pycon
+#
+# Complete the 'print_full_name' function below.
+#
+# The function is expected to return a STRING.
+# The function accepts following parameters:
+#  1. STRING first
+#  2. STRING last
+#
 
+def print_full_name(first, last):
+    # Write your code here
+    print ("Hello {0} {1}! You just delved into python.".format(first, last))
+
+if __name__ == '__main__':
+    first_name = input()
+    last_name = input()
+    print_full_name(first_name, last_name)
 ```
 Notes- 
 
 _____________
 
-###### Question- 
-
+###### Question- python-mutations
+https://www.hackerrank.com/challenges/python-mutations/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/python-mutations/forum
 
 
 ```pycon
+def mutate_string(string, position, character):
+    string = string[:position] + character + string[(position+1):]
+    return string
 
+if __name__ == '__main__':
+    s = input()
+    i, c = input().split()
+    s_new = mutate_string(s, int(i), c)
+    print(s_new)
 ```
 Notes- 
 
 _____________
 
-###### Question- 
-
+###### Question- validate-list-of-email-address-with-filter
+https://www.hackerrank.com/challenges/validate-list-of-email-address-with-filter/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/validate-list-of-email-address-with-filter/forum
 
 
 ```pycon
