@@ -4354,6 +4354,45 @@ https://www.hackerrank.com/challenges/validate-list-of-email-address-with-filter
 
 
 ```pycon
+def fun(s):
+
+    # return True if s is a valid email, else return False
+    try:
+        username, url = s.split("@")
+        website, extension = url.split(".")
+        if any([username=='',website=='',url=='']): return False
+    except ValueError:
+        return  False
+                
+    cond1 = all(map(lambda x : 
+    x.isdigit() or 
+    x.isupper() or 
+    x.islower() or 
+    x == '-' or x=='_', 
+    username))
+        
+    cond2 = all(map(lambda x : 
+    x.isdigit() or 
+    x.isupper() or 
+     x.islower(), 
+    website))
+        
+    cond3 = 0< len(extension) < 4
+    
+    return all([cond1,cond2,cond3])
+    
+def filter_mail(emails):
+    return list(filter(fun, emails))
+
+if __name__ == '__main__':
+    n = int(input())
+    emails = []
+    for _ in range(n):
+        emails.append(input())
+
+filtered_emails = filter_mail(emails)
+filtered_emails.sort()
+print(filtered_emails)
 
 ```
 Notes- 
