@@ -4399,14 +4399,22 @@ Notes-
 
 _____________
 
-###### Question- 
-
+###### Question- incorrect-regex
+https://www.hackerrank.com/challenges/incorrect-regex/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/incorrect-regex/forum
 
 
 ```pycon
+import re
+for _ in range(int(input())):
+    ans = True
+    try:
+        reg = re.compile(input())
+    except re.error:
+        ans = False
+    print(ans)
 
 ```
 Notes- 
