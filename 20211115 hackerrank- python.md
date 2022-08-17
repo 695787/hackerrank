@@ -4421,17 +4421,35 @@ Notes-
 
 _____________
 
-###### Question- 
-
+###### Question- itertools-product
+https://www.hackerrank.com/challenges/itertools-product/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/itertools-product/forum
 
 
 ```pycon
+#First Step
+a1, a2= input().split()
+b1, b2= input().split()
+print (a1, a2)
+print (b1, b2)
+# 
+a1, a2= input().split()
+b1, b2= input().split()
+print ("(",a1,",",b1,")",  "(", a1, ",", b2, ")",  "(", a2, ",", b1, ")", "(", a2, ",", b2, ")" )
+# The print command is adding spaces to the output which isn't validating-> Supposed to use itertools to do the problem. 
+# Discussion Answer
+from itertools import product
+
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+p = product(A,B)
+print(*p)
+
 
 ```
-Notes- 
+Notes- Not sure about the *p. 
 
 _____________
 
