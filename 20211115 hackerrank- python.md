@@ -4453,14 +4453,26 @@ Notes- Not sure about the *p.
 
 _____________
 
-###### Question- 
-
+###### Question- itertools-permutations
+https://www.hackerrank.com/challenges/itertools-permutations/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/itertools-permutations/forum
 
 
 ```pycon
+#First attempt
+from itertools import permutations
+a, b= input().split()
+out= sorted(list(permutations(a,int(b))))
+print (out)
+
+#Second attempt with help
+from itertools import permutations
+a, b= input().split()
+out= sorted(list(permutations(a,int(b))))
+for i in out:
+    print(*i,sep='')
 
 ```
 Notes- 
