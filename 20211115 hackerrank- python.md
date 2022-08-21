@@ -4478,14 +4478,44 @@ for i in out:
 Notes- 
 _____________
 
-###### Question- 
-
+###### Question- itertools-combinations
+https://www.hackerrank.com/challenges/itertools-combinations/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/itertools-combinations/forum
 
 
 ```pycon
+# Just the previous question with combinations substituted for permutations- but it's not quite.
+
+# First attempt
+from itertools import combinations
+a, b= input().split()
+out= []
+out= sorted(list(combinations(a,int(b))))
+for i in out:
+    print(*i,sep='')
+
+#Second attempt
+from itertools import combinations
+a, b= input().split()
+out= []
+for j in range(int(b)+1):
+    out= out + sorted(list(combinations(a,int(j)))) # The + may be an issue here. 
+for i in out:
+    if not i== []:  # There was a null value in the answer this is an attempt to remove it. 
+        print(*i,sep='')
+
+# Discussion answer
+from itertools import combinations
+
+if __name__=="__main__":
+    cmds = input().split()
+    word ="".join( sorted(cmds[0] ))
+    size = int(cmds[1])
+    for _i in range(size):
+        [print ("".join(i)) for i in list(combinations(word, _i+1))  ]
+
 
 ```
 Notes- 
