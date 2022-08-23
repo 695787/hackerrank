@@ -4537,6 +4537,15 @@ a, b= input().split()
 out= sorted(list(combinations_with_replacement(a,int(b))))
 for i in out:
     print(*i,sep='')
+
+#Discussion answer
+from itertools import combinations_with_replacement
+
+s, k = input().split()
+for t in sorted(combinations_with_replacement(sorted(s), int(k))):
+    print("".join(t))
+
+
 ```
 Notes- 
 
