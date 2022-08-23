@@ -4522,15 +4522,21 @@ Notes-
 
 _____________
 
-###### Question- 
-
+###### Question- combinations_with_replacement
+https://www.hackerrank.com/challenges/itertools-combinations-with-replacement/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/itertools-combinations-with-replacement/forum
 
 
 ```pycon
 
+# First attempt
+from itertools import combinations_with_replacement
+a, b= input().split()
+out= sorted(list(combinations_with_replacement(a,int(b))))
+for i in out:
+    print(*i,sep='')
 ```
 Notes- 
 
