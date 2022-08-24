@@ -4552,18 +4552,32 @@ Notes-
 
 _____________
 
-###### Question- 
-
+###### Question- compress-the-string
+https://www.hackerrank.com/challenges/compress-the-string/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/compress-the-string/forum
 
 
 ```pycon
 
+#Discussion answers
+from itertools import groupby
+for key, count in groupby(*input().split()):
+    print("({}, {})".format(len(list(count)),key),end=" ")
+
+#Interesting
+from itertools import groupby
+print(*[(len(list(g)),int(k))for k,g in groupby(input())])
+
+#My answer
+from itertools import groupby
+for key, count in groupby(input()):
+    print("({}, {})".format(len(list(count)),key),end=" ")  #?
+
 ```
 Notes- 
-
+https://docs.python.org/3.8/library/itertools.html#itertools.groupby
 
 _____________
 
