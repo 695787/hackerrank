@@ -4581,14 +4581,21 @@ https://docs.python.org/3.8/library/itertools.html#itertools.groupby
 
 _____________
 
-###### Question- 
-
+###### Question- iterables-and-iterators
+https://www.hackerrank.com/challenges/iterables-and-iterators/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/iterables-and-iterators/forum
 
 
 ```pycon
+#Discussion answer
+from itertools import combinations 
+n = int(input())
+s = input().split()
+k = int(input())
+com = list(combinations(s,k))
+print(len([x for x in com if "a" in x])/len(com))
 
 ```
 Notes- 
