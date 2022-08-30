@@ -4602,17 +4602,61 @@ Notes-
 
 _____________
 
-###### Question- 
-
+###### Question- maximize-it
+https://www.hackerrank.com/challenges/maximize-it/problem
+Prepare > Python > Itertools > Maximize It!
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/maximize-it/forum
 
 
 ```pycon
+# First try
+k, m= input().split()
+print (k, m)
+
+# Second try
+k, m= input().split()
+print (k, m)
+n= []
+output= 0
+for i in range(k):
+    n= map(input().split())
+    output+= (max(n))^^2
+print (output) 
+
+#Third try
+ki, mi= input().split()
+k= int(ki)
+m= int(mi)
+print (k, m)
+n= []
+output= 0
+for i in range(k):
+    ni= map(input().split(), " ")
+    n= int(max(ni))
+    output+= n**2
+print (output)
+
+# Discussion Answer- need to understand this. 
+from itertools import product
+K,M = map(int,input().split())
+nums = []
+for _ in range(K):
+    row = map(int,input().split()[1:])
+    nums.append(map(lambda x:x**2%M, row))
+print(max(map(lambda x: sum(x)%M, product(*nums))))
+
+# 2
+from itertools import product
+li = []
+K,M = list(map(int,input().split()))
+for i in range(K):
+    li.append([i**2 for i in list(map(int,input().split()[1:]))])
+print(max([(sum(i)%M) for i in product(*li)]))
 
 ```
-Notes- 
+Notes- The solution expected is, find combination of elements from the individual list which will give you the max value of the function.
 
 _____________
 
