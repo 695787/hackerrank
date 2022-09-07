@@ -4682,17 +4682,27 @@ Notes-
 
 _____________
 
-###### Question- 
-
+###### Question- py-collections-namedtuple
+https://www.hackerrank.com/challenges/py-collections-namedtuple/problem
 
 Discussion Answers-
+https://www.hackerrank.com/challenges/py-collections-namedtuple/forum
 
-
+from collections import namedtuple
 
 ```pycon
+#Discussion Answers
+#1- Two Line Solution
+n,col = int(input()),input().split().index('MARKS')
+print(sum([int(input().split()[col]) for i in range(n)])/n)
+
+#2- Using Namedtuple's
+from collections import namedtuple
+N, student = int(input()), namedtuple('Student', *[input().split()])
+print(sum([int(student(*i).MARKS) for i in [input().split() for _ in range(N)]]) / N)
 
 ```
-Notes- 
+Notes- I need to make sure I understand this.
 
 _____________
 
