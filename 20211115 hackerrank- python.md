@@ -4706,14 +4706,27 @@ Notes- I need to make sure I understand this.
 
 _____________
 
-###### Question- 
-
+###### Question- py-collections-ordereddict
+https://www.hackerrank.com/challenges/py-collections-ordereddict/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/py-collections-ordereddict/forum
 
 
 ```pycon
+#Discussion Answer
+from collections import OrderedDict
+dict = {}
+for x in range(int(input())): 
+	x = input().split()
+	item, price  = " ".join(x [:-1]), int (x[-1])
+
+if item in dict.keys():
+    dict[item] = dict[item] + price
+else:
+    dict[item] = price
+
+for k, v in dict.items(): print (k, v)
 
 ```
 Notes- 
