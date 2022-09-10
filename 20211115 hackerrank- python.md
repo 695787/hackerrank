@@ -4725,7 +4725,18 @@ if item in dict.keys():
     dict[item] = dict[item] + price
 else:
     dict[item] = price
+for k, v in dict.items(): print (k, v)
 
+# 2
+from collections import OrderedDict
+dict = OrderedDict()
+for x in range(int(input())): 
+    x = input().split()
+    item, price  = " ".join(x [:-1]), int (x[-1])
+    if item in dict.keys():
+        dict[item] = dict[item] + price
+    else:
+        dict[item] = price
 for k, v in dict.items(): print (k, v)
 
 ```
