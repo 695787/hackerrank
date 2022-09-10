@@ -4744,14 +4744,40 @@ Notes-
 
 _____________
 
-###### Question- 
-
+###### Question- word-order
+https://www.hackerrank.com/challenges/word-order/problem
 
 Discussion Answers-
-
-
+https://www.hackerrank.com/challenges/word-order/forum
 
 ```pycon
+#1 
+n  = int(input())
+dict1 = {}
+
+for i in range(n):
+    key = input()
+    if key not in dict1:
+        dict1[key] = 1
+    else:
+        dict1[key] += 1
+				
+print(len(dict1))
+for i in dict1:
+    print(dict1[i], end= ' ')
+#2
+from collections import OrderedDict
+n  = int(input())
+dict1 = OrderedDict()
+for i in range(n):
+    key = input()
+    if key not in dict1:
+        dict1[key] = 1
+    else:
+        dict1[key] += 1
+print(len(dict1))
+for i in dict1:
+    print(dict1[i], end= ' ')
 
 ```
 Notes- 
