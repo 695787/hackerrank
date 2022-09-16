@@ -4783,31 +4783,95 @@ for i in dict1:
 Notes- 
 _____________
 
-###### Question- 
-
+###### Question- py-collections-deque
+https://www.hackerrank.com/challenges/py-collections-deque/problem
 
 Discussion Answers-
 
 
 
 ```pycon
+#1 
+from collections import deque
+d = deque()
+for _ in range(int(input())):
+    oper, val = input().split() + ['']
+    eval(d.{oper} ({val}))
+print (d)
+
+#2
+from collections import deque
+d = deque()
+for _ in range(int(input())):
+    oper, val, *args = input().split() + ['']
+    #print (oper, val)
+    eval(f'd.{oper} ({val})')
+print (*d)
 
 ```
 Notes- 
 
 _____________
 
-###### Question- 
-
+###### Question- piling-up
+https://www.hackerrank.com/challenges/piling-up/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/piling-up/forum
 
 
 ```pycon
+#1
+for _ in range(int(input())):
+        n, lst = (int(input()), list(map(int, input().split())))
+        for i in range(1, int((n/2))+1):
+            if lst[-(i+1)] > lst[-i] and lst[i-1] < lst[i]:
+                print("No")
+                break
+        else:
+            print("Yes")
+#2 
+from collections import deque
+
+for i in range(int(input())):
+    i, queue = input(), deque(map(int, input().split()))
+
+    for cube in sorted(queue,reverse=True):
+        if queue[-1] == cube:
+            queue.pop()
+        elif queue[0] == cube:
+            queue.popleft()
+        else:
+            print('No')
+            break
+    else:
+        print('Yes')
+#3
+from collections import deque
+
+for _ in range(int(input())):
+    input()
+    cubes = deque(map(int, input().split()))
+    stack = deque([2147483649]) # 2^31+1
+    while cubes:
+        stack.append((cubes.pop, cubes.popleft)[cubes[0]>=cubes[-1]]())
+        if stack[-1] > stack[-2]:
+            print('No')
+            break
+    else:
+        print('Yes')
+#4
+from collections import deque
+for _ in range(int(input())):
+    _ = input()
+    d = deque(map(int,input().split()))
+    stairs = []
+    while len(d) > 0:
+        stairs.append(d.pop() if d[-1]>d[0] else d.popleft())
+    print("Yes" if stairs == sorted(stairs)[::-1] else "No")
 
 ```
-Notes- 
+Notes- This question was a little hard to understand.
 
 
 _____________
