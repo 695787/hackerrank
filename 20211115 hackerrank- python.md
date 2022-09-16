@@ -4787,7 +4787,7 @@ _____________
 https://www.hackerrank.com/challenges/py-collections-deque/problem
 
 Discussion Answers-
-
+https://www.codingbroz.com/collections-deque-python-solution/
 
 
 ```pycon
