@@ -4810,6 +4810,8 @@ print (*d)
 
 ```
 Notes- 
+https://pythongeeks.org/python-eval-function/
+
 
 _____________
 
@@ -4876,18 +4878,40 @@ Notes- This question was a little hard to understand.
 
 _____________
 
-###### Question- 
-
+###### Question- defaultdict-tutorial
+https://www.hackerrank.com/challenges/defaultdict-tutorial/problem
 
 Discussion Answers-
+https://www.hackerrank.com/challenges/defaultdict-tutorial/forum
 
+
+```pycon
+from collections import defaultdict
+d = defaultdict(list)
+n, m = map(int, input().split())
+for i in range(n):
+    d[input()].append(str(i + 1))
+for j in range(m):
+    print(' '.join(d[input()]) or -1)
+
+```
+Notes- Need to understand this better. 
+https://www.codingbroz.com/defaultdict-tutorial-python-solution/ 
+
+
+_____________
+
+###### Question- collections-counter
+https://www.hackerrank.com/challenges/collections-counter/problem
+
+Discussion Answers-
+https://www.hackerrank.com/challenges/collections-counter/forum
 
 
 ```pycon
 
 ```
 Notes- 
-
 
 _____________
 
@@ -4972,3 +4996,47 @@ Discussion Answers-
 
 ```
 Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
+
+###### Question- 
+
+
+Discussion Answers-
+
+
+
+```pycon
+
+```
+Notes- 
+
+_____________
