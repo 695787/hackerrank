@@ -4951,14 +4951,35 @@ if Shoes[size]>0:
 
 _____________
 
-###### Question- 
-
+###### Question- Map and Lambda Function
+https://www.hackerrank.com/challenges/map-and-lambda-expression/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/map-and-lambda-expression/forum
 
 
 ```pycon
+#Initial code
+
+cube = lambda x: # complete the lambda function 
+
+def fibonacci(n):
+    # return a list of fibonacci numbers
+
+if __name__ == '__main__':
+
+#First attempt
+cube = lambda x: fibonacci(m)^^3 # This won't work because fibonacci outputs a list.
+
+def fibonacci(n):
+    # return a list of fibonacci numbers
+
+if __name__ == '__main__':
+	N= int(input())
+# The below won't work because "cube" should output a list. 
+# Need to just print "cube" list. 
+	for i in range(N): 
+		Output.append(cube(i))
 
 ```
 Notes- 
