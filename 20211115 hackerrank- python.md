@@ -4909,9 +4909,45 @@ https://www.hackerrank.com/challenges/collections-counter/forum
 
 
 ```pycon
+# First attempt
+
+from collections import Counter
+NoShoes= int(input()) #Number of pairs of shoes
+print (NoShoes)
+# ShoeSizes= []
+ShoeSizes= list(input().split()) #The sizes of the pairs of shoes- can be repeated. 
+print (ShoeSizes)
+NoPurch= int(input()) #Number of purchasers
+print(NoPurch)
+
+#Second attempt
+
+from collections import Counter
+NoShoes= int(input()) #Number of pairs of shoes
+#print (NoShoes)
+# ShoeSizes= []
+ShoeSizes= list(input().split()) #The sizes of the pairs of shoes- can be repeated. 
+#print (ShoeSizes)
+NoPurch= int(input()) #Number of purchasers
+#print(NoPurch)
+Shoes=Counter(ShoeSizes)
+Income= 0
+for _ in range(NoPurch):
+    size,price=input().split()
+    if Shoes[size]>0:
+        Shoes[size]-=1
+        Income+=int(price)
+print(Income)	
 
 ```
-Notes- 
+Notes- Need to understand how counters work better.
+
+Understand lines- 
+Shoes=Counter(ShoeSizes)
+
+Don't understand lines- 
+if Shoes[size]>0:
+
 
 _____________
 
