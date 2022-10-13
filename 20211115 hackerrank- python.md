@@ -4886,6 +4886,7 @@ https://www.hackerrank.com/challenges/defaultdict-tutorial/forum
 
 
 ```pycon
+#1
 from collections import defaultdict
 d = defaultdict(list)
 n, m = map(int, input().split())
@@ -4893,6 +4894,33 @@ for i in range(n):
     d[input()].append(str(i + 1))
 for j in range(m):
     print(' '.join(d[input()]) or -1)
+#2
+N= int(input())
+a, b= map(int, input().split())
+try:
+    print(a/b)
+except ZeroDivisionError as e:
+    #print ("Error Code:",e)
+    print ("Error Code: integer division or modulo by zero")
+#3
+
+N= int(input()
+for _ in range(N):
+    a, b= map(int, input().split())
+    try:
+        print(a/b)
+    except ZeroDivisionError as e:
+        #print ("Error Code:",e)
+        print ("Error Code: integer division or modulo by zero")
+    except ValueError:
+        if a.isdigit()==False and b.isdigit()==False:
+            print(f"Error Code: invalid literal for int() with base 10: '{a}','{b}'")
+        elif a.isdigit()==False:
+            print(f"Error Code: invalid literal for int() with base 10: '{a}'")
+        else:
+            print(f"Error Code: invalid literal for int() with base 10: '{b}'")  
+        continue
+        
 
 ```
 Notes- Need to understand this better. 
@@ -5019,8 +5047,13 @@ _____________
 Discussion Answers-
 
 
-
 ```pycon
+N= int(input())
+a, b= int(input().split())
+try:
+    print(a/b)
+except ZeroDivisionError as e:
+    print ("Error Code:",e)
 
 ```
 Notes- 
