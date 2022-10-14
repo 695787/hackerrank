@@ -4904,7 +4904,7 @@ except ZeroDivisionError as e:
     print ("Error Code: integer division or modulo by zero")
 #3
 
-N= int(input()
+N= int(input())
 for _ in range(N):
     a, b= map(int, input().split())
     try:
@@ -5060,17 +5060,32 @@ Notes-
 
 _____________
 
-###### Question- 
-
+###### Question- introduction-to-regex
+https://www.hackerrank.com/challenges/introduction-to-regex/problem
 
 Discussion Answers-
-
-
+https://www.hackerrank.com/challenges/introduction-to-regex/forum
 
 ```pycon
+#1
+T= int(input())
+for _ in range(T):
+    try:
+        N= float(input().split())
+        print ("True")
+    except:
+        print ("False")
+
+#2 Discussion
+for N in range(int(input())):
+    try:
+        print(bool(float(input())))
+    except:
+        print(False)
+
 
 ```
-Notes- 
+Notes- Probably should have used regex for this but the discussion solution was elegant. 
 
 _____________
 
