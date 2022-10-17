@@ -5089,17 +5089,60 @@ Notes- Probably should have used regex for this but the discussion solution was 
 
 _____________
 
-###### Question- 
-
+###### Question- standardize-mobile-number-using-decorators
+https://www.hackerrank.com/challenges/standardize-mobile-number-using-decorators/problem
 
 Discussion Answers-
-
+https://www.hackerrank.com/challenges/standardize-mobile-number-using-decorators/forum
 
 
 ```pycon
+def wrapper(f):
+    def fun(l):
+        # complete the function
+        l = list(map(lambda x: "+91 "+x[-10:-5]+" "+x[-5:] , l))
+        f(l)
+    return fun
+
+@wrapper
+def sort_phone(l):
+    print(*sorted(l), sep='\n')
+
+if __name__ == '__main__':
+    l = [input() for _ in range(int(input()))]
+    sort_phone(l) 
+```
+Notes- 
+
+_____________
+
+###### Question- calendar-module
+https://www.hackerrank.com/challenges/calendar-module/problem
+
+Discussion Answers-
+https://www.hackerrank.com/challenges/calendar-module/forum
+
+
+```pycon
+#1
+import calendar
+month, day, year = input().split()
+print(calendar.day_name[calendar.weekday(int(year), int(month), int(day))].upper())
+
+#2
+import calendar as cal month,day,year=map(int,input().split()) print(cal.day_name[cal.weekday(year,month,day)].upper())
 
 ```
 Notes- 
+https://docs.python.org/2/library/calendar.html#calendar.TextCalendar
+https://www.w3schools.com/python/ref_list_reverse.asp
+https://www.w3schools.com/python/python_howto_reverse_string.asp
+https://www.programcreek.com/python/example/5939/calendar.day_name
+
+
+
+
+
 
 _____________
 
@@ -5117,44 +5160,5 @@ Notes-
 
 _____________
 
-###### Question- 
-
-
-Discussion Answers-
-
-
-
-```pycon
-
-```
-Notes- 
-
-_____________
-
-###### Question- 
-
-
-Discussion Answers-
-
-
-
-```pycon
-
-```
-Notes- 
-
-_____________
-
-###### Question- 
-
-
-Discussion Answers-
-
-
-
-```pycon
-
-```
-Notes- 
 
 _____________
